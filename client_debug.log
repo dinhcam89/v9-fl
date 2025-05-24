@@ -1,0 +1,288 @@
+2025-05-19 12:34:04,883 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.80.180:5001
+2025-05-19 12:34:04,885 - urllib3.connectionpool - DEBUG - http://192.168.80.180:5001 "POST /api/v0/version HTTP/11" 200 None
+2025-05-19 12:34:04,886 - federated.ipfs - INFO - Connected to IPFS node version: 0.34.1
+2025-05-19 12:34:04,886 - FL-Debug - INFO - Initialized IPFS connector: http://192.168.80.180:5001/api/v0
+2025-05-19 12:34:04,887 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: web3_clientVersion
+2025-05-19 12:34:04,887 - web3._utils.http_session_manager.HTTPSessionManager - DEBUG - Session cached: http://192.168.80.1:7545, <requests.sessions.Session object at 0x7fb2053b2c10>
+2025-05-19 12:34:04,888 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.80.1:7545
+2025-05-19 12:34:04,889 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 88
+2025-05-19 12:34:04,889 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: web3_clientVersion, Response: {'id': 0, 'jsonrpc': '2.0', 'result': 'Ganache/v7.7.3/EthereumJS TestRPC/v7.7.3/ethereum-js'}
+2025-05-19 12:34:04,890 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_accounts
+2025-05-19 12:34:04,890 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_accounts
+2025-05-19 12:34:04,893 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 485
+2025-05-19 12:34:04,894 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_accounts, Response: {'id': 1, 'jsonrpc': '2.0', 'result': ['0xb6845ba34fc592266921419ef65b9b4d943e2797', '0x432eedfd74f3cd992689f1cc2c0cb2758ddab7fe', '0x9c4ec6537bf4d916b71008003fb1311b7c157c4f', '0x79c62f4ef6f1740d4c43a694fe301abb7ae97f28', '0x888b72fa86f4277b632bd03c54e2b7a5d524e031', '0x72925a001855f92463021d1a9d1e50bfecc841af', '0xfc4601517fc9a8497074297256564db73bb6c1e9', '0xd8add72aef11e0c84663d71bf225ad404a2612e8', '0x1db908f7c9c6d2251aec284faf2913f3f0fbb014', '0xabe82c7ea9210e781ee1046f361500a14835da6c']}
+2025-05-19 12:34:04,926 - FL-Debug - INFO - Initialized blockchain connector: http://192.168.80.1:7545
+2025-05-19 12:34:04,926 - FL-Debug - INFO - Using contract at: 0x760adD85eF476BdFd733B2Bf1c37A75A9CAa0e97
+2025-05-19 12:34:04,926 - FL-Debug - INFO - Using dataset file: data/clients/client_0.csv
+2025-05-19 12:34:04,966 - FL-Debug - INFO - Successfully loaded dataset with 5478 samples and 31 features
+2025-05-19 12:34:04,967 - FL-Debug - INFO - Target column: Class, Class distribution: {0: 5471, 1: 7}
+2025-05-19 12:34:04,967 - FL-Client-Ensemble - INFO - DataFrame columns: ['Time', 'V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9', 'V10', 'V11', 'V12', 'V13', 'V14', 'V15', 'V16', 'V17', 'V18', 'V19', 'V20', 'V21', 'V22', 'V23', 'V24', 'V25', 'V26', 'V27', 'V28', 'Amount', 'Class']
+2025-05-19 12:34:04,969 - FL-Client-Ensemble - INFO - Features shape: (5478, 29), Target shape: (5478,)
+2025-05-19 12:34:04,973 - FL-Debug - ERROR - Error during data preparation: The least populated class in y has only 1 member, which is too few. The minimum number of groups for any class cannot be less than 2.
+2025-05-19 12:34:05,668 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.80.180:5001
+2025-05-19 12:34:05,670 - urllib3.connectionpool - DEBUG - http://192.168.80.180:5001 "POST /api/v0/version HTTP/11" 200 None
+2025-05-19 12:34:05,670 - federated.ipfs - INFO - Connected to IPFS node version: 0.34.1
+2025-05-19 12:34:05,671 - FL-Debug - INFO - Initialized IPFS connector: http://192.168.80.180:5001/api/v0
+2025-05-19 12:34:05,672 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: web3_clientVersion
+2025-05-19 12:34:05,672 - web3._utils.http_session_manager.HTTPSessionManager - DEBUG - Session cached: http://192.168.80.1:7545, <requests.sessions.Session object at 0x7f0773b5ea00>
+2025-05-19 12:34:05,673 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.80.1:7545
+2025-05-19 12:34:05,675 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 88
+2025-05-19 12:34:05,675 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: web3_clientVersion, Response: {'id': 0, 'jsonrpc': '2.0', 'result': 'Ganache/v7.7.3/EthereumJS TestRPC/v7.7.3/ethereum-js'}
+2025-05-19 12:34:05,675 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_accounts
+2025-05-19 12:34:05,676 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_accounts
+2025-05-19 12:34:05,680 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 485
+2025-05-19 12:34:05,680 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_accounts, Response: {'id': 1, 'jsonrpc': '2.0', 'result': ['0xb6845ba34fc592266921419ef65b9b4d943e2797', '0x432eedfd74f3cd992689f1cc2c0cb2758ddab7fe', '0x9c4ec6537bf4d916b71008003fb1311b7c157c4f', '0x79c62f4ef6f1740d4c43a694fe301abb7ae97f28', '0x888b72fa86f4277b632bd03c54e2b7a5d524e031', '0x72925a001855f92463021d1a9d1e50bfecc841af', '0xfc4601517fc9a8497074297256564db73bb6c1e9', '0xd8add72aef11e0c84663d71bf225ad404a2612e8', '0x1db908f7c9c6d2251aec284faf2913f3f0fbb014', '0xabe82c7ea9210e781ee1046f361500a14835da6c']}
+2025-05-19 12:34:05,711 - FL-Debug - INFO - Initialized blockchain connector: http://192.168.80.1:7545
+2025-05-19 12:34:05,711 - FL-Debug - INFO - Using contract at: 0x760adD85eF476BdFd733B2Bf1c37A75A9CAa0e97
+2025-05-19 12:34:05,711 - FL-Debug - INFO - Using dataset file: data/clients/client_10.csv
+2025-05-19 12:34:05,736 - FL-Debug - INFO - Successfully loaded dataset with 5477 samples and 31 features
+2025-05-19 12:34:05,737 - FL-Debug - INFO - Target column: Class, Class distribution: {0: 5462, 1: 15}
+2025-05-19 12:34:05,737 - FL-Client-Ensemble - INFO - DataFrame columns: ['Time', 'V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9', 'V10', 'V11', 'V12', 'V13', 'V14', 'V15', 'V16', 'V17', 'V18', 'V19', 'V20', 'V21', 'V22', 'V23', 'V24', 'V25', 'V26', 'V27', 'V28', 'Amount', 'Class']
+2025-05-19 12:34:05,738 - FL-Client-Ensemble - INFO - Features shape: (5477, 29), Target shape: (5477,)
+2025-05-19 12:34:05,755 - FL-Client-Ensemble - INFO - Data info before SMOTE:
+2025-05-19 12:34:05,755 - FL-Client-Ensemble - INFO - [BEFORE] Train: (4381, 29), Validation: (365, 29), Test: (731, 29)
+2025-05-19 12:34:05,791 - FL-Client-Ensemble - INFO - SMOTE applied. New training shape: (8738, 29)
+2025-05-19 12:34:05,792 - FL-Client-Ensemble - INFO - Preprocessing complete.
+2025-05-19 12:34:05,792 - FL-Client-Ensemble - INFO - Train: (8738, 29), Validation: (365, 29), Test: (731, 29)
+2025-05-19 12:34:05,792 - FL-Debug - INFO - Data preprocessing complete:
+2025-05-19 12:34:05,792 - FL-Debug - INFO - - Training set: 8738 samples
+2025-05-19 12:34:05,792 - FL-Debug - INFO - - Validation set: 365 samples
+2025-05-19 12:34:05,792 - FL-Debug - INFO - - Test set: 731 samples
+2025-05-19 12:34:05,792 - FL-Debug - INFO - Initialized client-20 with GA-Stacking pipeline
+2025-05-19 12:34:05,792 - FL-Debug - INFO - IPFS node: http://192.168.80.180:5001/api/v0
+2025-05-19 12:34:05,796 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2025-05-19 12:34:05,796 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2025-05-19 12:34:05,796 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId
+2025-05-19 12:34:05,800 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 41
+2025-05-19 12:34:05,801 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId, Response: {'id': 2, 'jsonrpc': '2.0', 'result': '0x539'}
+2025-05-19 12:34:05,801 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_call
+2025-05-19 12:34:05,813 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 102
+2025-05-19 12:34:05,813 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_call, Response: {'id': 3, 'jsonrpc': '2.0', 'result': '0x0000000000000000000000000000000000000000000000000000000000000001'}
+2025-05-19 12:34:05,813 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2025-05-19 12:34:05,814 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId
+2025-05-19 12:34:05,815 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 41
+2025-05-19 12:34:05,815 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId, Response: {'id': 4, 'jsonrpc': '2.0', 'result': '0x539'}
+2025-05-19 12:34:05,816 - FL-Debug - INFO - Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f is authorized on the blockchain ✅
+2025-05-19 12:34:05,831 - flwr - DEBUG - Opened insecure gRPC connection (no certificates were passed)
+2025-05-19 12:34:05,837 - flwr - DEBUG - ChannelConnectivity.IDLE
+2025-05-19 12:34:05,845 - flwr - DEBUG - ChannelConnectivity.READY
+2025-05-19 12:34:29,637 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.80.180:5001
+2025-05-19 12:34:29,638 - urllib3.connectionpool - DEBUG - http://192.168.80.180:5001 "POST /api/v0/version HTTP/11" 200 None
+2025-05-19 12:34:29,639 - federated.ipfs - INFO - Connected to IPFS node version: 0.34.1
+2025-05-19 12:34:29,639 - FL-Debug - INFO - Initialized IPFS connector: http://192.168.80.180:5001/api/v0
+2025-05-19 12:34:29,640 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: web3_clientVersion
+2025-05-19 12:34:29,640 - web3._utils.http_session_manager.HTTPSessionManager - DEBUG - Session cached: http://192.168.80.1:7545, <requests.sessions.Session object at 0x7fbe093cef40>
+2025-05-19 12:34:29,641 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.80.1:7545
+2025-05-19 12:34:29,642 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 88
+2025-05-19 12:34:29,642 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: web3_clientVersion, Response: {'id': 0, 'jsonrpc': '2.0', 'result': 'Ganache/v7.7.3/EthereumJS TestRPC/v7.7.3/ethereum-js'}
+2025-05-19 12:34:29,643 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_accounts
+2025-05-19 12:34:29,643 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_accounts
+2025-05-19 12:34:29,645 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 485
+2025-05-19 12:34:29,646 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_accounts, Response: {'id': 1, 'jsonrpc': '2.0', 'result': ['0xb6845ba34fc592266921419ef65b9b4d943e2797', '0x432eedfd74f3cd992689f1cc2c0cb2758ddab7fe', '0x9c4ec6537bf4d916b71008003fb1311b7c157c4f', '0x79c62f4ef6f1740d4c43a694fe301abb7ae97f28', '0x888b72fa86f4277b632bd03c54e2b7a5d524e031', '0x72925a001855f92463021d1a9d1e50bfecc841af', '0xfc4601517fc9a8497074297256564db73bb6c1e9', '0xd8add72aef11e0c84663d71bf225ad404a2612e8', '0x1db908f7c9c6d2251aec284faf2913f3f0fbb014', '0xabe82c7ea9210e781ee1046f361500a14835da6c']}
+2025-05-19 12:34:29,680 - FL-Debug - INFO - Initialized blockchain connector: http://192.168.80.1:7545
+2025-05-19 12:34:29,680 - FL-Debug - INFO - Using contract at: 0x760adD85eF476BdFd733B2Bf1c37A75A9CAa0e97
+2025-05-19 12:34:29,681 - FL-Debug - INFO - Using dataset file: data/clients/client_20.csv
+2025-05-19 12:34:29,713 - FL-Debug - INFO - Successfully loaded dataset with 5477 samples and 31 features
+2025-05-19 12:34:29,713 - FL-Debug - INFO - Target column: Class, Class distribution: {0: 5467, 1: 10}
+2025-05-19 12:34:29,714 - FL-Client-Ensemble - INFO - DataFrame columns: ['Time', 'V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9', 'V10', 'V11', 'V12', 'V13', 'V14', 'V15', 'V16', 'V17', 'V18', 'V19', 'V20', 'V21', 'V22', 'V23', 'V24', 'V25', 'V26', 'V27', 'V28', 'Amount', 'Class']
+2025-05-19 12:34:29,716 - FL-Client-Ensemble - INFO - Features shape: (5477, 29), Target shape: (5477,)
+2025-05-19 12:34:29,734 - FL-Client-Ensemble - INFO - Data info before SMOTE:
+2025-05-19 12:34:29,734 - FL-Client-Ensemble - INFO - [BEFORE] Train: (4381, 29), Validation: (365, 29), Test: (731, 29)
+2025-05-19 12:34:29,775 - FL-Client-Ensemble - INFO - SMOTE applied. New training shape: (8746, 29)
+2025-05-19 12:34:29,776 - FL-Client-Ensemble - INFO - Preprocessing complete.
+2025-05-19 12:34:29,776 - FL-Client-Ensemble - INFO - Train: (8746, 29), Validation: (365, 29), Test: (731, 29)
+2025-05-19 12:34:29,776 - FL-Debug - INFO - Data preprocessing complete:
+2025-05-19 12:34:29,776 - FL-Debug - INFO - - Training set: 8746 samples
+2025-05-19 12:34:29,776 - FL-Debug - INFO - - Validation set: 365 samples
+2025-05-19 12:34:29,777 - FL-Debug - INFO - - Test set: 731 samples
+2025-05-19 12:34:29,777 - FL-Debug - INFO - Initialized client-10 with GA-Stacking pipeline
+2025-05-19 12:34:29,777 - FL-Debug - INFO - IPFS node: http://192.168.80.180:5001/api/v0
+2025-05-19 12:34:29,781 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2025-05-19 12:34:29,782 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2025-05-19 12:34:29,783 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId
+2025-05-19 12:34:29,786 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 41
+2025-05-19 12:34:29,788 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId, Response: {'id': 2, 'jsonrpc': '2.0', 'result': '0x539'}
+2025-05-19 12:34:29,789 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_call
+2025-05-19 12:34:29,796 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 102
+2025-05-19 12:34:29,796 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_call, Response: {'id': 3, 'jsonrpc': '2.0', 'result': '0x0000000000000000000000000000000000000000000000000000000000000001'}
+2025-05-19 12:34:29,797 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2025-05-19 12:34:29,797 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId
+2025-05-19 12:34:29,799 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 41
+2025-05-19 12:34:29,800 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId, Response: {'id': 4, 'jsonrpc': '2.0', 'result': '0x539'}
+2025-05-19 12:34:29,802 - FL-Debug - INFO - Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe is authorized on the blockchain ✅
+2025-05-19 12:34:29,821 - flwr - DEBUG - Opened insecure gRPC connection (no certificates were passed)
+2025-05-19 12:34:29,835 - flwr - DEBUG - ChannelConnectivity.IDLE
+2025-05-19 12:34:29,836 - flwr - DEBUG - ChannelConnectivity.READY
+2025-05-19 12:34:29,839 - flwr - INFO - 
+2025-05-19 12:34:29,839 - flwr - INFO - Received: train message 576b3ca0-3e0f-4b0f-b498-7bef0cec6d59
+2025-05-19 12:34:29,840 - flwr - WARNING - Deprecation Warning: The `client_fn` function must return an instance of `Client`, but an instance of `NumpyClient` was returned. Please use `NumPyClient.to_client()` method to convert it to `Client`.
+2025-05-19 12:34:29,842 - flwr - INFO - 
+2025-05-19 12:34:29,842 - flwr - INFO - Received: train message bbd74ff8-353c-461e-9734-b63ed798df16
+2025-05-19 12:34:29,843 - flwr - WARNING - Deprecation Warning: The `client_fn` function must return an instance of `Client`, but an instance of `NumpyClient` was returned. Please use `NumPyClient.to_client()` method to convert it to `Client`.
+2025-05-19 12:34:29,854 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2025-05-19 12:34:29,854 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2025-05-19 12:34:29,855 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId
+2025-05-19 12:34:29,856 - urllib3.connectionpool - DEBUG - Resetting dropped connection: 192.168.80.1
+2025-05-19 12:34:29,857 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2025-05-19 12:34:29,857 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2025-05-19 12:34:29,858 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId
+2025-05-19 12:34:29,859 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 41
+2025-05-19 12:34:29,859 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId, Response: {'id': 5, 'jsonrpc': '2.0', 'result': '0x539'}
+2025-05-19 12:34:29,860 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_call
+2025-05-19 12:34:29,861 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 41
+2025-05-19 12:34:29,861 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId, Response: {'id': 5, 'jsonrpc': '2.0', 'result': '0x539'}
+2025-05-19 12:34:29,862 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_call
+2025-05-19 12:34:29,866 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 102
+2025-05-19 12:34:29,868 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_call, Response: {'id': 6, 'jsonrpc': '2.0', 'result': '0x0000000000000000000000000000000000000000000000000000000000000001'}
+2025-05-19 12:34:29,869 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2025-05-19 12:34:29,869 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId
+2025-05-19 12:34:29,871 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 102
+2025-05-19 12:34:29,871 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 41
+2025-05-19 12:34:29,871 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_call, Response: {'id': 6, 'jsonrpc': '2.0', 'result': '0x0000000000000000000000000000000000000000000000000000000000000001'}
+2025-05-19 12:34:29,871 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2025-05-19 12:34:29,871 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId
+2025-05-19 12:34:29,871 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId, Response: {'id': 7, 'jsonrpc': '2.0', 'result': '0x539'}
+2025-05-19 12:34:29,872 - FL-Debug - INFO - Round 1: Performing full training of base models + GA-Stacking
+2025-05-19 12:34:29,873 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 41
+2025-05-19 12:34:29,873 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId, Response: {'id': 7, 'jsonrpc': '2.0', 'result': '0x539'}
+2025-05-19 12:34:29,874 - FL-Debug - INFO - Round 1: Performing full training of base models + GA-Stacking
+2025-05-19 12:35:35,173 - FL-Debug - INFO - Base models saved for future rounds at ./client_storage/client-10/base_models
+2025-05-19 12:35:35,173 - FL-Debug - INFO - GA-Stacking complete - Accuracy: 0.9973, Diversity: 0.0021, Generalization: 0.0000, Convergence: 1.0000, Avg Base Model Score: 0.0000
+2025-05-19 12:35:35,287 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.80.180:5001
+2025-05-19 12:35:35,292 - urllib3.connectionpool - DEBUG - http://192.168.80.180:5001 "POST /api/v0/add HTTP/11" 200 None
+2025-05-19 12:35:35,295 - federated.ipfs - INFO - Added file to IPFS with hash: QmRJoop3d4GoS9aGPdUZLroQCT616SeZmmu34o6KBY3pNj
+2025-05-19 12:35:35,295 - federated.ipfs - INFO - Added JSON data to IPFS with hash: QmRJoop3d4GoS9aGPdUZLroQCT616SeZmmu34o6KBY3pNj
+2025-05-19 12:35:35,295 - FL-Debug - INFO - Stored ensemble model in IPFS: QmRJoop3d4GoS9aGPdUZLroQCT616SeZmmu34o6KBY3pNj
+2025-05-19 12:35:35,296 - flwr - INFO - Sent reply
+2025-05-19 12:35:35,749 - FL-Debug - INFO - Base models saved for future rounds at ./client_storage/client-20/base_models
+2025-05-19 12:35:35,750 - FL-Debug - INFO - GA-Stacking complete - Accuracy: 1.0000, Diversity: 0.0039, Generalization: 1.0000, Convergence: 1.0000, Avg Base Model Score: 0.0000
+2025-05-19 12:35:35,829 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 192.168.80.180:5001
+2025-05-19 12:35:35,832 - urllib3.connectionpool - DEBUG - http://192.168.80.180:5001 "POST /api/v0/add HTTP/11" 200 None
+2025-05-19 12:35:35,835 - federated.ipfs - INFO - Added file to IPFS with hash: QmWpXpYRWqi16KSmWB579kdveeo8Vq4tLQ39RQAzme5KGf
+2025-05-19 12:35:35,835 - federated.ipfs - INFO - Added JSON data to IPFS with hash: QmWpXpYRWqi16KSmWB579kdveeo8Vq4tLQ39RQAzme5KGf
+2025-05-19 12:35:35,835 - FL-Debug - INFO - Stored ensemble model in IPFS: QmWpXpYRWqi16KSmWB579kdveeo8Vq4tLQ39RQAzme5KGf
+2025-05-19 12:35:35,836 - flwr - INFO - Sent reply
+2025-05-19 12:36:31,478 - flwr - INFO - 
+2025-05-19 12:36:31,478 - flwr - INFO - 
+2025-05-19 12:36:31,479 - flwr - INFO - Received: evaluate message a8c42cb6-1d91-4d57-879e-e5ea25e86d1b
+2025-05-19 12:36:31,479 - flwr - INFO - Received: evaluate message b3b89bd6-1dc2-4992-884a-40c2b6c7ed65
+2025-05-19 12:36:31,479 - flwr - WARNING - Deprecation Warning: The `client_fn` function must return an instance of `Client`, but an instance of `NumpyClient` was returned. Please use `NumPyClient.to_client()` method to convert it to `Client`.
+2025-05-19 12:36:31,479 - flwr - WARNING - Deprecation Warning: The `client_fn` function must return an instance of `Client`, but an instance of `NumpyClient` was returned. Please use `NumPyClient.to_client()` method to convert it to `Client`.
+2025-05-19 12:36:31,483 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2025-05-19 12:36:31,484 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2025-05-19 12:36:31,484 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId
+2025-05-19 12:36:31,485 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2025-05-19 12:36:31,485 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2025-05-19 12:36:31,485 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId
+2025-05-19 12:36:31,485 - urllib3.connectionpool - DEBUG - Resetting dropped connection: 192.168.80.1
+2025-05-19 12:36:31,486 - urllib3.connectionpool - DEBUG - Resetting dropped connection: 192.168.80.1
+2025-05-19 12:36:31,488 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 41
+2025-05-19 12:36:31,488 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId, Response: {'id': 8, 'jsonrpc': '2.0', 'result': '0x539'}
+2025-05-19 12:36:31,489 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 41
+2025-05-19 12:36:31,489 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId, Response: {'id': 8, 'jsonrpc': '2.0', 'result': '0x539'}
+2025-05-19 12:36:31,489 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_call
+2025-05-19 12:36:31,490 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_call
+2025-05-19 12:36:31,497 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 102
+2025-05-19 12:36:31,498 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 102
+2025-05-19 12:36:31,498 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_call, Response: {'id': 9, 'jsonrpc': '2.0', 'result': '0x0000000000000000000000000000000000000000000000000000000000000001'}
+2025-05-19 12:36:31,498 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2025-05-19 12:36:31,498 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId
+2025-05-19 12:36:31,498 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_call, Response: {'id': 9, 'jsonrpc': '2.0', 'result': '0x0000000000000000000000000000000000000000000000000000000000000001'}
+2025-05-19 12:36:31,498 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2025-05-19 12:36:31,499 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId
+2025-05-19 12:36:31,501 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 42
+2025-05-19 12:36:31,502 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 42
+2025-05-19 12:36:31,502 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId, Response: {'id': 10, 'jsonrpc': '2.0', 'result': '0x539'}
+2025-05-19 12:36:31,503 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId, Response: {'id': 10, 'jsonrpc': '2.0', 'result': '0x539'}
+2025-05-19 12:36:31,503 - FL-Debug - INFO - Successfully loaded ensemble state from parameters
+2025-05-19 12:36:31,504 - FL-Debug - INFO - Successfully loaded ensemble state from parameters
+2025-05-19 12:36:31,618 - flwr - INFO - Sent reply
+2025-05-19 12:36:31,637 - flwr - INFO - Sent reply
+2025-05-19 12:36:31,648 - flwr - INFO - 
+2025-05-19 12:36:31,649 - flwr - INFO - Received: evaluate message 4e83a379-a23c-4941-9b51-36a326340d7a
+2025-05-19 12:36:31,648 - flwr - INFO - 
+2025-05-19 12:36:31,649 - flwr - INFO - Received: evaluate message fa81afd0-13fa-4e11-ba70-d1dc38ddfbd8
+2025-05-19 12:36:31,649 - flwr - WARNING - Deprecation Warning: The `client_fn` function must return an instance of `Client`, but an instance of `NumpyClient` was returned. Please use `NumPyClient.to_client()` method to convert it to `Client`.
+2025-05-19 12:36:31,649 - flwr - WARNING - Deprecation Warning: The `client_fn` function must return an instance of `Client`, but an instance of `NumpyClient` was returned. Please use `NumPyClient.to_client()` method to convert it to `Client`.
+2025-05-19 12:36:31,652 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2025-05-19 12:36:31,652 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2025-05-19 12:36:31,652 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2025-05-19 12:36:31,652 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId
+2025-05-19 12:36:31,652 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2025-05-19 12:36:31,652 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId
+2025-05-19 12:36:31,654 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 42
+2025-05-19 12:36:31,655 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId, Response: {'id': 11, 'jsonrpc': '2.0', 'result': '0x539'}
+2025-05-19 12:36:31,654 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 42
+2025-05-19 12:36:31,655 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_call
+2025-05-19 12:36:31,655 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId, Response: {'id': 11, 'jsonrpc': '2.0', 'result': '0x539'}
+2025-05-19 12:36:31,656 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_call
+2025-05-19 12:36:31,663 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 103
+2025-05-19 12:36:31,663 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 103
+2025-05-19 12:36:31,663 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_call, Response: {'id': 12, 'jsonrpc': '2.0', 'result': '0x0000000000000000000000000000000000000000000000000000000000000001'}
+2025-05-19 12:36:31,664 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_call, Response: {'id': 12, 'jsonrpc': '2.0', 'result': '0x0000000000000000000000000000000000000000000000000000000000000001'}
+2025-05-19 12:36:31,664 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2025-05-19 12:36:31,664 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2025-05-19 12:36:31,664 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId
+2025-05-19 12:36:31,664 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId
+2025-05-19 12:36:31,666 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 42
+2025-05-19 12:36:31,666 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 42
+2025-05-19 12:36:31,666 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId, Response: {'id': 13, 'jsonrpc': '2.0', 'result': '0x539'}
+2025-05-19 12:36:31,666 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId, Response: {'id': 13, 'jsonrpc': '2.0', 'result': '0x539'}
+2025-05-19 12:36:31,667 - FL-Debug - INFO - Successfully loaded ensemble state from parameters
+2025-05-19 12:36:31,667 - FL-Debug - INFO - Successfully loaded ensemble state from parameters
+2025-05-19 12:36:31,782 - flwr - INFO - Sent reply
+2025-05-19 12:36:31,809 - flwr - INFO - Sent reply
+2025-05-19 12:36:31,820 - flwr - INFO - 
+2025-05-19 12:36:31,820 - flwr - INFO - Received: evaluate message 4d26c5bb-b135-4a71-8a0b-cb985ecd0098
+2025-05-19 12:36:31,820 - flwr - INFO - 
+2025-05-19 12:36:31,820 - flwr - WARNING - Deprecation Warning: The `client_fn` function must return an instance of `Client`, but an instance of `NumpyClient` was returned. Please use `NumPyClient.to_client()` method to convert it to `Client`.
+2025-05-19 12:36:31,821 - flwr - INFO - Received: evaluate message 4482a732-ccee-4cf5-9bc1-57c746bce988
+2025-05-19 12:36:31,821 - flwr - WARNING - Deprecation Warning: The `client_fn` function must return an instance of `Client`, but an instance of `NumpyClient` was returned. Please use `NumPyClient.to_client()` method to convert it to `Client`.
+2025-05-19 12:36:31,823 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2025-05-19 12:36:31,824 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2025-05-19 12:36:31,824 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId
+2025-05-19 12:36:31,826 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_call
+2025-05-19 12:36:31,826 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2025-05-19 12:36:31,826 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId
+2025-05-19 12:36:31,826 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 42
+2025-05-19 12:36:31,827 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId, Response: {'id': 14, 'jsonrpc': '2.0', 'result': '0x539'}
+2025-05-19 12:36:31,828 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_call
+2025-05-19 12:36:31,829 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 42
+2025-05-19 12:36:31,830 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId, Response: {'id': 14, 'jsonrpc': '2.0', 'result': '0x539'}
+2025-05-19 12:36:31,830 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_call
+2025-05-19 12:36:31,834 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 103
+2025-05-19 12:36:31,834 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_call, Response: {'id': 15, 'jsonrpc': '2.0', 'result': '0x0000000000000000000000000000000000000000000000000000000000000001'}
+2025-05-19 12:36:31,834 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2025-05-19 12:36:31,834 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId
+2025-05-19 12:36:31,835 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 103
+2025-05-19 12:36:31,835 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_call, Response: {'id': 15, 'jsonrpc': '2.0', 'result': '0x0000000000000000000000000000000000000000000000000000000000000001'}
+2025-05-19 12:36:31,836 - web3.manager.RequestManager - DEBUG - Making request. Method: eth_chainId
+2025-05-19 12:36:31,836 - web3.providers.HTTPProvider - DEBUG - Making request HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId
+2025-05-19 12:36:31,836 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 42
+2025-05-19 12:36:31,836 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId, Response: {'id': 16, 'jsonrpc': '2.0', 'result': '0x539'}
+2025-05-19 12:36:31,837 - FL-Debug - INFO - Successfully loaded ensemble state from parameters
+2025-05-19 12:36:31,838 - urllib3.connectionpool - DEBUG - http://192.168.80.1:7545 "POST / HTTP/11" 200 42
+2025-05-19 12:36:31,838 - web3.providers.HTTPProvider - DEBUG - Getting response HTTP. URI: http://192.168.80.1:7545, Method: eth_chainId, Response: {'id': 16, 'jsonrpc': '2.0', 'result': '0x539'}
+2025-05-19 12:36:31,839 - FL-Debug - INFO - Successfully loaded ensemble state from parameters
+2025-05-19 12:36:31,960 - flwr - INFO - Sent reply
+2025-05-19 12:36:31,966 - flwr - INFO - Sent reply
+2025-05-19 12:36:31,974 - flwr - INFO - 
+2025-05-19 12:36:31,974 - flwr - INFO - Received: reconnect message 3ad320b5-39b4-449f-b7fc-f4558ddec7de
+2025-05-19 12:36:31,974 - flwr - INFO - 
+2025-05-19 12:36:31,975 - flwr - INFO - Received: reconnect message e3054aea-a0ad-4b29-8b06-1346600c1f42
+2025-05-19 12:36:31,976 - flwr - DEBUG - gRPC channel closed
+2025-05-19 12:36:31,977 - flwr - DEBUG - gRPC channel closed
+2025-05-19 12:36:31,977 - flwr - INFO - Disconnect and shut down
+2025-05-19 12:36:31,977 - flwr - INFO - Disconnect and shut down
+2025-05-19 12:36:31,978 - FL-Debug - INFO - === CLIENT START FUNCTION CALLED ===
+2025-05-19 12:36:31,978 - FL-Debug - INFO - Server address: 192.168.80.180:8088
+2025-05-19 12:36:31,977 - FL-Debug - INFO - === CLIENT START FUNCTION CALLED ===
+2025-05-19 12:36:31,983 - FL-Debug - INFO - Server address: 192.168.80.180:8088
+2025-05-19 12:36:31,983 - FL-Debug - INFO - Client type: <class '__main__.GAStackingClient'>
+2025-05-19 12:36:31,983 - FL-Debug - INFO - Client has GA pipeline: True
+2025-05-19 12:36:31,983 - FL-Debug - INFO - Attempting to start client with reconnect=True
+2025-05-19 12:36:31,984 - FL-Debug - ERROR - Exception in start_client: start_client() got an unexpected keyword argument 'reconnect'
+2025-05-19 12:36:31,979 - FL-Debug - INFO - Client type: <class '__main__.GAStackingClient'>
+2025-05-19 12:36:31,987 - FL-Debug - INFO - Client has GA pipeline: True
+2025-05-19 12:36:31,988 - FL-Debug - INFO - Attempting to start client with reconnect=True
+2025-05-19 12:36:31,988 - FL-Debug - ERROR - Exception in start_client: start_client() got an unexpected keyword argument 'reconnect'

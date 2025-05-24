@@ -1,0 +1,993 @@
+(venv) cam@cam:~/v2-flw/backend/fl_v5$ python server.py   --ipfs-url http://192.168.80.180:5001/api/v0   --ganache-url http://192.168.80.1:7545   --server-address 192.168.80.180:8088   --min-fit-clients 2   --min-evaluate-clients 2   --rounds 5   --private-key 0x0d7785e960f82c9f03e52f237e76b72106203c28b460258c0b889c37c317d7dc   --contract-address 0x760adD85eF476BdFd733B2Bf1c37A75A9CAa0e97
+2025-05-24 07:07:58,748 - federated.ipfs - INFO - Connected to IPFS node version: 0.34.1
+2025-05-24 07:07:58,749 - FL-Server - INFO - Initialized IPFS connector: http://192.168.80.180:5001/api/v0
+Using account: 0xb6845ba34Fc592266921419ef65b9b4D943e2797
+Contract loaded at address: 0x760adD85eF476BdFd733B2Bf1c37A75A9CAa0e97
+2025-05-24 07:07:58,832 - FL-Server - INFO - Initialized with version strategy: base=1.0, session=0524-0478
+2025-05-24 07:07:58,832 - GAStackingRewardSystem - INFO - Loaded fraud detection reward configuration from config/ga_reward_config.json
+2025-05-24 07:07:58,898 - FL-Server - INFO - Loaded 4 authorized clients from blockchain
+2025-05-24 07:07:58,898 - FL-Server - INFO - Initializing reward pools for 5 rounds
+2025-05-24 07:07:58,949 - FL-Server - INFO - Round 1 reward pool initialized with 0.1 ETH, tx: ea86c7aa6190528fced52e4cc53cb676351f54c386367353f4b8e5fc55c4e426
+2025-05-24 07:07:58,984 - FL-Server - INFO - Round 2 reward pool initialized with 0.12000000000000001 ETH, tx: a1cfef2980f8006223278131bcf6fa4f130ac0eee8912ef272a62fbdb4ef161d
+2025-05-24 07:07:59,018 - FL-Server - INFO - Round 3 reward pool initialized with 0.14 ETH, tx: e7c60909643435981192ab410e7577794dbc163caf12267058015403c454c4de
+2025-05-24 07:07:59,057 - FL-Server - INFO - Round 4 reward pool initialized with 0.16 ETH, tx: 0af7606aaafc52f365271952e45dacef3db80131812b182461b123f91d0beb11
+2025-05-24 07:07:59,093 - FL-Server - INFO - Round 5 reward pool initialized with 0.18 ETH, tx: 7c5c40c23718559f88c1d9fe754b157047d301708050885ebb5068dc075e81d5
+2025-05-24 07:07:59,093 - FL-Server - INFO - Initialized EnhancedFedAvgWithGA with IPFS node: http://192.168.80.180:5001/api/v0
+2025-05-24 07:07:59,093 - FL-Server - INFO - Blockchain integration enabled
+INFO :      Starting Flower server, config: num_rounds=5, no round_timeout
+2025-05-24 07:07:59,107 - flwr - INFO - Starting Flower server, config: num_rounds=5, no round_timeout
+INFO :      Flower ECE: gRPC server running (5 rounds), SSL is disabled
+2025-05-24 07:07:59,149 - flwr - INFO - Flower ECE: gRPC server running (5 rounds), SSL is disabled
+INFO :      [INIT]
+2025-05-24 07:07:59,150 - flwr - INFO - [INIT]
+INFO :      Using initial global parameters provided by strategy
+2025-05-24 07:07:59,150 - flwr - INFO - Using initial global parameters provided by strategy
+INFO :      Starting evaluation of initial global parameters
+2025-05-24 07:07:59,150 - flwr - INFO - Starting evaluation of initial global parameters
+INFO :      Evaluation returned no results (`None`)
+2025-05-24 07:07:59,151 - flwr - INFO - Evaluation returned no results (`None`)
+INFO :      
+2025-05-24 07:07:59,151 - flwr - INFO - 
+INFO :      [ROUND 1]
+2025-05-24 07:07:59,151 - flwr - INFO - [ROUND 1]
+2025-05-24 07:07:59,151 - FL-Server - INFO - Initialized current_global_model_hash to None
+2025-05-24 07:08:04,587 - FL-Server - INFO - Sending configuration to 2 clients: {'server_round': 1, 'is_first_round': True, 'ga_stacking': True, 'local_epochs': 5, 'validation_split': 0.2, 'task_type': 'fraud_detection', 'pos_weight': 99.0, 'use_f1_score': True, 'detection_threshold': 0.3}
+INFO :      configure_fit: strategy sampled 2 clients (out of 2)
+2025-05-24 07:08:04,587 - flwr - INFO - configure_fit: strategy sampled 2 clients (out of 2)
+INFO :      aggregate_fit: received 2 results and 0 failures
+2025-05-24 07:35:43,181 - flwr - INFO - aggregate_fit: received 2 results and 0 failures
+2025-05-24 07:35:43,192 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmTN8sdUkbqVTvdiEyhr6TiS1SVajSB8PukuYAV3GaVhPu
+2025-05-24 07:35:43,194 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmTN8sdUkbqVTvdiEyhr6TiS1SVajSB8PukuYAV3GaVhPu
+2025-05-24 07:35:43,197 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmcrbFA2BuHWUU6Qk1RbesibqXphsYX4RLjVGLW8S3ej5b
+2025-05-24 07:35:43,198 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmcrbFA2BuHWUU6Qk1RbesibqXphsYX4RLjVGLW8S3ej5b
+2025-05-24 07:35:43,198 - FL-Server - INFO - Aggregating ensemble weights from 2 clients
+2025-05-24 07:35:43,198 - FL-Server - INFO - Aggregated ensemble weights sum: 1.00000000
+2025-05-24 07:35:43,198 - FL-Server - INFO - Aggregated weights already sum to 1.0, no normalization needed
+2025-05-24 07:35:43,198 - FL-Server - INFO - Final ensemble weights: [0.1135, 0.0778, 0.2523, 0.1829, 0.0458, 0.1505, 0.1771]
+2025-05-24 07:35:43,199 - FL-Server - INFO - Processing 2 client contributions with GA-Stacking rewards
+2025-05-24 07:35:43,199 - GAStackingRewardSystem - INFO - Processing fraud detection contribution for 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe
+2025-05-24 07:35:43,199 - GAStackingRewardSystem - INFO - Client metrics - recall: 0.9230769230769231, data_points: 90982
+2025-05-24 07:35:43,199 - GAStackingRewardSystem - INFO - Calculated fraud detection score for 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: 8150
+2025-05-24 07:35:43,199 - GAStackingRewardSystem - INFO -   - Recall contribution: 5538
+2025-05-24 07:35:43,200 - GAStackingRewardSystem - INFO -   - Data points contribution: 2612
+2025-05-24 07:35:43,871 - GAStackingRewardSystem - INFO - Recorded contribution from 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe with score 8150
+2025-05-24 07:35:43,872 - FL-Server - INFO - Recorded contribution for 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe with score 8150 based on recall=0.9231, data_points=90982
+2025-05-24 07:35:43,872 - GAStackingRewardSystem - INFO - Processing fraud detection contribution for 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f
+2025-05-24 07:35:43,872 - GAStackingRewardSystem - INFO - Client metrics - recall: 0.7692307692307693, data_points: 90990
+2025-05-24 07:35:43,873 - GAStackingRewardSystem - INFO - Calculated fraud detection score for 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: 7227
+2025-05-24 07:35:43,873 - GAStackingRewardSystem - INFO -   - Recall contribution: 4615
+2025-05-24 07:35:43,873 - GAStackingRewardSystem - INFO -   - Data points contribution: 2612
+2025-05-24 07:35:44,369 - GAStackingRewardSystem - INFO - Recorded contribution from 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f with score 7227
+2025-05-24 07:35:44,369 - FL-Server - INFO - Recorded contribution for 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f with score 7227 based on recall=0.7692, data_points=90990
+2025-05-24 07:35:44,834 - GAStackingRewardSystem - INFO - Total score for round 1: 3431
+2025-05-24 07:35:44,834 - GAStackingRewardSystem - INFO - Recording wallet balances BEFORE reward allocation for round 1
+2025-05-24 07:35:45,187 - GAStackingRewardSystem - INFO - Saved pre-allocation balances to metrics/wallet_tracking/round_1_before_allocation.json
+2025-05-24 07:35:45,205 - GAStackingRewardSystem - INFO - Pool for round 1 is already finalized
+2025-05-24 07:35:45,435 - GAStackingRewardSystem - INFO - Allocating rewards for round 1 - attempt 1/3
+2025-05-24 07:35:45,440 - root - INFO - Sending transaction with nonce: 1515, gas price: 20000000000
+2025-05-24 07:35:45,662 - root - INFO - Transaction sent: 46a0620b09af6b8cc9c1ae1779fb6afba3c8d1728d4deba02bd5064e93ca77cb
+2025-05-24 07:35:45,666 - root - INFO - Transaction confirmed! Gas used: 484810, status: 1
+2025-05-24 07:35:45,683 - GAStackingRewardSystem - INFO - Successfully allocated 18.599999999999999999 ETH rewards for round 1
+2025-05-24 07:35:45,683 - GAStackingRewardSystem - INFO - Recording wallet balances AFTER reward allocation for round 12025-05-24 07:35:46,010 - GAStackingRewardSystem - INFO - === Wallet Balance Changes for Round 1 ===
+2025-05-24 07:35:46,011 - GAStackingRewardSystem - INFO - Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: 133.934624 ETH → 134.093447 ETH (Change: 0.158824 ETH)
+2025-05-24 07:35:46,011 - GAStackingRewardSystem - INFO - Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: 116.110990 ETH → 116.252166 ETH (Change: 0.141176 ETH)
+2025-05-24 07:35:46,011 - GAStackingRewardSystem - INFO - Saved wallet balance changes to metrics/wallet_tracking/round_1_balance_changes.json
+2025-05-24 07:35:46,012 - GAStackingRewardSystem - INFO - === Reward Verification Summary ===
+2025-05-24 07:35:46,012 - GAStackingRewardSystem - INFO - Client 0x79C62f4Ef6f1740D4C43A694Fe301abB7Ae97F28: Expected 5.860274 ETH, Actual change 0.000000 ETH - ❌ Mismatch
+2025-05-24 07:35:46,012 - GAStackingRewardSystem - INFO - Client 0x888b72fA86F4277b632Bd03C54e2B7a5d524E031: Expected 4.629671 ETH, Actual change 0.000000 ETH - ❌ Mismatch
+2025-05-24 07:35:46,012 - GAStackingRewardSystem - INFO - Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: Expected 4.353191 ETH, Actual change 0.158824 ETH - ❌ Mismatch
+2025-05-24 07:35:46,012 - GAStackingRewardSystem - INFO - Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: Expected 3.756864 ETH, Actual change 0.141176 ETH - ❌ Mismatch
+2025-05-24 07:35:46,305 - GAStackingRewardSystem - INFO - === Round 1 Reward Allocation Summary ===
+2025-05-24 07:35:46,306 - GAStackingRewardSystem - INFO - Total pool: 18.6 ETH
+2025-05-24 07:35:46,306 - GAStackingRewardSystem - INFO - Allocated: 18.599999999999999999 ETH
+2025-05-24 07:35:46,306 - GAStackingRewardSystem - INFO - Remaining: 1E-18 ETH
+2025-05-24 07:35:46,306 - GAStackingRewardSystem - INFO - Total contributions: 100
+2025-05-24 07:35:46,306 - GAStackingRewardSystem - INFO - Loaded previous rewards data for 4 clients
+2025-05-24 07:35:46,307 - GAStackingRewardSystem - INFO - === NEW Client Rewards (Current Session) ===
+2025-05-24 07:35:46,307 - GAStackingRewardSystem - INFO - Client 0x79C62f4Ef6f1740D4C43A694Fe301abB7Ae97F28: 5.860274 ETH from 22 contributions with score 1081 (NEW in this session)
+2025-05-24 07:35:46,307 - GAStackingRewardSystem - INFO - Client 0x888b72fA86F4277b632Bd03C54e2B7a5d524E031: 4.629671 ETH from 23 contributions with score 854 (NEW in this session)
+2025-05-24 07:35:46,307 - GAStackingRewardSystem - INFO - Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: 4.353191 ETH from 34 contributions with score 803 (NEW in this session)
+2025-05-24 07:35:46,307 - GAStackingRewardSystem - INFO - Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: 3.756864 ETH from 21 contributions with score 693 (NEW in this session)
+2025-05-24 07:35:46,307 - GAStackingRewardSystem - INFO - TOTAL NEW REWARDS: 18.600000 ETH
+2025-05-24 07:35:46,308 - GAStackingRewardSystem - INFO - === HISTORICAL CUMULATIVE Client Rewards (All Sessions) ===
+2025-05-24 07:35:46,308 - GAStackingRewardSystem - INFO - Client 0x79C62f4Ef6f1740D4C43A694Fe301abB7Ae97F28: 98.699079 ETH from 418 contributions with total score 1081 (cumulative)
+2025-05-24 07:35:46,308 - GAStackingRewardSystem - INFO - Client 0x888b72fA86F4277b632Bd03C54e2B7a5d524E031: 77.973185 ETH from 437 contributions with total score 854 (cumulative)
+2025-05-24 07:35:46,308 - GAStackingRewardSystem - INFO - Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: 69.809238 ETH from 594 contributions with total score 803 (cumulative)
+2025-05-24 07:35:46,308 - GAStackingRewardSystem - INFO - Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: 60.618498 ETH from 363 contributions with total score 693 (cumulative)
+2025-05-24 07:35:46,309 - GAStackingRewardSystem - INFO - Updated rewards data saved to metrics/round_1_previous_rewards.json
+2025-05-24 07:35:46,310 - GAStackingRewardSystem - INFO - Active clients in round 1: 4
+2025-05-24 07:35:46,310 - GAStackingRewardSystem - INFO -   - 0x79C62f4Ef6f1740D4C43A694Fe301abB7Ae97F28
+2025-05-24 07:35:46,310 - GAStackingRewardSystem - INFO -   - 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f
+2025-05-24 07:35:46,310 - GAStackingRewardSystem - INFO -   - 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe
+2025-05-24 07:35:46,310 - GAStackingRewardSystem - INFO -   - 0x888b72fA86F4277b632Bd03C54e2B7a5d524E031
+2025-05-24 07:35:46,311 - FL-Server - INFO - Allocated 18.599999999999999999 ETH rewards for round 1
+2025-05-24 07:35:46,311 - GAStackingRewardSystem - INFO - Getting reward details for round 1
+2025-05-24 07:35:46,323 - GAStackingRewardSystem - INFO - Round 1 pool: 18.600000 ETH allocated of 18.600000 ETH total
+2025-05-24 07:35:46,333 - GAStackingRewardSystem - INFO - Found 139 contributions for round 1
+2025-05-24 07:35:46,457 - GAStackingRewardSystem - INFO - Retrieved batch 0-50: 50 contributions
+2025-05-24 07:35:46,585 - GAStackingRewardSystem - INFO - Retrieved batch 50-100: 50 contributions
+2025-05-24 07:35:46,708 - GAStackingRewardSystem - INFO - Retrieved batch 100-139: 39 contributions
+2025-05-24 07:35:46,709 - GAStackingRewardSystem - INFO - Processed contributions: 4 clients, total score: 6295
+2025-05-24 07:35:46,709 - GAStackingRewardSystem - INFO - Round 1 reward details: 4 clients, 18.600000 ETH allocated
+2025-05-24 07:35:46,709 - FL-Server - INFO - Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: 7.147482 ETH (Rank 1)
+2025-05-24 07:35:46,709 - FL-Server - INFO - Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: 5.735123 ETH (Rank 2)
+2025-05-24 07:35:46,709 - FL-Server - INFO - Client 0x79C62f4Ef6f1740D4C43A694Fe301abB7Ae97F28: 3.194059 ETH (Rank 3)
+2025-05-24 07:35:46,709 - FL-Server - INFO - Client 0x888b72fA86F4277b632Bd03C54e2B7a5d524E031: 2.523336 ETH (Rank 4)
+2025-05-24 07:35:46,719 - federated.ipfs - INFO - Added file to IPFS with hash: QmXn4nsoVGsNqjvK5MDm36bui9vGbqj7JRTfX7WSShXqrS
+2025-05-24 07:35:46,719 - federated.ipfs - INFO - Added JSON data to IPFS with hash: QmXn4nsoVGsNqjvK5MDm36bui9vGbqj7JRTfX7WSShXqrS
+2025-05-24 07:35:46,719 - FL-Server - INFO - Stored ensemble weights in IPFS: QmXn4nsoVGsNqjvK5MDm36bui9vGbqj7JRTfX7WSShXqrS
+2025-05-24 07:35:46,722 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmXn4nsoVGsNqjvK5MDm36bui9vGbqj7JRTfX7WSShXqrS
+2025-05-24 07:35:46,722 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmXn4nsoVGsNqjvK5MDm36bui9vGbqj7JRTfX7WSShXqrS
+2025-05-24 07:35:46,722 - FL-Server - INFO - Verification - stored data contains keys: ['ensemble_weights', 'base_model_names', 'client_contributions', 'info']
+2025-05-24 07:35:46,722 - FL-Server - INFO - Ensemble weights successfully stored, length: 7
+2025-05-24 07:35:46,764 - root - INFO - Models exist for round 1, using updateModelByRound
+2025-05-24 07:35:46,770 - root - INFO - Sending transaction with nonce: 1516, gas price: 20000000000
+2025-05-24 07:35:46,816 - root - INFO - Transaction sent: 44e0d35687913538ec6491add19254ce8d63f41135e82e4b63dbeba587a940a3
+2025-05-24 07:35:46,818 - root - INFO - Transaction confirmed! Gas used: 225854, status: 1
+2025-05-24 07:35:46,818 - root - INFO - Model updated with transaction: 44e0d35687913538ec6491add19254ce8d63f41135e82e4b63dbeba587a940a3
+2025-05-24 07:35:46,819 - FL-Server - INFO - Registered global model in blockchain, tx: 44e0d35687913538ec6491add19254ce8d63f41135e82e4b63dbeba587a940a3
+2025-05-24 07:35:47,057 - FL-Server - INFO - Using existing global model IPFS hash for evaluation: QmXn4nsoVGsNqjvK5MDm36bui9vGbqj7JRTfX7WSShXqrS
+2025-05-24 07:35:47,059 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmXn4nsoVGsNqjvK5MDm36bui9vGbqj7JRTfX7WSShXqrS
+2025-05-24 07:35:47,060 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmXn4nsoVGsNqjvK5MDm36bui9vGbqj7JRTfX7WSShXqrS
+2025-05-24 07:35:47,060 - FL-Server - INFO - Evaluating ensemble model with 7 weights: [0.11353686432546849, 0.077767604636423, 0.25233345362983056, 0.18292513379071473, 0.04582085104863068, 0.15054241869701332, 0.17707367387191913]
+2025-05-24 07:35:47,060 - FL-Server - INFO - Base models: ['lr', 'svc', 'rf', 'knn', 'catboost', 'lgbm', 'xgb']
+2025-05-24 07:35:47,060 - FL-Server - INFO - Global model includes contributions from 2 clients
+2025-05-24 07:35:47,060 - FL-Server - INFO -   Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: Score=8150.00, ETH=0.000000
+2025-05-24 07:35:47,060 - FL-Server - INFO -   Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: Score=7227.00, ETH=0.000000
+2025-05-24 07:35:47,061 - FL-Server - INFO - Configured evaluation for round 1 with 2 clients using model QmXn4nsoVGsNqjvK5MDm36bui9vGbqj7JRTfX7WSShXqrS
+INFO :      configure_evaluate: strategy sampled 2 clients (out of 2)
+2025-05-24 07:35:47,061 - flwr - INFO - configure_evaluate: strategy sampled 2 clients (out of 2)
+INFO :      aggregate_evaluate: received 2 results and 0 failures
+2025-05-24 07:35:51,340 - flwr - INFO - aggregate_evaluate: received 2 results and 0 failures
+2025-05-24 07:35:51,340 - FL-Server - INFO - Round 1 evaluation: Loss=0.0126, Accuracy=99.9078
+2025-05-24 07:35:51,340 - FL-Server - INFO - Fraud detection metrics: Precision=0.6875, Recall=0.8462, F1=0.7586
+2025-05-24 07:35:51,340 - FL-Server - INFO - Confusion matrix: TP=22, FP=10, TN=15156, FN=4
+INFO :      
+2025-05-24 07:35:51,340 - flwr - INFO - 
+INFO :      [ROUND 2]
+2025-05-24 07:35:51,340 - flwr - INFO - [ROUND 2]
+2025-05-24 07:35:51,341 - FL-Server - INFO - Sending global model IPFS hash for round 2: QmXn4nsoVGsNqjvK5MDm36bui9vGbqj7JRTfX7WSShXqrS
+2025-05-24 07:35:51,341 - FL-Server - INFO - Sending configuration to 2 clients: {'server_round': 2, 'is_first_round': False, 'ga_stacking': True, 'local_epochs': 5, 'validation_split': 0.2, 'task_type': 'fraud_detection', 'pos_weight': 99.0, 'use_f1_score': True, 'detection_threshold': 0.3, 'global_model_ipfs_hash': 'QmXn4nsoVGsNqjvK5MDm36bui9vGbqj7JRTfX7WSShXqrS'}
+INFO :      configure_fit: strategy sampled 2 clients (out of 2)
+2025-05-24 07:35:51,341 - flwr - INFO - configure_fit: strategy sampled 2 clients (out of 2)
+INFO :      aggregate_fit: received 2 results and 0 failures
+2025-05-24 08:02:11,728 - flwr - INFO - aggregate_fit: received 2 results and 0 failures
+2025-05-24 08:02:11,741 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmYFhEDD8x2WgV2EexAc5T9zbybf2RNBhTD3VidUCVsW15
+2025-05-24 08:02:11,742 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmYFhEDD8x2WgV2EexAc5T9zbybf2RNBhTD3VidUCVsW15
+2025-05-24 08:02:11,744 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmWPK3B8miEKJd7ekWJXitsPwuaGWecvUFWtqjoVuc1nuJ
+2025-05-24 08:02:11,745 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmWPK3B8miEKJd7ekWJXitsPwuaGWecvUFWtqjoVuc1nuJ
+2025-05-24 08:02:11,745 - FL-Server - INFO - Aggregating ensemble weights from 2 clients
+2025-05-24 08:02:11,745 - FL-Server - INFO - Aggregated ensemble weights sum: 1.00000000
+2025-05-24 08:02:11,745 - FL-Server - INFO - Aggregated weights already sum to 1.0, no normalization needed
+2025-05-24 08:02:11,745 - FL-Server - INFO - Final ensemble weights: [0.0983, 0.0975, 0.2550, 0.0767, 0.1500, 0.1834, 0.1390]
+2025-05-24 08:02:11,745 - FL-Server - INFO - Processing 2 client contributions with GA-Stacking rewards
+2025-05-24 08:02:11,746 - GAStackingRewardSystem - INFO - Processing fraud detection contribution for 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe
+2025-05-24 08:02:11,746 - GAStackingRewardSystem - INFO - Client metrics - recall: 0.9230769230769231, data_points: 90982
+2025-05-24 08:02:11,746 - GAStackingRewardSystem - INFO - Calculated fraud detection score for 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: 8150
+2025-05-24 08:02:11,746 - GAStackingRewardSystem - INFO -   - Recall contribution: 5538
+2025-05-24 08:02:11,746 - GAStackingRewardSystem - INFO -   - Data points contribution: 2612
+2025-05-24 08:02:12,413 - GAStackingRewardSystem - INFO - Recorded contribution from 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe with score 8150
+2025-05-24 08:02:12,413 - FL-Server - INFO - Recorded contribution for 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe with score 8150 based on recall=0.9231, data_points=90982
+2025-05-24 08:02:12,413 - GAStackingRewardSystem - INFO - Processing fraud detection contribution for 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f
+2025-05-24 08:02:12,413 - GAStackingRewardSystem - INFO - Client metrics - recall: 0.7692307692307693, data_points: 90990
+2025-05-24 08:02:12,413 - GAStackingRewardSystem - INFO - Calculated fraud detection score for 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: 7227
+2025-05-24 08:02:12,413 - GAStackingRewardSystem - INFO -   - Recall contribution: 4615
+2025-05-24 08:02:12,413 - GAStackingRewardSystem - INFO -   - Data points contribution: 2612
+2025-05-24 08:02:12,924 - GAStackingRewardSystem - INFO - Recorded contribution from 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f with score 7227
+2025-05-24 08:02:12,925 - FL-Server - INFO - Recorded contribution for 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f with score 7227 based on recall=0.7692, data_points=90990
+2025-05-24 08:02:13,209 - GAStackingRewardSystem - INFO - Total score for round 2: 3771
+2025-05-24 08:02:13,210 - GAStackingRewardSystem - INFO - Recording wallet balances BEFORE reward allocation for round 2
+2025-05-24 08:02:13,478 - GAStackingRewardSystem - INFO - Saved pre-allocation balances to metrics/wallet_tracking/round_2_before_allocation.json
+2025-05-24 08:02:13,490 - GAStackingRewardSystem - INFO - Pool for round 2 is already finalized
+2025-05-24 08:02:13,706 - GAStackingRewardSystem - INFO - Allocating rewards for round 2 - attempt 1/3
+2025-05-24 08:02:13,711 - root - INFO - Sending transaction with nonce: 1519, gas price: 20000000000
+2025-05-24 08:02:13,857 - root - INFO - Transaction sent: c2ced4e9749f0241ba484a08a486d3a2261f75823c9eb27ef652c2847d40ead6
+2025-05-24 08:02:13,860 - root - INFO - Transaction confirmed! Gas used: 437754, status: 1
+2025-05-24 08:02:13,870 - GAStackingRewardSystem - INFO - Successfully allocated 22.200000000000001849 ETH rewards for round 2
+2025-05-24 08:02:13,870 - GAStackingRewardSystem - INFO - Recording wallet balances AFTER reward allocation for round 22025-05-24 08:02:14,073 - GAStackingRewardSystem - INFO - === Wallet Balance Changes for Round 2 ===
+2025-05-24 08:02:14,073 - GAStackingRewardSystem - INFO - Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: 134.093447 ETH → 134.284035 ETH (Change: 0.190588 ETH)
+2025-05-24 08:02:14,073 - GAStackingRewardSystem - INFO - Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: 116.252166 ETH → 116.421578 ETH (Change: 0.169412 ETH)
+2025-05-24 08:02:14,074 - GAStackingRewardSystem - INFO - Saved wallet balance changes to metrics/wallet_tracking/round_2_balance_changes.json
+2025-05-24 08:02:14,074 - GAStackingRewardSystem - INFO - === Reward Verification Summary ===
+2025-05-24 08:02:14,074 - GAStackingRewardSystem - INFO - Client 0x79C62f4Ef6f1740D4C43A694Fe301abB7Ae97F28: Expected 3.991408 ETH, Actual change 0.000000 ETH - ❌ Mismatch
+2025-05-24 08:02:14,075 - GAStackingRewardSystem - INFO - Client 0x888b72fA86F4277b632Bd03C54e2B7a5d524E031: Expected 5.115831 ETH, Actual change 0.000000 ETH - ❌ Mismatch
+2025-05-24 08:02:14,075 - GAStackingRewardSystem - INFO - Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: Expected 7.476531 ETH, Actual change 0.190588 ETH - ❌ Mismatch
+2025-05-24 08:02:14,075 - GAStackingRewardSystem - INFO - Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: Expected 5.616229 ETH, Actual change 0.169412 ETH - ❌ Mismatch
+2025-05-24 08:02:14,302 - GAStackingRewardSystem - INFO - === Round 2 Reward Allocation Summary ===
+2025-05-24 08:02:14,302 - GAStackingRewardSystem - INFO - Total pool: 22.20000000000000185 ETH
+2025-05-24 08:02:14,302 - GAStackingRewardSystem - INFO - Allocated: 22.200000000000001849 ETH
+2025-05-24 08:02:14,302 - GAStackingRewardSystem - INFO - Remaining: 1E-18 ETH
+2025-05-24 08:02:14,302 - GAStackingRewardSystem - INFO - Total contributions: 100
+2025-05-24 08:02:14,304 - GAStackingRewardSystem - INFO - Loaded previous rewards data for 4 clients
+2025-05-24 08:02:14,304 - GAStackingRewardSystem - INFO - === NEW Client Rewards (Current Session) ===
+2025-05-24 08:02:14,304 - GAStackingRewardSystem - INFO - Client 0x79C62f4Ef6f1740D4C43A694Fe301abB7Ae97F28: 3.991408 ETH from 15 contributions with score 678 (NEW in this session)
+2025-05-24 08:02:14,304 - GAStackingRewardSystem - INFO - Client 0x888b72fA86F4277b632Bd03C54e2B7a5d524E031: 5.115831 ETH from 20 contributions with score 869 (NEW in this session)
+2025-05-24 08:02:14,304 - GAStackingRewardSystem - INFO - Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: 7.476531 ETH from 39 contributions with score 1270 (NEW in this session)
+2025-05-24 08:02:14,304 - GAStackingRewardSystem - INFO - Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: 5.616229 ETH from 26 contributions with score 954 (NEW in this session)
+2025-05-24 08:02:14,304 - GAStackingRewardSystem - INFO - TOTAL NEW REWARDS: 22.200000 ETH
+2025-05-24 08:02:14,304 - GAStackingRewardSystem - INFO - === HISTORICAL CUMULATIVE Client Rewards (All Sessions) ===
+2025-05-24 08:02:14,305 - GAStackingRewardSystem - INFO - Client 0x79C62f4Ef6f1740D4C43A694Fe301abB7Ae97F28: 62.184413 ETH from 255 contributions with total score 678 (cumulative)
+2025-05-24 08:02:14,305 - GAStackingRewardSystem - INFO - Client 0x888b72fA86F4277b632Bd03C54e2B7a5d524E031: 79.702441 ETH from 340 contributions with total score 869 (cumulative)
+2025-05-24 08:02:14,305 - GAStackingRewardSystem - INFO - Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: 104.607565 ETH from 593 contributions with total score 1270 (cumulative)
+2025-05-24 08:02:14,305 - GAStackingRewardSystem - INFO - Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: 80.145580 ETH from 393 contributions with total score 954 (cumulative)
+2025-05-24 08:02:14,305 - GAStackingRewardSystem - INFO - Updated rewards data saved to metrics/round_2_previous_rewards.json
+2025-05-24 08:02:14,305 - GAStackingRewardSystem - INFO - Active clients in round 2: 4
+2025-05-24 08:02:14,305 - GAStackingRewardSystem - INFO -   - 0x79C62f4Ef6f1740D4C43A694Fe301abB7Ae97F28
+2025-05-24 08:02:14,306 - GAStackingRewardSystem - INFO -   - 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f
+2025-05-24 08:02:14,306 - GAStackingRewardSystem - INFO -   - 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe
+2025-05-24 08:02:14,306 - GAStackingRewardSystem - INFO -   - 0x888b72fA86F4277b632Bd03C54e2B7a5d524E031
+2025-05-24 08:02:14,306 - FL-Server - INFO - Allocated 22.200000000000001849 ETH rewards for round 2
+2025-05-24 08:02:14,306 - GAStackingRewardSystem - INFO - Getting reward details for round 2
+2025-05-24 08:02:14,317 - GAStackingRewardSystem - INFO - Round 2 pool: 22.200000 ETH allocated of 22.200000 ETH total
+2025-05-24 08:02:14,329 - GAStackingRewardSystem - INFO - Found 123 contributions for round 2
+2025-05-24 08:02:14,450 - GAStackingRewardSystem - INFO - Retrieved batch 0-50: 50 contributions
+2025-05-24 08:02:14,562 - GAStackingRewardSystem - INFO - Retrieved batch 50-100: 50 contributions
+2025-05-24 08:02:14,619 - GAStackingRewardSystem - INFO - Retrieved batch 100-123: 23 contributions
+2025-05-24 08:02:14,619 - GAStackingRewardSystem - INFO - Processed contributions: 4 clients, total score: 5460
+2025-05-24 08:02:14,620 - GAStackingRewardSystem - INFO - Round 2 reward details: 4 clients, 22.200000 ETH allocated
+2025-05-24 08:02:14,620 - FL-Server - INFO - Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: 8.900330 ETH (Rank 1)
+2025-05-24 08:02:14,620 - FL-Server - INFO - Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: 7.009670 ETH (Rank 2)
+2025-05-24 08:02:14,620 - FL-Server - INFO - Client 0x888b72fA86F4277b632Bd03C54e2B7a5d524E031: 3.533297 ETH (Rank 3)
+2025-05-24 08:02:14,620 - FL-Server - INFO - Client 0x79C62f4Ef6f1740D4C43A694Fe301abB7Ae97F28: 2.756703 ETH (Rank 4)
+2025-05-24 08:02:14,630 - federated.ipfs - INFO - Added file to IPFS with hash: QmeiWPu4s1ranLzJLJf9MgHQu9mjnEA1TzAn4UdpVRo5Vi
+2025-05-24 08:02:14,630 - federated.ipfs - INFO - Added JSON data to IPFS with hash: QmeiWPu4s1ranLzJLJf9MgHQu9mjnEA1TzAn4UdpVRo5Vi
+2025-05-24 08:02:14,630 - FL-Server - INFO - Stored ensemble weights in IPFS: QmeiWPu4s1ranLzJLJf9MgHQu9mjnEA1TzAn4UdpVRo5Vi
+2025-05-24 08:02:14,632 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmeiWPu4s1ranLzJLJf9MgHQu9mjnEA1TzAn4UdpVRo5Vi
+2025-05-24 08:02:14,632 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmeiWPu4s1ranLzJLJf9MgHQu9mjnEA1TzAn4UdpVRo5Vi
+2025-05-24 08:02:14,632 - FL-Server - INFO - Verification - stored data contains keys: ['ensemble_weights', 'base_model_names', 'client_contributions', 'info']
+2025-05-24 08:02:14,632 - FL-Server - INFO - Ensemble weights successfully stored, length: 7
+2025-05-24 08:02:14,657 - root - INFO - Models exist for round 2, using updateModelByRound
+2025-05-24 08:02:14,660 - root - INFO - Sending transaction with nonce: 1520, gas price: 20000000000
+2025-05-24 08:02:14,694 - root - INFO - Transaction sent: 495356ab197ee5b6628f154e72418bf3e8b52f929cbac1313e04eec90380b1b1
+2025-05-24 08:02:14,697 - root - INFO - Transaction confirmed! Gas used: 225854, status: 1
+2025-05-24 08:02:14,697 - root - INFO - Model updated with transaction: 495356ab197ee5b6628f154e72418bf3e8b52f929cbac1313e04eec90380b1b1
+2025-05-24 08:02:14,697 - FL-Server - INFO - Registered global model in blockchain, tx: 495356ab197ee5b6628f154e72418bf3e8b52f929cbac1313e04eec90380b1b1
+2025-05-24 08:02:14,934 - FL-Server - INFO - Using existing global model IPFS hash for evaluation: QmeiWPu4s1ranLzJLJf9MgHQu9mjnEA1TzAn4UdpVRo5Vi
+2025-05-24 08:02:14,936 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmeiWPu4s1ranLzJLJf9MgHQu9mjnEA1TzAn4UdpVRo5Vi
+2025-05-24 08:02:14,936 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmeiWPu4s1ranLzJLJf9MgHQu9mjnEA1TzAn4UdpVRo5Vi
+2025-05-24 08:02:14,936 - FL-Server - INFO - Evaluating ensemble model with 7 weights: [0.09834125984957352, 0.0975457282789974, 0.25501165581010377, 0.07666750850679883, 0.15003903285522482, 0.18337960133467382, 0.13901521336462788]
+2025-05-24 08:02:14,936 - FL-Server - INFO - Base models: ['lr', 'svc', 'rf', 'knn', 'catboost', 'lgbm', 'xgb']
+2025-05-24 08:02:14,936 - FL-Server - INFO - Global model includes contributions from 2 clients
+2025-05-24 08:02:14,936 - FL-Server - INFO -   Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: Score=8150.00, ETH=0.000000
+2025-05-24 08:02:14,936 - FL-Server - INFO -   Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: Score=7227.00, ETH=0.000000
+2025-05-24 08:02:14,937 - FL-Server - INFO - Configured evaluation for round 2 with 2 clients using model QmeiWPu4s1ranLzJLJf9MgHQu9mjnEA1TzAn4UdpVRo5Vi
+INFO :      configure_evaluate: strategy sampled 2 clients (out of 2)
+2025-05-24 08:02:14,937 - flwr - INFO - configure_evaluate: strategy sampled 2 clients (out of 2)
+INFO :      aggregate_evaluate: received 2 results and 0 failures
+2025-05-24 08:02:18,891 - flwr - INFO - aggregate_evaluate: received 2 results and 0 failures
+2025-05-24 08:02:18,891 - FL-Server - INFO - Round 2 evaluation: Loss=0.0120, Accuracy=99.9078
+2025-05-24 08:02:18,891 - FL-Server - INFO - Fraud detection metrics: Precision=0.6875, Recall=0.8462, F1=0.7586
+2025-05-24 08:02:18,891 - FL-Server - INFO - Confusion matrix: TP=22, FP=10, TN=15156, FN=4
+INFO :      
+2025-05-24 08:02:18,891 - flwr - INFO - 
+INFO :      [ROUND 3]
+2025-05-24 08:02:18,891 - flwr - INFO - [ROUND 3]
+2025-05-24 08:02:18,892 - FL-Server - INFO - Sending global model IPFS hash for round 3: QmeiWPu4s1ranLzJLJf9MgHQu9mjnEA1TzAn4UdpVRo5Vi
+2025-05-24 08:02:18,892 - FL-Server - INFO - Sending configuration to 2 clients: {'server_round': 3, 'is_first_round': False, 'ga_stacking': True, 'local_epochs': 5, 'validation_split': 0.2, 'task_type': 'fraud_detection', 'pos_weight': 99.0, 'use_f1_score': True, 'detection_threshold': 0.3, 'global_model_ipfs_hash': 'QmeiWPu4s1ranLzJLJf9MgHQu9mjnEA1TzAn4UdpVRo5Vi'}
+INFO :      configure_fit: strategy sampled 2 clients (out of 2)
+2025-05-24 08:02:18,892 - flwr - INFO - configure_fit: strategy sampled 2 clients (out of 2)
+INFO :      aggregate_fit: received 2 results and 0 failures
+2025-05-24 08:28:36,219 - flwr - INFO - aggregate_fit: received 2 results and 0 failures
+2025-05-24 08:28:36,242 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmYor7mGUrf3vqca2vr1vJdn6njFp3fT1TqwbgdxG2Z2MX
+2025-05-24 08:28:36,243 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmYor7mGUrf3vqca2vr1vJdn6njFp3fT1TqwbgdxG2Z2MX
+2025-05-24 08:28:36,246 - federated.ipfs - INFO - Retrieved file from IPFS with hash: Qmab1FS9aJ5cDJuT35P5UEroFjDS2LyY9BsvXgLtNEwCe2
+2025-05-24 08:28:36,246 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: Qmab1FS9aJ5cDJuT35P5UEroFjDS2LyY9BsvXgLtNEwCe2
+2025-05-24 08:28:36,246 - FL-Server - INFO - Aggregating ensemble weights from 2 clients
+2025-05-24 08:28:36,246 - FL-Server - INFO - Aggregated ensemble weights sum: 1.00000000
+2025-05-24 08:28:36,246 - FL-Server - INFO - Aggregated weights already sum to 1.0, no normalization needed
+2025-05-24 08:28:36,246 - FL-Server - INFO - Final ensemble weights: [0.1141, 0.0730, 0.1964, 0.1004, 0.1218, 0.1979, 0.1964]
+2025-05-24 08:28:36,246 - FL-Server - INFO - Processing 2 client contributions with GA-Stacking rewards
+2025-05-24 08:28:36,246 - GAStackingRewardSystem - INFO - Processing fraud detection contribution for 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f
+2025-05-24 08:28:36,247 - GAStackingRewardSystem - INFO - Client metrics - recall: 0.7692307692307693, data_points: 90990
+2025-05-24 08:28:36,247 - GAStackingRewardSystem - INFO - Calculated fraud detection score for 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: 7227
+2025-05-24 08:28:36,247 - GAStackingRewardSystem - INFO -   - Recall contribution: 4615
+2025-05-24 08:28:36,247 - GAStackingRewardSystem - INFO -   - Data points contribution: 2612
+2025-05-24 08:28:37,042 - GAStackingRewardSystem - INFO - Recorded contribution from 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f with score 7227
+2025-05-24 08:28:37,042 - FL-Server - INFO - Recorded contribution for 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f with score 7227 based on recall=0.7692, data_points=90990
+2025-05-24 08:28:37,042 - GAStackingRewardSystem - INFO - Processing fraud detection contribution for 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe
+2025-05-24 08:28:37,042 - GAStackingRewardSystem - INFO - Client metrics - recall: 0.9230769230769231, data_points: 90982
+2025-05-24 08:28:37,042 - GAStackingRewardSystem - INFO - Calculated fraud detection score for 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: 8150
+2025-05-24 08:28:37,043 - GAStackingRewardSystem - INFO -   - Recall contribution: 5538
+2025-05-24 08:28:37,043 - GAStackingRewardSystem - INFO -   - Data points contribution: 2612
+2025-05-24 08:28:37,635 - GAStackingRewardSystem - INFO - Recorded contribution from 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe with score 8150
+2025-05-24 08:28:37,635 - FL-Server - INFO - Recorded contribution for 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe with score 8150 based on recall=0.9231, data_points=90982
+2025-05-24 08:28:38,026 - GAStackingRewardSystem - INFO - Total score for round 3: 4433
+2025-05-24 08:28:38,027 - GAStackingRewardSystem - INFO - Recording wallet balances BEFORE reward allocation for round 3
+2025-05-24 08:28:38,293 - GAStackingRewardSystem - INFO - Saved pre-allocation balances to metrics/wallet_tracking/round_3_before_allocation.json
+2025-05-24 08:28:38,307 - GAStackingRewardSystem - INFO - Pool for round 3 is already finalized
+2025-05-24 08:28:38,528 - GAStackingRewardSystem - INFO - Allocating rewards for round 3 - attempt 1/3
+2025-05-24 08:28:38,532 - root - INFO - Sending transaction with nonce: 1523, gas price: 20000000000
+2025-05-24 08:28:38,677 - root - INFO - Transaction sent: e6dd541cf52ef269ddd86038e855d8160be12217027a224029a58fb45353fcc7
+2025-05-24 08:28:38,682 - root - INFO - Transaction confirmed! Gas used: 399521, status: 1
+2025-05-24 08:28:38,699 - GAStackingRewardSystem - INFO - Successfully allocated 25.899999999999999999 ETH rewards for round 3
+2025-05-24 08:28:38,699 - GAStackingRewardSystem - INFO - Recording wallet balances AFTER reward allocation for round 32025-05-24 08:28:38,990 - GAStackingRewardSystem - INFO - === Wallet Balance Changes for Round 3 ===
+2025-05-24 08:28:38,990 - GAStackingRewardSystem - INFO - Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: 134.284035 ETH → 134.506388 ETH (Change: 0.222353 ETH)
+2025-05-24 08:28:38,990 - GAStackingRewardSystem - INFO - Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: 116.421578 ETH → 116.619225 ETH (Change: 0.197647 ETH)
+2025-05-24 08:28:38,992 - GAStackingRewardSystem - INFO - Saved wallet balance changes to metrics/wallet_tracking/round_3_balance_changes.json
+2025-05-24 08:28:38,992 - GAStackingRewardSystem - INFO - === Reward Verification Summary ===
+2025-05-24 08:28:38,992 - GAStackingRewardSystem - INFO - Client 0x79C62f4Ef6f1740D4C43A694Fe301abB7Ae97F28: Expected 3.967088 ETH, Actual change 0.000000 ETH - ❌ Mismatch
+2025-05-24 08:28:38,992 - GAStackingRewardSystem - INFO - Client 0x888b72fA86F4277b632Bd03C54e2B7a5d524E031: Expected 4.060568 ETH, Actual change 0.000000 ETH - ❌ Mismatch
+2025-05-24 08:28:38,992 - GAStackingRewardSystem - INFO - Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: Expected 9.938168 ETH, Actual change 0.222353 ETH - ❌ Mismatch
+2025-05-24 08:28:38,992 - GAStackingRewardSystem - INFO - Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: Expected 7.934176 ETH, Actual change 0.197647 ETH - ❌ Mismatch
+2025-05-24 08:28:39,377 - GAStackingRewardSystem - INFO - === Round 3 Reward Allocation Summary ===
+2025-05-24 08:28:39,377 - GAStackingRewardSystem - INFO - Total pool: 25.9 ETH
+2025-05-24 08:28:39,377 - GAStackingRewardSystem - INFO - Allocated: 25.899999999999999999 ETH
+2025-05-24 08:28:39,377 - GAStackingRewardSystem - INFO - Remaining: 1E-18 ETH
+2025-05-24 08:28:39,377 - GAStackingRewardSystem - INFO - Total contributions: 100
+2025-05-24 08:28:39,379 - GAStackingRewardSystem - INFO - Loaded previous rewards data for 4 clients
+2025-05-24 08:28:39,379 - GAStackingRewardSystem - INFO - === NEW Client Rewards (Current Session) ===
+2025-05-24 08:28:39,379 - GAStackingRewardSystem - INFO - Client 0x79C62f4Ef6f1740D4C43A694Fe301abB7Ae97F28: 3.967088 ETH from 11 contributions with score 679 (NEW in this session)
+2025-05-24 08:28:39,379 - GAStackingRewardSystem - INFO - Client 0x888b72fA86F4277b632Bd03C54e2B7a5d524E031: 4.060568 ETH from 14 contributions with score 695 (NEW in this session)
+2025-05-24 08:28:39,379 - GAStackingRewardSystem - INFO - Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: 9.938168 ETH from 44 contributions with score 1701 (NEW in this session)
+2025-05-24 08:28:39,379 - GAStackingRewardSystem - INFO - Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: 7.934176 ETH from 31 contributions with score 1358 (NEW in this session)
+2025-05-24 08:28:39,379 - GAStackingRewardSystem - INFO - TOTAL NEW REWARDS: 25.900000 ETH
+2025-05-24 08:28:39,379 - GAStackingRewardSystem - INFO - === HISTORICAL CUMULATIVE Client Rewards (All Sessions) ===
+2025-05-24 08:28:39,379 - GAStackingRewardSystem - INFO - Client 0x79C62f4Ef6f1740D4C43A694Fe301abB7Ae97F28: 69.378816 ETH from 187 contributions with total score 679 (cumulative)
+2025-05-24 08:28:39,379 - GAStackingRewardSystem - INFO - Client 0x888b72fA86F4277b632Bd03C54e2B7a5d524E031: 71.013663 ETH from 238 contributions with total score 695 (cumulative)
+2025-05-24 08:28:39,379 - GAStackingRewardSystem - INFO - Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: 130.680792 ETH from 619 contributions with total score 1701 (cumulative)
+2025-05-24 08:28:39,379 - GAStackingRewardSystem - INFO - Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: 110.006729 ETH from 434 contributions with total score 1358 (cumulative)
+2025-05-24 08:28:39,380 - GAStackingRewardSystem - INFO - Updated rewards data saved to metrics/round_3_previous_rewards.json
+2025-05-24 08:28:39,381 - GAStackingRewardSystem - INFO - Active clients in round 3: 4
+2025-05-24 08:28:39,381 - GAStackingRewardSystem - INFO -   - 0x79C62f4Ef6f1740D4C43A694Fe301abB7Ae97F28
+2025-05-24 08:28:39,381 - GAStackingRewardSystem - INFO -   - 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f
+2025-05-24 08:28:39,381 - GAStackingRewardSystem - INFO -   - 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe
+2025-05-24 08:28:39,381 - GAStackingRewardSystem - INFO -   - 0x888b72fA86F4277b632Bd03C54e2B7a5d524E031
+2025-05-24 08:28:39,381 - FL-Server - INFO - Allocated 25.899999999999999999 ETH rewards for round 3
+2025-05-24 08:28:39,381 - GAStackingRewardSystem - INFO - Getting reward details for round 3
+2025-05-24 08:28:39,390 - GAStackingRewardSystem - INFO - Round 3 pool: 25.900000 ETH allocated of 25.900000 ETH total
+2025-05-24 08:28:39,399 - GAStackingRewardSystem - INFO - Found 110 contributions for round 3
+2025-05-24 08:28:39,510 - GAStackingRewardSystem - INFO - Retrieved batch 0-50: 50 contributions
+2025-05-24 08:28:39,630 - GAStackingRewardSystem - INFO - Retrieved batch 50-100: 50 contributions
+2025-05-24 08:28:39,702 - GAStackingRewardSystem - INFO - Retrieved batch 100-110: 10 contributions
+2025-05-24 08:28:39,702 - GAStackingRewardSystem - INFO - Processed contributions: 4 clients, total score: 5198
+2025-05-24 08:28:39,702 - GAStackingRewardSystem - INFO - Round 3 reward details: 4 clients, 25.900000 ETH allocated
+2025-05-24 08:28:39,702 - FL-Server - INFO - Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: 10.448692 ETH (Rank 1)
+2025-05-24 08:28:39,702 - FL-Server - INFO - Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: 8.605098 ETH (Rank 2)
+2025-05-24 08:28:39,702 - FL-Server - INFO - Client 0x888b72fA86F4277b632Bd03C54e2B7a5d524E031: 3.462967 ETH (Rank 3)
+2025-05-24 08:28:39,702 - FL-Server - INFO - Client 0x79C62f4Ef6f1740D4C43A694Fe301abB7Ae97F28: 3.383244 ETH (Rank 4)
+2025-05-24 08:28:39,719 - federated.ipfs - INFO - Added file to IPFS with hash: QmbWno9PeLsC6wscRhT7pF9RxUqJhCNzjWNmoWpysHehKb
+2025-05-24 08:28:39,719 - federated.ipfs - INFO - Added JSON data to IPFS with hash: QmbWno9PeLsC6wscRhT7pF9RxUqJhCNzjWNmoWpysHehKb
+2025-05-24 08:28:39,719 - FL-Server - INFO - Stored ensemble weights in IPFS: QmbWno9PeLsC6wscRhT7pF9RxUqJhCNzjWNmoWpysHehKb
+2025-05-24 08:28:39,721 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmbWno9PeLsC6wscRhT7pF9RxUqJhCNzjWNmoWpysHehKb
+2025-05-24 08:28:39,722 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmbWno9PeLsC6wscRhT7pF9RxUqJhCNzjWNmoWpysHehKb
+2025-05-24 08:28:39,722 - FL-Server - INFO - Verification - stored data contains keys: ['ensemble_weights', 'base_model_names', 'client_contributions', 'info']
+2025-05-24 08:28:39,722 - FL-Server - INFO - Ensemble weights successfully stored, length: 7
+2025-05-24 08:28:39,779 - root - INFO - Models exist for round 3, using updateModelByRound
+2025-05-24 08:28:39,784 - root - INFO - Sending transaction with nonce: 1524, gas price: 20000000000
+2025-05-24 08:28:39,846 - root - INFO - Transaction sent: a5274b01e14d5310995cbd23e0ba8ebf8d704c55fbbca9162a0a9101a43c77f7
+2025-05-24 08:28:39,851 - root - INFO - Transaction confirmed! Gas used: 225854, status: 1
+2025-05-24 08:28:39,852 - root - INFO - Model updated with transaction: a5274b01e14d5310995cbd23e0ba8ebf8d704c55fbbca9162a0a9101a43c77f7
+2025-05-24 08:28:39,852 - FL-Server - INFO - Registered global model in blockchain, tx: a5274b01e14d5310995cbd23e0ba8ebf8d704c55fbbca9162a0a9101a43c77f7
+2025-05-24 08:28:40,119 - FL-Server - INFO - Using existing global model IPFS hash for evaluation: QmbWno9PeLsC6wscRhT7pF9RxUqJhCNzjWNmoWpysHehKb
+2025-05-24 08:28:40,121 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmbWno9PeLsC6wscRhT7pF9RxUqJhCNzjWNmoWpysHehKb
+2025-05-24 08:28:40,121 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmbWno9PeLsC6wscRhT7pF9RxUqJhCNzjWNmoWpysHehKb
+2025-05-24 08:28:40,121 - FL-Server - INFO - Evaluating ensemble model with 7 weights: [0.11409526877677836, 0.07301107187303241, 0.19638792708073263, 0.10042878972416125, 0.12176672271401215, 0.19787623813249647, 0.19643398169878667]
+2025-05-24 08:28:40,121 - FL-Server - INFO - Base models: ['lr', 'svc', 'rf', 'knn', 'catboost', 'lgbm', 'xgb']
+2025-05-24 08:28:40,121 - FL-Server - INFO - Global model includes contributions from 2 clients
+2025-05-24 08:28:40,122 - FL-Server - INFO -   Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: Score=7227.00, ETH=0.000000
+2025-05-24 08:28:40,122 - FL-Server - INFO -   Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: Score=8150.00, ETH=0.000000
+2025-05-24 08:28:40,122 - FL-Server - INFO - Configured evaluation for round 3 with 2 clients using model QmbWno9PeLsC6wscRhT7pF9RxUqJhCNzjWNmoWpysHehKb
+INFO :      configure_evaluate: strategy sampled 2 clients (out of 2)
+2025-05-24 08:28:40,123 - flwr - INFO - configure_evaluate: strategy sampled 2 clients (out of 2)
+INFO :      aggregate_evaluate: received 2 results and 0 failures
+2025-05-24 08:28:44,338 - flwr - INFO - aggregate_evaluate: received 2 results and 0 failures
+2025-05-24 08:28:44,339 - FL-Server - INFO - Round 3 evaluation: Loss=0.0123, Accuracy=99.9078
+2025-05-24 08:28:44,339 - FL-Server - INFO - Fraud detection metrics: Precision=0.6875, Recall=0.8462, F1=0.7586
+2025-05-24 08:28:44,339 - FL-Server - INFO - Confusion matrix: TP=22, FP=10, TN=15156, FN=4
+INFO :      
+2025-05-24 08:28:44,339 - flwr - INFO - 
+INFO :      [ROUND 4]
+2025-05-24 08:28:44,339 - flwr - INFO - [ROUND 4]
+2025-05-24 08:28:44,339 - FL-Server - INFO - Sending global model IPFS hash for round 4: QmbWno9PeLsC6wscRhT7pF9RxUqJhCNzjWNmoWpysHehKb
+2025-05-24 08:28:44,339 - FL-Server - INFO - Sending configuration to 2 clients: {'server_round': 4, 'is_first_round': False, 'ga_stacking': True, 'local_epochs': 5, 'validation_split': 0.2, 'task_type': 'fraud_detection', 'pos_weight': 99.0, 'use_f1_score': True, 'detection_threshold': 0.3, 'global_model_ipfs_hash': 'QmbWno9PeLsC6wscRhT7pF9RxUqJhCNzjWNmoWpysHehKb'}
+INFO :      configure_fit: strategy sampled 2 clients (out of 2)
+2025-05-24 08:28:44,339 - flwr - INFO - configure_fit: strategy sampled 2 clients (out of 2)
+INFO :      aggregate_fit: received 2 results and 0 failures
+2025-05-24 08:54:38,665 - flwr - INFO - aggregate_fit: received 2 results and 0 failures
+2025-05-24 08:54:38,683 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmSgHmqYnRuaXs8FAhaCoaBFG9gRwfHCrUh2cmv7P9vpQx
+2025-05-24 08:54:38,684 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmSgHmqYnRuaXs8FAhaCoaBFG9gRwfHCrUh2cmv7P9vpQx
+2025-05-24 08:54:38,687 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmNRTS1dEFmHKmrQPtSk1cHTksruhzZShwKwgWKiY3KC8p
+2025-05-24 08:54:38,688 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmNRTS1dEFmHKmrQPtSk1cHTksruhzZShwKwgWKiY3KC8p
+2025-05-24 08:54:38,688 - FL-Server - INFO - Aggregating ensemble weights from 2 clients
+2025-05-24 08:54:38,688 - FL-Server - INFO - Aggregated ensemble weights sum: 1.00000000
+2025-05-24 08:54:38,688 - FL-Server - INFO - Aggregated weights already sum to 1.0, no normalization needed
+2025-05-24 08:54:38,688 - FL-Server - INFO - Final ensemble weights: [0.0844, 0.1361, 0.2238, 0.0769, 0.1579, 0.1401, 0.1808]
+2025-05-24 08:54:38,688 - FL-Server - INFO - Processing 2 client contributions with GA-Stacking rewards
+2025-05-24 08:54:38,689 - GAStackingRewardSystem - INFO - Processing fraud detection contribution for 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f
+2025-05-24 08:54:38,689 - GAStackingRewardSystem - INFO - Client metrics - recall: 0.7692307692307693, data_points: 90990
+2025-05-24 08:54:38,689 - GAStackingRewardSystem - INFO - Calculated fraud detection score for 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: 7227
+2025-05-24 08:54:38,689 - GAStackingRewardSystem - INFO -   - Recall contribution: 4615
+2025-05-24 08:54:38,689 - GAStackingRewardSystem - INFO -   - Data points contribution: 2612
+2025-05-24 08:54:39,379 - GAStackingRewardSystem - INFO - Recorded contribution from 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f with score 7227
+2025-05-24 08:54:39,379 - FL-Server - INFO - Recorded contribution for 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f with score 7227 based on recall=0.7692, data_points=90990
+2025-05-24 08:54:39,379 - GAStackingRewardSystem - INFO - Processing fraud detection contribution for 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe
+2025-05-24 08:54:39,379 - GAStackingRewardSystem - INFO - Client metrics - recall: 0.9230769230769231, data_points: 90982
+2025-05-24 08:54:39,380 - GAStackingRewardSystem - INFO - Calculated fraud detection score for 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: 8150
+2025-05-24 08:54:39,380 - GAStackingRewardSystem - INFO -   - Recall contribution: 5538
+2025-05-24 08:54:39,380 - GAStackingRewardSystem - INFO -   - Data points contribution: 2612
+2025-05-24 08:54:39,896 - GAStackingRewardSystem - INFO - Recorded contribution from 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe with score 8150
+2025-05-24 08:54:39,896 - FL-Server - INFO - Recorded contribution for 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe with score 8150 based on recall=0.9231, data_points=90982
+2025-05-24 08:54:39,963 - GAStackingRewardSystem - INFO - Total score for round 4: 612
+2025-05-24 08:54:39,965 - GAStackingRewardSystem - INFO - Recording wallet balances BEFORE reward allocation for round 4
+2025-05-24 08:54:39,997 - GAStackingRewardSystem - INFO - Saved pre-allocation balances to metrics/wallet_tracking/round_4_before_allocation.json
+2025-05-24 08:54:40,016 - GAStackingRewardSystem - INFO - Pool for round 4 is already finalized
+2025-05-24 08:54:40,065 - GAStackingRewardSystem - INFO - Allocating rewards for round 4 - attempt 1/3
+2025-05-24 08:54:40,072 - root - INFO - Sending transaction with nonce: 1527, gas price: 20000000000
+2025-05-24 08:54:40,146 - root - INFO - Transaction sent: fde3da8d88b09372e1bc33502f41dbd4d4f923c6a8a7b9e7b733e5ebb7da1ae5
+2025-05-24 08:54:40,152 - root - INFO - Transaction confirmed! Gas used: 99539, status: 1
+2025-05-24 08:54:40,164 - GAStackingRewardSystem - INFO - Successfully allocated 0.799999999999999999 ETH rewards for round 4
+2025-05-24 08:54:40,165 - GAStackingRewardSystem - INFO - Recording wallet balances AFTER reward allocation for round 42025-05-24 08:54:40,189 - GAStackingRewardSystem - INFO - === Wallet Balance Changes for Round 4 ===
+2025-05-24 08:54:40,189 - GAStackingRewardSystem - INFO - Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: 134.506388 ETH → 134.760506 ETH (Change: 0.254118 ETH)
+2025-05-24 08:54:40,189 - GAStackingRewardSystem - INFO - Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: 116.619225 ETH → 116.845108 ETH (Change: 0.225882 ETH)
+2025-05-24 08:54:40,193 - GAStackingRewardSystem - INFO - Saved wallet balance changes to metrics/wallet_tracking/round_4_balance_changes.json
+2025-05-24 08:54:40,193 - GAStackingRewardSystem - INFO - === Reward Verification Summary ===
+2025-05-24 08:54:40,193 - GAStackingRewardSystem - INFO - Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: Expected 0.423529 ETH, Actual change 0.254118 ETH - ❌ Mismatch
+2025-05-24 08:54:40,193 - GAStackingRewardSystem - INFO - Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: Expected 0.376471 ETH, Actual change 0.225882 ETH - ❌ Mismatch
+2025-05-24 08:54:40,245 - GAStackingRewardSystem - INFO - === Round 4 Reward Allocation Summary ===
+2025-05-24 08:54:40,245 - GAStackingRewardSystem - INFO - Total pool: 0.8 ETH
+2025-05-24 08:54:40,245 - GAStackingRewardSystem - INFO - Allocated: 0.799999999999999999 ETH
+2025-05-24 08:54:40,245 - GAStackingRewardSystem - INFO - Remaining: 1E-18 ETH
+2025-05-24 08:54:40,246 - GAStackingRewardSystem - INFO - Total contributions: 8
+2025-05-24 08:54:40,246 - GAStackingRewardSystem - INFO - Loaded previous rewards data for 2 clients
+2025-05-24 08:54:40,246 - GAStackingRewardSystem - INFO - === NEW Client Rewards (Current Session) ===
+2025-05-24 08:54:40,246 - GAStackingRewardSystem - INFO - Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: 0.423529 ETH from 4 contributions with score 324 (NEW in this session)
+2025-05-24 08:54:40,246 - GAStackingRewardSystem - INFO - Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: 0.376471 ETH from 4 contributions with score 288 (NEW in this session)
+2025-05-24 08:54:40,246 - GAStackingRewardSystem - INFO - TOTAL NEW REWARDS: 0.800000 ETH
+2025-05-24 08:54:40,246 - GAStackingRewardSystem - INFO - === HISTORICAL CUMULATIVE Client Rewards (All Sessions) ===
+2025-05-24 08:54:40,246 - GAStackingRewardSystem - INFO - Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: 0.592941 ETH from 7 contributions with total score 324 (cumulative)
+2025-05-24 08:54:40,246 - GAStackingRewardSystem - INFO - Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: 0.527059 ETH from 7 contributions with total score 288 (cumulative)
+2025-05-24 08:54:40,247 - GAStackingRewardSystem - INFO - Updated rewards data saved to metrics/round_4_previous_rewards.json
+2025-05-24 08:54:40,247 - GAStackingRewardSystem - INFO - Active clients in round 4: 2
+2025-05-24 08:54:40,247 - GAStackingRewardSystem - INFO -   - 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f
+2025-05-24 08:54:40,247 - GAStackingRewardSystem - INFO -   - 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe
+2025-05-24 08:54:40,248 - FL-Server - INFO - Allocated 0.799999999999999999 ETH rewards for round 4
+2025-05-24 08:54:40,248 - GAStackingRewardSystem - INFO - Getting reward details for round 4
+2025-05-24 08:54:40,263 - GAStackingRewardSystem - INFO - Round 4 pool: 0.800000 ETH allocated of 0.800000 ETH total
+2025-05-24 08:54:40,274 - GAStackingRewardSystem - INFO - Found 8 contributions for round 4
+2025-05-24 08:54:40,311 - GAStackingRewardSystem - INFO - Retrieved batch 0-8: 8 contributions
+2025-05-24 08:54:40,311 - GAStackingRewardSystem - INFO - Processed contributions: 2 clients, total score: 612
+2025-05-24 08:54:40,312 - GAStackingRewardSystem - INFO - Round 4 reward details: 2 clients, 0.800000 ETH allocated
+2025-05-24 08:54:40,312 - FL-Server - INFO - Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: 0.423529 ETH (Rank 1)
+2025-05-24 08:54:40,312 - FL-Server - INFO - Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: 0.376471 ETH (Rank 2)
+2025-05-24 08:54:40,328 - federated.ipfs - INFO - Added file to IPFS with hash: QmefMmiCWWKVqXGd5GuFrHNYGpbnAcf7ZN7XNZWeARtShC
+2025-05-24 08:54:40,328 - federated.ipfs - INFO - Added JSON data to IPFS with hash: QmefMmiCWWKVqXGd5GuFrHNYGpbnAcf7ZN7XNZWeARtShC
+2025-05-24 08:54:40,329 - FL-Server - INFO - Stored ensemble weights in IPFS: QmefMmiCWWKVqXGd5GuFrHNYGpbnAcf7ZN7XNZWeARtShC
+2025-05-24 08:54:40,331 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmefMmiCWWKVqXGd5GuFrHNYGpbnAcf7ZN7XNZWeARtShC
+2025-05-24 08:54:40,332 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmefMmiCWWKVqXGd5GuFrHNYGpbnAcf7ZN7XNZWeARtShC
+2025-05-24 08:54:40,332 - FL-Server - INFO - Verification - stored data contains keys: ['ensemble_weights', 'base_model_names', 'client_contributions', 'info']
+2025-05-24 08:54:40,332 - FL-Server - INFO - Ensemble weights successfully stored, length: 7
+2025-05-24 08:54:40,360 - root - INFO - Models exist for round 4, using updateModelByRound
+2025-05-24 08:54:40,365 - root - INFO - Sending transaction with nonce: 1528, gas price: 20000000000
+2025-05-24 08:54:40,417 - root - INFO - Transaction sent: 0de6099f92766022740748359b1c150bc4b2c1c1be83fa95e7548ec3e3341ca8
+2025-05-24 08:54:40,421 - root - INFO - Transaction confirmed! Gas used: 225854, status: 1
+2025-05-24 08:54:40,421 - root - INFO - Model updated with transaction: 0de6099f92766022740748359b1c150bc4b2c1c1be83fa95e7548ec3e3341ca8
+2025-05-24 08:54:40,421 - FL-Server - INFO - Registered global model in blockchain, tx: 0de6099f92766022740748359b1c150bc4b2c1c1be83fa95e7548ec3e3341ca8
+2025-05-24 08:54:40,475 - FL-Server - INFO - Using existing global model IPFS hash for evaluation: QmefMmiCWWKVqXGd5GuFrHNYGpbnAcf7ZN7XNZWeARtShC
+2025-05-24 08:54:40,478 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmefMmiCWWKVqXGd5GuFrHNYGpbnAcf7ZN7XNZWeARtShC
+2025-05-24 08:54:40,478 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmefMmiCWWKVqXGd5GuFrHNYGpbnAcf7ZN7XNZWeARtShC
+2025-05-24 08:54:40,479 - FL-Server - INFO - Evaluating ensemble model with 7 weights: [0.08439130960966272, 0.13613491606341205, 0.22378192184430135, 0.07694620381027872, 0.15787929673498036, 0.14008673053432036, 0.1807796214030445]
+2025-05-24 08:54:40,479 - FL-Server - INFO - Base models: ['lr', 'svc', 'rf', 'knn', 'catboost', 'lgbm', 'xgb']
+2025-05-24 08:54:40,479 - FL-Server - INFO - Global model includes contributions from 2 clients
+2025-05-24 08:54:40,479 - FL-Server - INFO -   Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: Score=7227.00, ETH=0.000000
+2025-05-24 08:54:40,480 - FL-Server - INFO -   Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: Score=8150.00, ETH=0.000000
+2025-05-24 08:54:40,480 - FL-Server - INFO - Configured evaluation for round 4 with 2 clients using model QmefMmiCWWKVqXGd5GuFrHNYGpbnAcf7ZN7XNZWeARtShC
+INFO :      configure_evaluate: strategy sampled 2 clients (out of 2)
+2025-05-24 08:54:40,481 - flwr - INFO - configure_evaluate: strategy sampled 2 clients (out of 2)
+INFO :      aggregate_evaluate: received 2 results and 0 failures
+2025-05-24 08:54:44,539 - flwr - INFO - aggregate_evaluate: received 2 results and 0 failures
+2025-05-24 08:54:44,540 - FL-Server - INFO - Round 4 evaluation: Loss=0.0120, Accuracy=99.9078
+2025-05-24 08:54:44,540 - FL-Server - INFO - Fraud detection metrics: Precision=0.6875, Recall=0.8462, F1=0.7586
+2025-05-24 08:54:44,540 - FL-Server - INFO - Confusion matrix: TP=22, FP=10, TN=15156, FN=4
+INFO :      
+2025-05-24 08:54:44,540 - flwr - INFO - 
+INFO :      [ROUND 5]
+2025-05-24 08:54:44,540 - flwr - INFO - [ROUND 5]
+2025-05-24 08:54:44,540 - FL-Server - INFO - Sending global model IPFS hash for round 5: QmefMmiCWWKVqXGd5GuFrHNYGpbnAcf7ZN7XNZWeARtShC
+2025-05-24 08:54:44,540 - FL-Server - INFO - Sending configuration to 2 clients: {'server_round': 5, 'is_first_round': False, 'ga_stacking': True, 'local_epochs': 5, 'validation_split': 0.2, 'task_type': 'fraud_detection', 'pos_weight': 99.0, 'use_f1_score': True, 'detection_threshold': 0.3, 'global_model_ipfs_hash': 'QmefMmiCWWKVqXGd5GuFrHNYGpbnAcf7ZN7XNZWeARtShC'}
+INFO :      configure_fit: strategy sampled 2 clients (out of 2)
+2025-05-24 08:54:44,540 - flwr - INFO - configure_fit: strategy sampled 2 clients (out of 2)
+INFO :      aggregate_fit: received 2 results and 0 failures
+2025-05-24 09:21:20,540 - flwr - INFO - aggregate_fit: received 2 results and 0 failures
+2025-05-24 09:21:20,560 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmT1ZZ3tUaEY739fKL6cEQULwTxkNkgPgAwjdDK3pC7Eif
+2025-05-24 09:21:20,560 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmT1ZZ3tUaEY739fKL6cEQULwTxkNkgPgAwjdDK3pC7Eif
+2025-05-24 09:21:20,562 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmQ9X9LkDQywnog1HZokyoeFDUjroZst9AcJZW4CbWjb7o
+2025-05-24 09:21:20,562 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmQ9X9LkDQywnog1HZokyoeFDUjroZst9AcJZW4CbWjb7o
+2025-05-24 09:21:20,562 - FL-Server - INFO - Aggregating ensemble weights from 2 clients
+2025-05-24 09:21:20,562 - FL-Server - INFO - Aggregated ensemble weights sum: 1.00000000
+2025-05-24 09:21:20,563 - FL-Server - INFO - Aggregated weights already sum to 1.0, no normalization needed
+2025-05-24 09:21:20,563 - FL-Server - INFO - Final ensemble weights: [0.0744, 0.1008, 0.2450, 0.0943, 0.1817, 0.1722, 0.1317]
+2025-05-24 09:21:20,563 - FL-Server - INFO - Processing 2 client contributions with GA-Stacking rewards
+2025-05-24 09:21:20,563 - GAStackingRewardSystem - INFO - Processing fraud detection contribution for 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f
+2025-05-24 09:21:20,563 - GAStackingRewardSystem - INFO - Client metrics - recall: 0.7692307692307693, data_points: 90990
+2025-05-24 09:21:20,563 - GAStackingRewardSystem - INFO - Calculated fraud detection score for 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: 7227
+2025-05-24 09:21:20,563 - GAStackingRewardSystem - INFO -   - Recall contribution: 4615
+2025-05-24 09:21:20,563 - GAStackingRewardSystem - INFO -   - Data points contribution: 2612
+2025-05-24 09:21:21,111 - GAStackingRewardSystem - INFO - Recorded contribution from 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f with score 7227
+2025-05-24 09:21:21,111 - FL-Server - INFO - Recorded contribution for 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f with score 7227 based on recall=0.7692, data_points=90990
+2025-05-24 09:21:21,111 - GAStackingRewardSystem - INFO - Processing fraud detection contribution for 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe
+2025-05-24 09:21:21,111 - GAStackingRewardSystem - INFO - Client metrics - recall: 0.9230769230769231, data_points: 90982
+2025-05-24 09:21:21,111 - GAStackingRewardSystem - INFO - Calculated fraud detection score for 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: 8150
+2025-05-24 09:21:21,111 - GAStackingRewardSystem - INFO -   - Recall contribution: 5538
+2025-05-24 09:21:21,111 - GAStackingRewardSystem - INFO -   - Data points contribution: 2612
+2025-05-24 09:21:21,685 - GAStackingRewardSystem - INFO - Recorded contribution from 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe with score 8150
+2025-05-24 09:21:21,685 - FL-Server - INFO - Recorded contribution for 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe with score 8150 based on recall=0.9231, data_points=90982
+2025-05-24 09:21:21,736 - GAStackingRewardSystem - INFO - Total score for round 5: 612
+2025-05-24 09:21:21,736 - GAStackingRewardSystem - INFO - Recording wallet balances BEFORE reward allocation for round 5
+2025-05-24 09:21:21,768 - GAStackingRewardSystem - INFO - Saved pre-allocation balances to metrics/wallet_tracking/round_5_before_allocation.json
+2025-05-24 09:21:21,784 - GAStackingRewardSystem - INFO - Pool for round 5 is already finalized
+2025-05-24 09:21:21,829 - GAStackingRewardSystem - INFO - Allocating rewards for round 5 - attempt 1/3
+2025-05-24 09:21:21,835 - root - INFO - Sending transaction with nonce: 1531, gas price: 20000000000
+2025-05-24 09:21:21,883 - root - INFO - Transaction sent: b7ce88741a97a25687e67c1ac05eecd4243efe9d10c38713fa9f5da418e2ce4e
+2025-05-24 09:21:21,886 - root - INFO - Transaction confirmed! Gas used: 99539, status: 1
+2025-05-24 09:21:21,901 - GAStackingRewardSystem - INFO - Successfully allocated 0.899999999999999999 ETH rewards for round 5
+2025-05-24 09:21:21,901 - GAStackingRewardSystem - INFO - Recording wallet balances AFTER reward allocation for round 52025-05-24 09:21:21,926 - GAStackingRewardSystem - INFO - === Wallet Balance Changes for Round 5 ===
+2025-05-24 09:21:21,926 - GAStackingRewardSystem - INFO - Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: 116.845108 ETH → 117.099225 ETH (Change: 0.254118 ETH)
+2025-05-24 09:21:21,926 - GAStackingRewardSystem - INFO - Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: 134.760506 ETH → 135.046388 ETH (Change: 0.285882 ETH)
+2025-05-24 09:21:21,927 - GAStackingRewardSystem - INFO - Saved wallet balance changes to metrics/wallet_tracking/round_5_balance_changes.json
+2025-05-24 09:21:21,927 - GAStackingRewardSystem - INFO - === Reward Verification Summary ===
+2025-05-24 09:21:21,928 - GAStackingRewardSystem - INFO - Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: Expected 0.423529 ETH, Actual change 0.254118 ETH - ❌ Mismatch
+2025-05-24 09:21:21,928 - GAStackingRewardSystem - INFO - Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: Expected 0.476471 ETH, Actual change 0.285882 ETH - ❌ Mismatch
+2025-05-24 09:21:21,971 - GAStackingRewardSystem - INFO - === Round 5 Reward Allocation Summary ===
+2025-05-24 09:21:21,971 - GAStackingRewardSystem - INFO - Total pool: 0.9 ETH
+2025-05-24 09:21:21,971 - GAStackingRewardSystem - INFO - Allocated: 0.899999999999999999 ETH
+2025-05-24 09:21:21,972 - GAStackingRewardSystem - INFO - Remaining: 1E-18 ETH
+2025-05-24 09:21:21,972 - GAStackingRewardSystem - INFO - Total contributions: 8
+2025-05-24 09:21:21,972 - GAStackingRewardSystem - INFO - Loaded previous rewards data for 2 clients
+2025-05-24 09:21:21,972 - GAStackingRewardSystem - INFO - === NEW Client Rewards (Current Session) ===
+2025-05-24 09:21:21,972 - GAStackingRewardSystem - INFO - Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: 0.423529 ETH from 4 contributions with score 288 (NEW in this session)
+2025-05-24 09:21:21,973 - GAStackingRewardSystem - INFO - Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: 0.476471 ETH from 4 contributions with score 324 (NEW in this session)
+2025-05-24 09:21:21,973 - GAStackingRewardSystem - INFO - TOTAL NEW REWARDS: 0.900000 ETH
+2025-05-24 09:21:21,973 - GAStackingRewardSystem - INFO - === HISTORICAL CUMULATIVE Client Rewards (All Sessions) ===
+2025-05-24 09:21:21,973 - GAStackingRewardSystem - INFO - Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: 0.592941 ETH from 7 contributions with total score 288 (cumulative)
+2025-05-24 09:21:21,973 - GAStackingRewardSystem - INFO - Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: 0.667059 ETH from 7 contributions with total score 324 (cumulative)
+2025-05-24 09:21:21,974 - GAStackingRewardSystem - INFO - Updated rewards data saved to metrics/round_5_previous_rewards.json
+2025-05-24 09:21:21,974 - GAStackingRewardSystem - INFO - Active clients in round 5: 2
+2025-05-24 09:21:21,974 - GAStackingRewardSystem - INFO -   - 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe
+2025-05-24 09:21:21,975 - GAStackingRewardSystem - INFO -   - 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f
+2025-05-24 09:21:21,975 - FL-Server - INFO - Allocated 0.899999999999999999 ETH rewards for round 5
+2025-05-24 09:21:21,975 - GAStackingRewardSystem - INFO - Getting reward details for round 5
+2025-05-24 09:21:21,987 - GAStackingRewardSystem - INFO - Round 5 pool: 0.900000 ETH allocated of 0.900000 ETH total
+2025-05-24 09:21:21,998 - GAStackingRewardSystem - INFO - Found 8 contributions for round 5
+2025-05-24 09:21:22,029 - GAStackingRewardSystem - INFO - Retrieved batch 0-8: 8 contributions
+2025-05-24 09:21:22,029 - GAStackingRewardSystem - INFO - Processed contributions: 2 clients, total score: 612
+2025-05-24 09:21:22,029 - GAStackingRewardSystem - INFO - Round 5 reward details: 2 clients, 0.900000 ETH allocated
+2025-05-24 09:21:22,029 - FL-Server - INFO - Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: 0.476471 ETH (Rank 1)
+2025-05-24 09:21:22,029 - FL-Server - INFO - Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: 0.423529 ETH (Rank 2)
+2025-05-24 09:21:22,044 - federated.ipfs - INFO - Added file to IPFS with hash: QmdvEfnx4ff8aHMQp6N5E3zfeGaF6v7M6gpNCgDvGmfZtU
+2025-05-24 09:21:22,044 - federated.ipfs - INFO - Added JSON data to IPFS with hash: QmdvEfnx4ff8aHMQp6N5E3zfeGaF6v7M6gpNCgDvGmfZtU
+2025-05-24 09:21:22,044 - FL-Server - INFO - Stored ensemble weights in IPFS: QmdvEfnx4ff8aHMQp6N5E3zfeGaF6v7M6gpNCgDvGmfZtU
+2025-05-24 09:21:22,046 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmdvEfnx4ff8aHMQp6N5E3zfeGaF6v7M6gpNCgDvGmfZtU
+2025-05-24 09:21:22,046 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmdvEfnx4ff8aHMQp6N5E3zfeGaF6v7M6gpNCgDvGmfZtU
+2025-05-24 09:21:22,047 - FL-Server - INFO - Verification - stored data contains keys: ['ensemble_weights', 'base_model_names', 'client_contributions', 'info']
+2025-05-24 09:21:22,047 - FL-Server - INFO - Ensemble weights successfully stored, length: 7
+2025-05-24 09:21:22,061 - root - INFO - Models exist for round 5, using updateModelByRound
+2025-05-24 09:21:22,067 - root - INFO - Sending transaction with nonce: 1532, gas price: 20000000000
+2025-05-24 09:21:22,113 - root - INFO - Transaction sent: 93b63bf092b483c243cbb6437797df13ecff3238d6236c7dba057b8e7ae33a30
+2025-05-24 09:21:22,117 - root - INFO - Transaction confirmed! Gas used: 225854, status: 1
+2025-05-24 09:21:22,117 - root - INFO - Model updated with transaction: 93b63bf092b483c243cbb6437797df13ecff3238d6236c7dba057b8e7ae33a30
+2025-05-24 09:21:22,117 - FL-Server - INFO - Registered global model in blockchain, tx: 93b63bf092b483c243cbb6437797df13ecff3238d6236c7dba057b8e7ae33a30
+2025-05-24 09:21:22,156 - FL-Server - INFO - Using existing global model IPFS hash for evaluation: QmdvEfnx4ff8aHMQp6N5E3zfeGaF6v7M6gpNCgDvGmfZtU
+2025-05-24 09:21:22,159 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmdvEfnx4ff8aHMQp6N5E3zfeGaF6v7M6gpNCgDvGmfZtU
+2025-05-24 09:21:22,159 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmdvEfnx4ff8aHMQp6N5E3zfeGaF6v7M6gpNCgDvGmfZtU
+2025-05-24 09:21:22,160 - FL-Server - INFO - Evaluating ensemble model with 7 weights: [0.07438168502614205, 0.10082179011437978, 0.24497577227480016, 0.09425212480387338, 0.18172655867353302, 0.17216271413270223, 0.1316793549745694]
+2025-05-24 09:21:22,160 - FL-Server - INFO - Base models: ['lr', 'svc', 'rf', 'knn', 'catboost', 'lgbm', 'xgb']
+2025-05-24 09:21:22,160 - FL-Server - INFO - Global model includes contributions from 2 clients
+2025-05-24 09:21:22,160 - FL-Server - INFO -   Client 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f: Score=7227.00, ETH=0.000000
+2025-05-24 09:21:22,160 - FL-Server - INFO -   Client 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe: Score=8150.00, ETH=0.000000
+2025-05-24 09:21:22,161 - FL-Server - INFO - Configured evaluation for round 5 with 2 clients using model QmdvEfnx4ff8aHMQp6N5E3zfeGaF6v7M6gpNCgDvGmfZtU
+INFO :      configure_evaluate: strategy sampled 2 clients (out of 2)
+2025-05-24 09:21:22,161 - flwr - INFO - configure_evaluate: strategy sampled 2 clients (out of 2)
+INFO :      aggregate_evaluate: received 2 results and 0 failures
+2025-05-24 09:21:26,713 - flwr - INFO - aggregate_evaluate: received 2 results and 0 failures
+2025-05-24 09:21:26,713 - FL-Server - INFO - Round 5 evaluation: Loss=0.0107, Accuracy=99.9078
+2025-05-24 09:21:26,713 - FL-Server - INFO - Fraud detection metrics: Precision=0.6875, Recall=0.8462, F1=0.7586
+2025-05-24 09:21:26,713 - FL-Server - INFO - Confusion matrix: TP=22, FP=10, TN=15156, FN=4
+INFO :      
+2025-05-24 09:21:26,714 - flwr - INFO - 
+INFO :      [SUMMARY]
+2025-05-24 09:21:26,714 - flwr - INFO - [SUMMARY]
+INFO :      Run finished 5 round(s) in 8007.56s
+2025-05-24 09:21:26,714 - flwr - INFO - Run finished 5 round(s) in 8007.56s
+INFO :          History (loss, distributed):
+2025-05-24 09:21:26,724 - flwr - INFO -         History (loss, distributed):
+INFO :                  round 1: 0.01255348464474082
+2025-05-24 09:21:26,724 - flwr - INFO -                 round 1: 0.01255348464474082
+INFO :                  round 2: 0.011982386931777
+2025-05-24 09:21:26,724 - flwr - INFO -                 round 2: 0.011982386931777
+INFO :                  round 3: 0.012254702392965555
+2025-05-24 09:21:26,724 - flwr - INFO -                 round 3: 0.012254702392965555
+INFO :                  round 4: 0.012019223533570766
+2025-05-24 09:21:26,725 - flwr - INFO -                 round 4: 0.012019223533570766
+INFO :                  round 5: 0.010722754057496786
+2025-05-24 09:21:26,725 - flwr - INFO -                 round 5: 0.010722754057496786
+INFO :          History (metrics, distributed, fit):
+2025-05-24 09:21:26,725 - flwr - INFO -         History (metrics, distributed, fit):
+INFO :          {'authorized_clients': [(1, 2), (2, 2), (3, 2), (4, 2), (5, 2)],
+2025-05-24 09:21:26,725 - flwr - INFO -         {'authorized_clients': [(1, 2), (2, 2), (3, 2), (4, 2), (5, 2)],
+INFO :           'ensemble_weights': [(1,
+2025-05-24 09:21:26,725 - flwr - INFO -          'ensemble_weights': [(1,
+INFO :                                 [0.11353686432546849,
+2025-05-24 09:21:26,725 - flwr - INFO -                                [0.11353686432546849,
+INFO :                                  0.077767604636423,
+2025-05-24 09:21:26,726 - flwr - INFO -                                 0.077767604636423,
+INFO :                                  0.25233345362983056,
+2025-05-24 09:21:26,726 - flwr - INFO -                                 0.25233345362983056,
+INFO :                                  0.18292513379071473,
+2025-05-24 09:21:26,726 - flwr - INFO -                                 0.18292513379071473,
+INFO :                                  0.04582085104863068,
+2025-05-24 09:21:26,726 - flwr - INFO -                                 0.04582085104863068,
+INFO :                                  0.15054241869701332,
+2025-05-24 09:21:26,726 - flwr - INFO -                                 0.15054241869701332,
+INFO :                                  0.17707367387191913]),
+2025-05-24 09:21:26,727 - flwr - INFO -                                 0.17707367387191913]),
+INFO :                                (2,
+2025-05-24 09:21:26,727 - flwr - INFO -                               (2,
+INFO :                                 [0.09834125984957352,
+2025-05-24 09:21:26,727 - flwr - INFO -                                [0.09834125984957352,
+INFO :                                  0.0975457282789974,
+2025-05-24 09:21:26,727 - flwr - INFO -                                 0.0975457282789974,
+INFO :                                  0.25501165581010377,
+2025-05-24 09:21:26,727 - flwr - INFO -                                 0.25501165581010377,
+INFO :                                  0.07666750850679883,
+2025-05-24 09:21:26,728 - flwr - INFO -                                 0.07666750850679883,
+INFO :                                  0.15003903285522482,
+2025-05-24 09:21:26,728 - flwr - INFO -                                 0.15003903285522482,
+INFO :                                  0.18337960133467382,
+2025-05-24 09:21:26,728 - flwr - INFO -                                 0.18337960133467382,
+INFO :                                  0.13901521336462788]),
+2025-05-24 09:21:26,728 - flwr - INFO -                                 0.13901521336462788]),
+INFO :                                (3,
+2025-05-24 09:21:26,728 - flwr - INFO -                               (3,
+INFO :                                 [0.11409526877677836,
+2025-05-24 09:21:26,728 - flwr - INFO -                                [0.11409526877677836,
+INFO :                                  0.07301107187303241,
+2025-05-24 09:21:26,728 - flwr - INFO -                                 0.07301107187303241,
+INFO :                                  0.19638792708073263,
+2025-05-24 09:21:26,728 - flwr - INFO -                                 0.19638792708073263,
+INFO :                                  0.10042878972416125,
+2025-05-24 09:21:26,728 - flwr - INFO -                                 0.10042878972416125,
+INFO :                                  0.12176672271401215,
+2025-05-24 09:21:26,728 - flwr - INFO -                                 0.12176672271401215,
+INFO :                                  0.19787623813249647,
+2025-05-24 09:21:26,728 - flwr - INFO -                                 0.19787623813249647,
+INFO :                                  0.19643398169878667]),
+2025-05-24 09:21:26,728 - flwr - INFO -                                 0.19643398169878667]),
+INFO :                                (4,
+2025-05-24 09:21:26,729 - flwr - INFO -                               (4,
+INFO :                                 [0.08439130960966272,
+2025-05-24 09:21:26,729 - flwr - INFO -                                [0.08439130960966272,
+INFO :                                  0.13613491606341205,
+2025-05-24 09:21:26,729 - flwr - INFO -                                 0.13613491606341205,
+INFO :                                  0.22378192184430135,
+2025-05-24 09:21:26,729 - flwr - INFO -                                 0.22378192184430135,
+INFO :                                  0.07694620381027872,
+2025-05-24 09:21:26,729 - flwr - INFO -                                 0.07694620381027872,
+INFO :                                  0.15787929673498036,
+2025-05-24 09:21:26,729 - flwr - INFO -                                 0.15787929673498036,
+INFO :                                  0.14008673053432036,
+2025-05-24 09:21:26,730 - flwr - INFO -                                 0.14008673053432036,
+INFO :                                  0.1807796214030445]),
+2025-05-24 09:21:26,730 - flwr - INFO -                                 0.1807796214030445]),
+INFO :                                (5,
+2025-05-24 09:21:26,730 - flwr - INFO -                               (5,
+INFO :                                 [0.07438168502614205,
+2025-05-24 09:21:26,730 - flwr - INFO -                                [0.07438168502614205,
+INFO :                                  0.10082179011437978,
+2025-05-24 09:21:26,730 - flwr - INFO -                                 0.10082179011437978,
+INFO :                                  0.24497577227480016,
+2025-05-24 09:21:26,730 - flwr - INFO -                                 0.24497577227480016,
+INFO :                                  0.09425212480387338,
+2025-05-24 09:21:26,731 - flwr - INFO -                                 0.09425212480387338,
+INFO :                                  0.18172655867353302,
+2025-05-24 09:21:26,731 - flwr - INFO -                                 0.18172655867353302,
+INFO :                                  0.17216271413270223,
+2025-05-24 09:21:26,732 - flwr - INFO -                                 0.17216271413270223,
+INFO :                                  0.1316793549745694])],
+2025-05-24 09:21:26,732 - flwr - INFO -                                 0.1316793549745694])],
+INFO :           'ensemble_weights_sum': [(1, 1.0),
+2025-05-24 09:21:26,732 - flwr - INFO -          'ensemble_weights_sum': [(1, 1.0),
+INFO :                                    (2, 1.0),
+2025-05-24 09:21:26,733 - flwr - INFO -                                   (2, 1.0),
+INFO :                                    (3, 0.9999999999999999),
+2025-05-24 09:21:26,733 - flwr - INFO -                                   (3, 0.9999999999999999),
+INFO :                                    (4, 1.0),
+2025-05-24 09:21:26,733 - flwr - INFO -                                   (4, 1.0),
+INFO :                                    (5, 1.0)],
+2025-05-24 09:21:26,733 - flwr - INFO -                                   (5, 1.0)],
+INFO :           'ga_stacking_avg_score': [(1, 34.31),
+2025-05-24 09:21:26,733 - flwr - INFO -          'ga_stacking_avg_score': [(1, 34.31),
+INFO :                                     (2, 37.71),
+2025-05-24 09:21:26,734 - flwr - INFO -                                    (2, 37.71),
+INFO :                                     (3, 44.33),
+2025-05-24 09:21:26,734 - flwr - INFO -                                    (3, 44.33),
+INFO :                                     (4, 76.5),
+2025-05-24 09:21:26,734 - flwr - INFO -                                    (4, 76.5),
+INFO :                                     (5, 76.5)],
+2025-05-24 09:21:26,734 - flwr - INFO -                                    (5, 76.5)],
+INFO :           'ga_stacking_reward_participants': [(1, 100),
+2025-05-24 09:21:26,734 - flwr - INFO -          'ga_stacking_reward_participants': [(1, 100),
+INFO :                                               (2, 100),
+2025-05-24 09:21:26,734 - flwr - INFO -                                              (2, 100),
+INFO :                                               (3, 100),
+2025-05-24 09:21:26,734 - flwr - INFO -                                              (3, 100),
+INFO :                                               (4, 8),
+2025-05-24 09:21:26,734 - flwr - INFO -                                              (4, 8),
+INFO :                                               (5, 8)],
+2025-05-24 09:21:26,735 - flwr - INFO -                                              (5, 8)],
+INFO :           'ga_stacking_score_range': [(1, 94), (2, 96), (3, 98), (4, 9), (5, 9)],
+2025-05-24 09:21:26,735 - flwr - INFO -          'ga_stacking_score_range': [(1, 94), (2, 96), (3, 98), (4, 9), (5, 9)],
+INFO :           'global_model_ipfs_hash': [(1,
+2025-05-24 09:21:26,735 - flwr - INFO -          'global_model_ipfs_hash': [(1,
+INFO :                                       'QmXn4nsoVGsNqjvK5MDm36bui9vGbqj7JRTfX7WSShXqrS'),
+2025-05-24 09:21:26,735 - flwr - INFO -                                      'QmXn4nsoVGsNqjvK5MDm36bui9vGbqj7JRTfX7WSShXqrS'),
+INFO :                                      (2,
+2025-05-24 09:21:26,735 - flwr - INFO -                                     (2,
+INFO :                                       'QmeiWPu4s1ranLzJLJf9MgHQu9mjnEA1TzAn4UdpVRo5Vi'),
+2025-05-24 09:21:26,735 - flwr - INFO -                                      'QmeiWPu4s1ranLzJLJf9MgHQu9mjnEA1TzAn4UdpVRo5Vi'),
+INFO :                                      (3,
+2025-05-24 09:21:26,735 - flwr - INFO -                                     (3,
+INFO :                                       'QmbWno9PeLsC6wscRhT7pF9RxUqJhCNzjWNmoWpysHehKb'),
+2025-05-24 09:21:26,735 - flwr - INFO -                                      'QmbWno9PeLsC6wscRhT7pF9RxUqJhCNzjWNmoWpysHehKb'),
+INFO :                                      (4,
+2025-05-24 09:21:26,735 - flwr - INFO -                                     (4,
+INFO :                                       'QmefMmiCWWKVqXGd5GuFrHNYGpbnAcf7ZN7XNZWeARtShC'),
+2025-05-24 09:21:26,735 - flwr - INFO -                                      'QmefMmiCWWKVqXGd5GuFrHNYGpbnAcf7ZN7XNZWeARtShC'),
+INFO :                                      (5,
+2025-05-24 09:21:26,736 - flwr - INFO -                                     (5,
+INFO :                                       'QmdvEfnx4ff8aHMQp6N5E3zfeGaF6v7M6gpNCgDvGmfZtU')],
+2025-05-24 09:21:26,736 - flwr - INFO -                                      'QmdvEfnx4ff8aHMQp6N5E3zfeGaF6v7M6gpNCgDvGmfZtU')],
+INFO :           'participating_clients': [(1, 2), (2, 2), (3, 2), (4, 2), (5, 2)],
+2025-05-24 09:21:26,736 - flwr - INFO -          'participating_clients': [(1, 2), (2, 2), (3, 2), (4, 2), (5, 2)],
+INFO :           'total_clients': [(1, 2), (2, 2), (3, 2), (4, 2), (5, 2)],
+2025-05-24 09:21:26,736 - flwr - INFO -          'total_clients': [(1, 2), (2, 2), (3, 2), (4, 2), (5, 2)],
+INFO :           'unauthorized_clients': [(1, 0), (2, 0), (3, 0), (4, 0), (5, 0)]}
+2025-05-24 09:21:26,736 - flwr - INFO -          'unauthorized_clients': [(1, 0), (2, 0), (3, 0), (4, 0), (5, 0)]}
+INFO :          History (metrics, distributed, evaluate):
+2025-05-24 09:21:26,737 - flwr - INFO -         History (metrics, distributed, evaluate):
+INFO :          {'accuracy': [(1, 99.90784623486044),
+2025-05-24 09:21:26,737 - flwr - INFO -         {'accuracy': [(1, 99.90784623486044),
+INFO :                        (2, 99.90784623486044),
+2025-05-24 09:21:26,737 - flwr - INFO -                       (2, 99.90784623486044),
+INFO :                        (3, 99.90784623486044),
+2025-05-24 09:21:26,737 - flwr - INFO -                       (3, 99.90784623486044),
+INFO :                        (4, 99.90784623486044),
+2025-05-24 09:21:26,737 - flwr - INFO -                       (4, 99.90784623486044),
+INFO :                        (5, 99.90784623486044)],
+2025-05-24 09:21:26,738 - flwr - INFO -                       (5, 99.90784623486044)],
+INFO :           'authorized_clients': [(1, 2), (2, 2), (3, 2), (4, 2), (5, 2)],
+2025-05-24 09:21:26,738 - flwr - INFO -          'authorized_clients': [(1, 2), (2, 2), (3, 2), (4, 2), (5, 2)],
+INFO :           'avg_accuracy': [(1, 99.90784623486044),
+2025-05-24 09:21:26,738 - flwr - INFO -          'avg_accuracy': [(1, 99.90784623486044),
+INFO :                            (2, 99.90784623486044),
+2025-05-24 09:21:26,738 - flwr - INFO -                           (2, 99.90784623486044),
+INFO :                            (3, 99.90784623486044),
+2025-05-24 09:21:26,738 - flwr - INFO -                           (3, 99.90784623486044),
+INFO :                            (4, 99.90784623486044),
+2025-05-24 09:21:26,739 - flwr - INFO -                           (4, 99.90784623486044),
+INFO :                            (5, 99.90784623486044)],
+2025-05-24 09:21:26,739 - flwr - INFO -                           (5, 99.90784623486044)],
+INFO :           'avg_f1_score': [(1, 0.7619047619047619),
+2025-05-24 09:21:26,739 - flwr - INFO -          'avg_f1_score': [(1, 0.7619047619047619),
+INFO :                            (2, 0.7619047619047619),
+2025-05-24 09:21:26,740 - flwr - INFO -                           (2, 0.7619047619047619),
+INFO :                            (3, 0.7619047619047619),
+2025-05-24 09:21:26,740 - flwr - INFO -                           (3, 0.7619047619047619),
+INFO :                            (4, 0.7619047619047619),
+2025-05-24 09:21:26,740 - flwr - INFO -                           (4, 0.7619047619047619),
+INFO :                            (5, 0.7619047619047619)],
+2025-05-24 09:21:26,740 - flwr - INFO -                           (5, 0.7619047619047619)],
+INFO :           'avg_precision': [(1, 0.6941176470588235),
+2025-05-24 09:21:26,741 - flwr - INFO -          'avg_precision': [(1, 0.6941176470588235),
+INFO :                             (2, 0.6941176470588235),
+2025-05-24 09:21:26,741 - flwr - INFO -                            (2, 0.6941176470588235),
+INFO :                             (3, 0.6941176470588235),
+2025-05-24 09:21:26,741 - flwr - INFO -                            (3, 0.6941176470588235),
+INFO :                             (4, 0.6941176470588235),
+2025-05-24 09:21:26,741 - flwr - INFO -                            (4, 0.6941176470588235),
+INFO :                             (5, 0.6941176470588235)],
+2025-05-24 09:21:26,741 - flwr - INFO -                            (5, 0.6941176470588235)],
+INFO :           'avg_recall': [(1, 0.8461538461538463),
+2025-05-24 09:21:26,741 - flwr - INFO -          'avg_recall': [(1, 0.8461538461538463),
+INFO :                          (2, 0.8461538461538463),
+2025-05-24 09:21:26,741 - flwr - INFO -                         (2, 0.8461538461538463),
+INFO :                          (3, 0.8461538461538463),
+2025-05-24 09:21:26,741 - flwr - INFO -                         (3, 0.8461538461538463),
+INFO :                          (4, 0.8461538461538463),
+2025-05-24 09:21:26,741 - flwr - INFO -                         (4, 0.8461538461538463),
+INFO :                          (5, 0.8461538461538463)],
+2025-05-24 09:21:26,741 - flwr - INFO -                         (5, 0.8461538461538463)],
+INFO :           'data_points': [(1, 90986.0),
+2025-05-24 09:21:26,741 - flwr - INFO -          'data_points': [(1, 90986.0),
+INFO :                           (2, 90986.0),
+2025-05-24 09:21:26,741 - flwr - INFO -                          (2, 90986.0),
+INFO :                           (3, 90986.0),
+2025-05-24 09:21:26,741 - flwr - INFO -                          (3, 90986.0),
+INFO :                           (4, 90986.0),
+2025-05-24 09:21:26,742 - flwr - INFO -                          (4, 90986.0),
+INFO :                           (5, 90986.0)],
+2025-05-24 09:21:26,742 - flwr - INFO -                          (5, 90986.0)],
+INFO :           'ensemble_size': [(1, 7.0), (2, 7.0), (3, 7.0), (4, 7.0), (5, 7.0)],
+2025-05-24 09:21:26,742 - flwr - INFO -          'ensemble_size': [(1, 7.0), (2, 7.0), (3, 7.0), (4, 7.0), (5, 7.0)],
+INFO :           'f1_score': [(1, 0.7619047619047619),
+2025-05-24 09:21:26,742 - flwr - INFO -          'f1_score': [(1, 0.7619047619047619),
+INFO :                        (2, 0.7619047619047619),
+2025-05-24 09:21:26,742 - flwr - INFO -                       (2, 0.7619047619047619),
+INFO :                        (3, 0.7619047619047619),
+2025-05-24 09:21:26,742 - flwr - INFO -                       (3, 0.7619047619047619),
+INFO :                        (4, 0.7619047619047619),
+2025-05-24 09:21:26,742 - flwr - INFO -                       (4, 0.7619047619047619),
+INFO :                        (5, 0.7619047619047619)],
+2025-05-24 09:21:26,742 - flwr - INFO -                       (5, 0.7619047619047619)],
+INFO :           'false_negatives': [(1, 4), (2, 4), (3, 4), (4, 4), (5, 4)],
+2025-05-24 09:21:26,742 - flwr - INFO -          'false_negatives': [(1, 4), (2, 4), (3, 4), (4, 4), (5, 4)],
+INFO :           'false_positives': [(1, 10), (2, 10), (3, 10), (4, 10), (5, 10)],
+2025-05-24 09:21:26,742 - flwr - INFO -          'false_positives': [(1, 10), (2, 10), (3, 10), (4, 10), (5, 10)],
+INFO :           'global_f1': [(1, 0.7586206896551724),
+2025-05-24 09:21:26,743 - flwr - INFO -          'global_f1': [(1, 0.7586206896551724),
+INFO :                         (2, 0.7586206896551724),
+2025-05-24 09:21:26,743 - flwr - INFO -                        (2, 0.7586206896551724),
+INFO :                         (3, 0.7586206896551724),
+2025-05-24 09:21:26,743 - flwr - INFO -                        (3, 0.7586206896551724),
+INFO :                         (4, 0.7586206896551724),
+2025-05-24 09:21:26,743 - flwr - INFO -                        (4, 0.7586206896551724),
+INFO :                         (5, 0.7586206896551724)],
+2025-05-24 09:21:26,743 - flwr - INFO -                        (5, 0.7586206896551724)],
+INFO :           'global_model_contributors': [(1, 2.0),
+2025-05-24 09:21:26,743 - flwr - INFO -          'global_model_contributors': [(1, 2.0),
+INFO :                                         (2, 2.0),
+2025-05-24 09:21:26,743 - flwr - INFO -                                        (2, 2.0),
+INFO :                                         (3, 2.0),
+2025-05-24 09:21:26,743 - flwr - INFO -                                        (3, 2.0),
+INFO :                                         (4, 2.0),
+2025-05-24 09:21:26,743 - flwr - INFO -                                        (4, 2.0),
+INFO :                                         (5, 2.0)],
+2025-05-24 09:21:26,743 - flwr - INFO -                                        (5, 2.0)],
+INFO :           'global_precision': [(1, 0.6875),
+2025-05-24 09:21:26,744 - flwr - INFO -          'global_precision': [(1, 0.6875),
+INFO :                                (2, 0.6875),
+2025-05-24 09:21:26,744 - flwr - INFO -                               (2, 0.6875),
+INFO :                                (3, 0.6875),
+2025-05-24 09:21:26,744 - flwr - INFO -                               (3, 0.6875),
+INFO :                                (4, 0.6875),
+2025-05-24 09:21:26,744 - flwr - INFO -                               (4, 0.6875),
+INFO :                                (5, 0.6875)],
+2025-05-24 09:21:26,744 - flwr - INFO -                               (5, 0.6875)],
+INFO :           'global_recall': [(1, 0.8461538461538461),
+2025-05-24 09:21:26,744 - flwr - INFO -          'global_recall': [(1, 0.8461538461538461),
+INFO :                             (2, 0.8461538461538461),
+2025-05-24 09:21:26,744 - flwr - INFO -                            (2, 0.8461538461538461),
+INFO :                             (3, 0.8461538461538461),
+2025-05-24 09:21:26,744 - flwr - INFO -                            (3, 0.8461538461538461),
+INFO :                             (4, 0.8461538461538461),
+2025-05-24 09:21:26,744 - flwr - INFO -                            (4, 0.8461538461538461),
+INFO :                             (5, 0.8461538461538461)],
+2025-05-24 09:21:26,745 - flwr - INFO -                            (5, 0.8461538461538461)],
+INFO :           'loss': [(1, 0.012553484568256185),
+2025-05-24 09:21:26,745 - flwr - INFO -          'loss': [(1, 0.012553484568256185),
+INFO :                    (2, 0.011982387332275262),
+2025-05-24 09:21:26,745 - flwr - INFO -                   (2, 0.011982387332275262),
+INFO :                    (3, 0.012254702495374182),
+2025-05-24 09:21:26,745 - flwr - INFO -                   (3, 0.012254702495374182),
+INFO :                    (4, 0.01201922358552339),
+2025-05-24 09:21:26,746 - flwr - INFO -                   (4, 0.01201922358552339),
+INFO :                    (5, 0.01072275437560712)],
+2025-05-24 09:21:26,746 - flwr - INFO -                   (5, 0.01072275437560712)],
+INFO :           'num_clients': [(1, 2), (2, 2), (3, 2), (4, 2), (5, 2)],
+2025-05-24 09:21:26,746 - flwr - INFO -          'num_clients': [(1, 2), (2, 2), (3, 2), (4, 2), (5, 2)],
+INFO :           'our_contribution_score': [(1, 7688.5),
+2025-05-24 09:21:26,746 - flwr - INFO -          'our_contribution_score': [(1, 7688.5),
+INFO :                                      (2, 7688.5),
+2025-05-24 09:21:26,747 - flwr - INFO -                                     (2, 7688.5),
+INFO :                                      (3, 7688.5),
+2025-05-24 09:21:26,747 - flwr - INFO -                                     (3, 7688.5),
+INFO :                                      (4, 7688.5),
+2025-05-24 09:21:26,747 - flwr - INFO -                                     (4, 7688.5),
+INFO :                                      (5, 7688.5)],
+2025-05-24 09:21:26,747 - flwr - INFO -                                     (5, 7688.5)],
+INFO :           'our_rank': [(1, 0.0), (2, 0.0), (3, 0.0), (4, 0.0), (5, 0.0)],
+2025-05-24 09:21:26,748 - flwr - INFO -          'our_rank': [(1, 0.0), (2, 0.0), (3, 0.0), (4, 0.0), (5, 0.0)],
+INFO :           'our_reward_amount': [(1, 0.0), (2, 0.0), (3, 0.0), (4, 0.0), (5, 0.0)],
+2025-05-24 09:21:26,748 - flwr - INFO -          'our_reward_amount': [(1, 0.0), (2, 0.0), (3, 0.0), (4, 0.0), (5, 0.0)],
+INFO :           'precision': [(1, 0.6941176470588235),
+2025-05-24 09:21:26,748 - flwr - INFO -          'precision': [(1, 0.6941176470588235),
+INFO :                         (2, 0.6941176470588235),
+2025-05-24 09:21:26,749 - flwr - INFO -                        (2, 0.6941176470588235),
+INFO :                         (3, 0.6941176470588235),
+2025-05-24 09:21:26,749 - flwr - INFO -                        (3, 0.6941176470588235),
+INFO :                         (4, 0.6941176470588235),
+2025-05-24 09:21:26,749 - flwr - INFO -                        (4, 0.6941176470588235),
+INFO :                         (5, 0.6941176470588235)],
+2025-05-24 09:21:26,749 - flwr - INFO -                        (5, 0.6941176470588235)],
+INFO :           'recall': [(1, 0.8461538461538463),
+2025-05-24 09:21:26,749 - flwr - INFO -          'recall': [(1, 0.8461538461538463),
+INFO :                      (2, 0.8461538461538463),
+2025-05-24 09:21:26,749 - flwr - INFO -                     (2, 0.8461538461538463),
+INFO :                      (3, 0.8461538461538463),
+2025-05-24 09:21:26,750 - flwr - INFO -                     (3, 0.8461538461538463),
+INFO :                      (4, 0.8461538461538463),
+2025-05-24 09:21:26,750 - flwr - INFO -                     (4, 0.8461538461538463),
+INFO :                      (5, 0.8461538461538463)],
+2025-05-24 09:21:26,750 - flwr - INFO -                     (5, 0.8461538461538463)],
+INFO :           'total_clients': [(1, 2), (2, 2), (3, 2), (4, 2), (5, 2)],
+2025-05-24 09:21:26,750 - flwr - INFO -          'total_clients': [(1, 2), (2, 2), (3, 2), (4, 2), (5, 2)],
+INFO :           'true_negatives': [(1, 15156), (2, 15156), (3, 15156), (4, 15156), (5, 15156)],
+2025-05-24 09:21:26,750 - flwr - INFO -          'true_negatives': [(1, 15156), (2, 15156), (3, 15156), (4, 15156), (5, 15156)],
+INFO :           'true_positives': [(1, 22), (2, 22), (3, 22), (4, 22), (5, 22)],
+2025-05-24 09:21:26,751 - flwr - INFO -          'true_positives': [(1, 22), (2, 22), (3, 22), (4, 22), (5, 22)],
+INFO :           'unauthorized_clients': [(1, 0), (2, 0), (3, 0), (4, 0), (5, 0)]}
+2025-05-24 09:21:26,751 - flwr - INFO -          'unauthorized_clients': [(1, 0), (2, 0), (3, 0), (4, 0), (5, 0)]}
+INFO :      
+2025-05-24 09:21:26,751 - flwr - INFO - 
+2025-05-24 09:21:26,791 - grpc._server - ERROR - Exception iterating responses: 
+Traceback (most recent call last):
+  File "/home/cam/v2-flw/backend/venv/lib/python3.8/site-packages/grpc/_server.py", line 654, in _take_response_from_response_iterator
+    return next(response_iterator), True
+  File "/home/cam/v2-flw/backend/venv/lib/python3.8/site-packages/flwr/server/superlink/fleet/grpc_bidi/flower_service_servicer.py", line 117, in Join
+    ins_wrapper: InsWrapper = next(ins_wrapper_iterator)
+  File "/home/cam/v2-flw/backend/venv/lib/python3.8/site-packages/flwr/server/superlink/fleet/grpc_bidi/grpc_bridge.py", line 165, in ins_wrapper_iterator
+    self._raise_if_closed()
+  File "/home/cam/v2-flw/backend/venv/lib/python3.8/site-packages/flwr/server/superlink/fleet/grpc_bidi/grpc_bridge.py", line 81, in _raise_if_closed
+    raise GrpcBridgeClosed()
+flwr.server.superlink.fleet.grpc_bidi.grpc_bridge.GrpcBridgeClosed
+2025-05-24 09:21:26,828 - FL-Server - INFO - Saved metrics history to metrics/run_2025-05-24_14-07-59/metrics_history.json
+2025-05-24 09:21:26,865 - FL-Server - INFO - Saved round 1 metrics to metrics/run_2025-05-24_14-07-59/round_1_metrics.json
+2025-05-24 09:21:26,866 - FL-Server - INFO - Saved round 1 metrics to metrics/run_2025-05-24_14-07-59/round_1_metrics.json
+2025-05-24 09:21:26,867 - FL-Server - INFO - Saved round 2 metrics to metrics/run_2025-05-24_14-07-59/round_2_metrics.json
+2025-05-24 09:21:26,868 - FL-Server - INFO - Saved round 2 metrics to metrics/run_2025-05-24_14-07-59/round_2_metrics.json
+2025-05-24 09:21:26,869 - FL-Server - INFO - Saved round 3 metrics to metrics/run_2025-05-24_14-07-59/round_3_metrics.json
+2025-05-24 09:21:26,869 - FL-Server - INFO - Saved round 3 metrics to metrics/run_2025-05-24_14-07-59/round_3_metrics.json
+2025-05-24 09:21:26,870 - FL-Server - INFO - Saved round 4 metrics to metrics/run_2025-05-24_14-07-59/round_4_metrics.json
+2025-05-24 09:21:26,872 - FL-Server - INFO - Saved round 4 metrics to metrics/run_2025-05-24_14-07-59/round_4_metrics.json
+2025-05-24 09:21:26,872 - FL-Server - INFO - Saved round 5 metrics to metrics/run_2025-05-24_14-07-59/round_5_metrics.json
+2025-05-24 09:21:26,873 - FL-Server - INFO - Saved round 5 metrics to metrics/run_2025-05-24_14-07-59/round_5_metrics.json
+2025-05-24 09:21:26,886 - FL-Server - ERROR - Could not import visualization module: No module named 'visualization'
+2025-05-24 09:21:27,165 - FL-Server - INFO - Saved client 7Ae97F28 stats to metrics/run_2025-05-24_14-07-59/client_7Ae97F28_stats.json
+2025-05-24 09:21:27,525 - FL-Server - INFO - Saved client 8DdAB7fe stats to metrics/run_2025-05-24_14-07-59/client_8DdAB7fe_stats.json
+2025-05-24 09:21:27,883 - FL-Server - INFO - Saved client 7C157C4f stats to metrics/run_2025-05-24_14-07-59/client_7C157C4f_stats.json
+2025-05-24 09:21:28,066 - FL-Server - INFO - Saved client d524E031 stats to metrics/run_2025-05-24_14-07-59/client_d524E031_stats.json
+2025-05-24 09:21:28,069 - FL-Server - INFO - Saved combined client stats to metrics/run_2025-05-24_14-07-59/client_stats.json
+2025-05-24 09:21:28,070 - FL-Server - INFO - Retrieving models for 10 completed rounds
+2025-05-24 09:21:28,123 - FL-Server - INFO - Found model for round 1
+2025-05-24 09:21:28,126 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmXn4nsoVGsNqjvK5MDm36bui9vGbqj7JRTfX7WSShXqrS
+2025-05-24 09:21:28,126 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmXn4nsoVGsNqjvK5MDm36bui9vGbqj7JRTfX7WSShXqrS
+2025-05-24 09:21:28,128 - FL-Server - INFO - Saved round 1 model data to metrics/run_2025-05-24_14-07-59/model_round_1.json
+2025-05-24 09:21:28,203 - FL-Server - INFO - Found model for round 2
+2025-05-24 09:21:28,207 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmeiWPu4s1ranLzJLJf9MgHQu9mjnEA1TzAn4UdpVRo5Vi
+2025-05-24 09:21:28,208 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmeiWPu4s1ranLzJLJf9MgHQu9mjnEA1TzAn4UdpVRo5Vi
+2025-05-24 09:21:28,209 - FL-Server - INFO - Saved round 2 model data to metrics/run_2025-05-24_14-07-59/model_round_2.json
+2025-05-24 09:21:28,282 - FL-Server - INFO - Found model for round 3
+2025-05-24 09:21:28,286 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmbWno9PeLsC6wscRhT7pF9RxUqJhCNzjWNmoWpysHehKb
+2025-05-24 09:21:28,287 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmbWno9PeLsC6wscRhT7pF9RxUqJhCNzjWNmoWpysHehKb
+2025-05-24 09:21:28,288 - FL-Server - INFO - Saved round 3 model data to metrics/run_2025-05-24_14-07-59/model_round_3.json
+2025-05-24 09:21:28,327 - FL-Server - INFO - Found model for round 4
+2025-05-24 09:21:28,331 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmefMmiCWWKVqXGd5GuFrHNYGpbnAcf7ZN7XNZWeARtShC
+2025-05-24 09:21:28,332 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmefMmiCWWKVqXGd5GuFrHNYGpbnAcf7ZN7XNZWeARtShC
+2025-05-24 09:21:28,333 - FL-Server - INFO - Saved round 4 model data to metrics/run_2025-05-24_14-07-59/model_round_4.json
+2025-05-24 09:21:28,368 - FL-Server - INFO - Found model for round 5
+2025-05-24 09:21:28,370 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmdvEfnx4ff8aHMQp6N5E3zfeGaF6v7M6gpNCgDvGmfZtU
+2025-05-24 09:21:28,371 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmdvEfnx4ff8aHMQp6N5E3zfeGaF6v7M6gpNCgDvGmfZtU
+2025-05-24 09:21:28,372 - FL-Server - INFO - Saved round 5 model data to metrics/run_2025-05-24_14-07-59/model_round_5.json
+2025-05-24 09:21:28,412 - FL-Server - INFO - Found model for round 6
+2025-05-24 09:21:28,417 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmRgTA2BuCdKSqT4hyEpL8BVvYdwBYZngEm1URUVXaeTfQ
+2025-05-24 09:21:28,417 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmRgTA2BuCdKSqT4hyEpL8BVvYdwBYZngEm1URUVXaeTfQ
+2025-05-24 09:21:28,418 - FL-Server - INFO - Saved round 6 model data to metrics/run_2025-05-24_14-07-59/model_round_6.json
+2025-05-24 09:21:28,450 - FL-Server - INFO - Found model for round 7
+2025-05-24 09:21:28,453 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmTp5prTs2MgEJ697oeCy5fkAk3QETUpnFAJ4LTD3ZdSwL
+2025-05-24 09:21:28,453 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmTp5prTs2MgEJ697oeCy5fkAk3QETUpnFAJ4LTD3ZdSwL
+2025-05-24 09:21:28,454 - FL-Server - INFO - Saved round 7 model data to metrics/run_2025-05-24_14-07-59/model_round_7.json
+2025-05-24 09:21:28,487 - FL-Server - INFO - Found model for round 8
+2025-05-24 09:21:28,491 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmdH2iqPggDZACfXwgBrgqMfn6KZaN7obKLHqv9X1ospdd
+2025-05-24 09:21:28,491 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmdH2iqPggDZACfXwgBrgqMfn6KZaN7obKLHqv9X1ospdd
+2025-05-24 09:21:28,492 - FL-Server - INFO - Saved round 8 model data to metrics/run_2025-05-24_14-07-59/model_round_8.json
+2025-05-24 09:21:28,529 - FL-Server - INFO - Found model for round 9
+2025-05-24 09:21:28,533 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmTeGqyFnHB9g2tVfEBNmJFgu6EGTsLF1puojXwASv83Gk
+2025-05-24 09:21:28,534 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmTeGqyFnHB9g2tVfEBNmJFgu6EGTsLF1puojXwASv83Gk
+2025-05-24 09:21:28,535 - FL-Server - INFO - Saved round 9 model data to metrics/run_2025-05-24_14-07-59/model_round_9.json
+2025-05-24 09:21:28,573 - FL-Server - INFO - Found model for round 10
+2025-05-24 09:21:28,576 - federated.ipfs - INFO - Retrieved file from IPFS with hash: QmYU6toDZjKeHcw5FRqRZfQanzp2QNC8XLDd3PETtkz1AR
+2025-05-24 09:21:28,577 - federated.ipfs - INFO - Retrieved and parsed JSON data from IPFS hash: QmYU6toDZjKeHcw5FRqRZfQanzp2QNC8XLDd3PETtkz1AR
+2025-05-24 09:21:28,580 - FL-Server - INFO - Saved round 10 model data to metrics/run_2025-05-24_14-07-59/model_round_10.json
+2025-05-24 09:21:28,581 - FL-Server - INFO - Saved model history with 10 models to metrics/run_2025-05-24_14-07-59/model_history.json
+2025-05-24 09:21:28,604 - FL-Server - INFO - Updated Latest model: {'modelId': b"\n<\xe7\x9f\x82p$a'_\x10\xdbn\xc1\x0e\x9efN\x12\x85\x11\x1d\xe1\x17\x9f\xfa\xfb\xd4\x96\xa6\x9da", 'ipfsHash': 'QmTXgAtNzJzAotmtGHwuYyjdNxnmWPFVcbH9A1p4WrX4yc', 'round': 5, 'version': '1.0.0524-8573.5', 'timestamp': 1748066082, 'participatingClients': 2}
+2025-05-24 09:21:28,606 - FL-Server - INFO - Server completed 5 rounds of federated learning with GA-Stacking
+2025-05-24 09:21:28,607 - FL-Server - INFO - All metrics saved to metrics/run_2025-05-24_14-07-59
