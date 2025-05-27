@@ -1,0 +1,58 @@
+# Federated Learning Performance Analysis Report
+Client ID: client-2
+Wallet Address: 0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe
+Generated: 2025-05-25 17:01:25
+====================================================================================================
+
+## Dataset Information
+--------------------------------------------------
+Total Original Samples: 0
+Total Features: 0
+
+### Data Split Distribution
+├── Training Set:   0 samples
+├── Validation Set: 0 samples
+└── Test Set:       0 samples
+
+### Fraud Case Distribution
+**Training Set (0 samples):**
+  ├── Fraud Cases:  0 (0.00%)
+  └── Normal Cases: 0 (100.00%)
+
+**Validation Set (0 samples):**
+  ├── Fraud Cases:  0 (0.00%)
+  └── Normal Cases: 0 (100.00%)
+
+**Test Set (0 samples):**
+  ├── Fraud Cases:  0 (0.00%)
+  └── Normal Cases: 0 (100.00%)
+
+## Session Information
+--------------------------------------------------
+Session Start: 2025-05-25 16:59:57 UTC
+Session End:   2025-05-25 17:01:24 UTC
+Duration:      00:01:27
+Total Rounds:  2
+
+## Validation Set Performance Summary
+--------------------------------------------------
+ round       phase   loss accuracy precision recall f1_score  tp  tn  fp  fn
+     1    Training 0.0053   100.0%    100.0% 100.0%   100.0%   1 364   0   0
+     2 Fine-tuning 0.0027   100.0%    100.0% 100.0%   100.0%   1 364   0   0
+
+## Test Set Performance Summary
+--------------------------------------------------
+ round       phase   loss accuracy precision recall f1_score  tp  tn  fp  fn
+     1    Training 0.0048   100.0%    100.0% 100.0%   100.0%   1 730   0   0
+     2 Fine-tuning 0.0022   100.0%    100.0% 100.0%   100.0%   1 730   0   0
+
+## Global Model Evaluation Summary
+--------------------------------------------------
+ round   loss accuracy precision recall f1_score  tp  tn  fp  fn  score  rank  reward
+     1 0.0055   100.0%    100.0% 100.0%   100.0%   1 730   0   0    0.0     0     0.0
+     2 0.0038   100.0%    100.0% 100.0%   100.0%   1 730   0   0    0.0     0     0.0
+
+## Performance Insights
+➡️  Recall remained stable at 100.0%
+🏆 Best performance in Round 1 with score 0
+📊 Average contribution score: 0

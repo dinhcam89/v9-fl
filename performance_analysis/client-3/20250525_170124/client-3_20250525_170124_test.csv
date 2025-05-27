@@ -1,0 +1,3 @@
+round,phase,loss,accuracy,precision,recall,f1_score,tp,tn,fp,fn
+1,Training,0.0021,100.0%,100.0%,100.0%,100.0%,2,729,0,0
+2,Fine-tuning,0.002,100.0%,100.0%,100.0%,100.0%,2,729,0,0

@@ -1,0 +1,67 @@
+# Federated Learning Performance Analysis Report
+Client ID: client-1
+Wallet Address: 0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f
+Generated: 2025-05-26 02:50:25
+====================================================================================================
+
+## Dataset Information
+--------------------------------------------------
+Total Original Samples: 0
+Total Features: 0
+
+### Data Split Distribution
+├── Training Set:   0 samples
+├── Validation Set: 0 samples
+└── Test Set:       0 samples
+
+### Fraud Case Distribution
+**Training Set (0 samples):**
+  ├── Fraud Cases:  0 (0.00%)
+  └── Normal Cases: 0 (100.00%)
+
+**Validation Set (0 samples):**
+  ├── Fraud Cases:  0 (0.00%)
+  └── Normal Cases: 0 (100.00%)
+
+**Test Set (0 samples):**
+  ├── Fraud Cases:  0 (0.00%)
+  └── Normal Cases: 0 (100.00%)
+
+## Session Information
+--------------------------------------------------
+Session Start: 2025-05-25 17:12:17 UTC
+Session End:   2025-05-26 02:50:24 UTC
+Duration:      09:38:07
+Total Rounds:  5
+
+## Validation Set Performance Summary
+--------------------------------------------------
+ round       phase   loss accuracy precision recall f1_score  tp   tn  fp  fn
+     1    Training 0.0111   99.88%    64.71% 68.75%   66.67%  11 9471   6   5
+     2 Fine-tuning 0.0240   99.89%    68.75% 68.75%   68.75%  11 9472   5   5
+     3 Fine-tuning 0.0192   99.88%    64.71% 68.75%   66.67%  11 9471   6   5
+     4 Fine-tuning 0.0119   99.89%    68.75% 68.75%   68.75%  11 9472   5   5
+     5 Fine-tuning 0.0273   99.89%    68.75% 68.75%   68.75%  11 9472   5   5
+
+## Test Set Performance Summary
+--------------------------------------------------
+ round       phase   loss accuracy precision recall f1_score  tp    tn  fp  fn
+     1    Training 0.0094   99.94%     80.0% 84.85%   82.35%  28 18948   7   5
+     2 Fine-tuning 0.0230   99.93%    76.32% 87.88%   81.69%  29 18946   9   4
+     3 Fine-tuning 0.0180   99.94%    78.38% 87.88%   82.86%  29 18947   8   4
+     4 Fine-tuning 0.0105   99.94%    82.35% 84.85%   83.58%  28 18949   6   5
+     5 Fine-tuning 0.0268   99.93%    75.68% 84.85%    80.0%  28 18946   9   5
+
+## Global Model Evaluation Summary
+--------------------------------------------------
+ round   loss accuracy precision recall f1_score  tp    tn  fp  fn  score  rank  reward
+     1 0.0134   99.93%    77.78% 84.85%   81.16%  28 18947   8   5    0.0     0     0.0
+     2 0.0166   99.92%    73.68% 84.85%   78.87%  28 18945  10   5    0.0     0     0.0
+     3 0.0192   99.94%     80.0% 84.85%   82.35%  28 18948   7   5    0.0     0     0.0
+     4 0.0116   99.94%     80.0% 84.85%   82.35%  28 18948   7   5    0.0     0     0.0
+     5 0.0185   99.94%     80.0% 84.85%   82.35%  28 18948   7   5    0.0     0     0.0
+
+## Performance Insights
+➡️  Recall remained stable at 84.8%
+🏆 Best performance in Round 1 with score 0
+📊 Average contribution score: 0

@@ -29,9 +29,10 @@ class GAStackingPipeline:
         cv_folds=config.CV_FOLDS,
         crossover_prob=config.CROSSOVER_PROB,
         mutation_prob=config.MUTATION_PROB,
+        mutation_scale=config.MUTATION_SCALE,
+        sigma_share=config.SIGMA_SHARE,
         metric=config.METRIC,
-        verbose=True,
-        init_weights=None,
+        verbose=True
     ):
         self.base_models = base_models
         self.meta_models = meta_models
@@ -40,16 +41,17 @@ class GAStackingPipeline:
         self.cv_folds = cv_folds
         self.crossover_prob = crossover_prob
         self.mutation_prob = mutation_prob
+        self.mutation_scale = mutation_scale     # ✅ mới
+        self.sigma_share = sigma_share           # ✅ mới
         self.metric = metric
         self.verbose = verbose
-        
+
         # Initialized during training
         self.trained_base_models = None
         self.best_weights = None
         self.meta_model = None
         self.convergence_history = []
         self.model_names = list(base_models.keys())
-        self.init_weights = init_weights
     
     def train(self, X_train, y_train, X_val, y_val, init_weights=None):
         """Train the GA-Stacking ensemble with optional initial weights."""
@@ -82,14 +84,18 @@ class GAStackingPipeline:
                 print(f"Using provided initial weights: {init_weights}")
         
         self.best_weights, convergence = GA_weighted(
-            meta_X_train, y_train, meta_X_val, y_val,
+            meta_X_train=meta_X_train,
+            y_train=y_train,
+            meta_X_val=meta_X_val,
+            y_val=y_val,
             pop_size=self.pop_size,
             generations=self.generations,
             crossover_prob=self.crossover_prob,
             mutation_prob=self.mutation_prob,
+            mutation_scale=self.mutation_scale,     # ✅ thêm
+            sigma_share=self.sigma_share,           # ✅ thêm
             metric=self.metric,
-            verbose=self.verbose,
-            init_weights=init_weights  # Pass initial weights
+            verbose=self.verbose
         )
         self.convergence_history = convergence
         
@@ -391,17 +397,18 @@ class GAStackingPipeline:
                 print(f"Using provided aggregated weights: {weights}")
         
         self.best_weights, convergence = GA_weighted(
-            meta_X_train, 
-            y_train, 
-            meta_X_val, 
-            y_val,
+            meta_X_train=meta_X_train,
+            y_train=y_train,
+            meta_X_val=meta_X_val,
+            y_val=y_val,
             pop_size=self.pop_size,
             generations=self.generations,
             crossover_prob=self.crossover_prob,
             mutation_prob=self.mutation_prob,
+            mutation_scale=self.mutation_scale,     # ✅ thêm
+            sigma_share=self.sigma_share,           # ✅ thêm
             metric=self.metric,
-            verbose=self.verbose,
-            init_weights=weights  # Pass weights as initial weights
+            verbose=self.verbose
         )
         self.convergence_history = convergence
         

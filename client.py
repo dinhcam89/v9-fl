@@ -45,6 +45,7 @@ from sklearn.preprocessing import StandardScaler
 
 from ipfs_connector import IPFSConnector
 from blockchain_connector import BlockchainConnector
+from report_generator import PerformanceTableGenerator
 
 import sys, os
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -80,7 +81,8 @@ class GAStackingClient(fl.client.NumPyClient):
         private_key: Optional[str] = None,
         client_id: str = None,
         ga_generations: int = 3,
-        ga_population_size: int = 8
+        ga_population_size: int = 8,
+        table_generator: Optional[PerformanceTableGenerator] = None
     ):
         """
         Initialize GA-Stacking client with scikit-learn models.
@@ -113,6 +115,11 @@ class GAStackingClient(fl.client.NumPyClient):
         self.client_id = client_id or f"client-{os.getpid()}"
         self.ga_generations = ga_generations
         self.ga_population_size = ga_population_size
+        
+        # Initialize Table Generator if provided
+        self.table_generator = PerformanceTableGenerator(client_id, wallet_address)
+        self.table_generator.session_data['client_info']['session_start'] = datetime.now(timezone.utc).isoformat()
+
         
         # Initialize GA-Stacking pipeline
         self.ga_pipeline = GAStackingPipeline(
@@ -180,40 +187,24 @@ class GAStackingClient(fl.client.NumPyClient):
         
         logger.warning("Failed to set parameters - invalid format")
     
-    
     def _print_evaluation_report(self, dataset_name, y_true, y_pred, loss=None, round_num=None):
-        """
-        Print a comprehensive evaluation report with metrics table and confusion matrix.
+        """Enhanced evaluation report that also records data for tables"""
+        # Your existing _print_evaluation_report code here...
+        # [Include all the original code from the document]
         
-        Parameters:
-        -----------
-        dataset_name : str
-            Name of the dataset (e.g., "Validation", "Test")
-        y_true : array-like
-            True labels
-        y_pred : array-like
-            Predicted probabilities or labels
-        loss : float, optional
-            Loss value to include in report
-        round_num : int, optional
-            Round number for context
-        """
         from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, log_loss
         import pandas as pd
         
         # Convert probabilities to binary predictions if needed
         if y_pred.max() <= 1.0 and y_pred.min() >= 0.0 and len(np.unique(y_pred)) > 2:
-            # This looks like probabilities
             binary_pred = (y_pred > 0.5).astype(int)
-            # Calculate loss from probabilities
             if loss is None:
                 clipped_pred = np.clip(y_pred, 1e-7, 1 - 1e-7)
                 loss = log_loss(y_true, clipped_pred)
         else:
-            # This looks like binary predictions
             binary_pred = y_pred.astype(int)
             if loss is None:
-                loss = 0.0  # Can't calculate meaningful loss from binary predictions
+                loss = 0.0
         
         # Calculate metrics
         accuracy = accuracy_score(y_true, binary_pred)
@@ -226,18 +217,41 @@ class GAStackingClient(fl.client.NumPyClient):
         if cm.shape == (2, 2):
             tn, fp, fn, tp = cm.ravel()
         else:
-            # Handle edge case where only one class is present
-            if len(np.unique(y_true)) == 1 and len(np.unique(binary_pred)) == 1:
-                if y_true[0] == 0 and binary_pred[0] == 0:
-                    tn, fp, fn, tp = len(y_true), 0, 0, 0
-                elif y_true[0] == 1 and binary_pred[0] == 1:
-                    tn, fp, fn, tp = 0, 0, 0, len(y_true)
-                else:
-                    tn, fp, fn, tp = 0, len(y_true), 0, 0
-            else:
-                tn, fp, fn, tp = 0, 0, 0, 0
+            tn, fp, fn, tp = 0, 0, 0, 0
         
-        # Create header
+        # Create metrics and confusion matrix dictionaries
+        metrics_dict = {
+            'accuracy': accuracy,
+            'precision': precision,
+            'recall': recall,
+            'f1_score': f1,
+            'loss': loss
+        }
+        
+        cm_dict = {'TP': tp, 'TN': tn, 'FP': fp, 'FN': fn}
+        
+        # Record data based on dataset type
+        phase = "Training" if round_num == 1 and "Training" not in dataset_name else "Fine-tuning"
+        
+        if "Validation" in dataset_name:
+            self.table_generator.record_validation_performance(
+                round_num if round_num else 1, phase, metrics_dict, cm_dict
+            )
+        elif "Test" in dataset_name and "Global" not in dataset_name:
+            self.table_generator.record_test_performance(
+                round_num if round_num else 1, phase, metrics_dict, cm_dict
+            )
+        elif "Global" in dataset_name:
+            # For global evaluation, we might have additional info
+            score = getattr(self, '_last_global_score', 0.0)
+            rank = getattr(self, '_last_global_rank', 0)
+            reward = getattr(self, '_last_global_reward', 0.0)
+            
+            self.table_generator.record_global_evaluation(
+                round_num if round_num else 1, metrics_dict, cm_dict, score, rank, reward
+            )
+        
+        # Print original report format
         header = f"\n{'='*60}"
         if round_num:
             header += f"\n  ROUND {round_num} - {dataset_name.upper()} SET EVALUATION REPORT"
@@ -245,34 +259,29 @@ class GAStackingClient(fl.client.NumPyClient):
             header += f"\n  {dataset_name.upper()} SET EVALUATION REPORT"
         header += f"\n{'='*60}"
         
-        # Create metrics table
-        metrics_data = {
-            'Metric': ['Loss', 'Accuracy', 'Precision', 'Recall', 'F1-Score'],
-            'Value': [f"{loss:.4f}", f"{accuracy:.4f}", f"{precision:.4f}", f"{recall:.4f}", f"{f1:.4f}"],
-            'Percentage': ['-', f"{accuracy*100:.2f}%", f"{precision*100:.2f}%", f"{recall*100:.2f}%", f"{f1*100:.2f}%"]
-        }
-        
-        metrics_df = pd.DataFrame(metrics_data)
-        
-        # Create confusion matrix table
-        cm_data = {
-            '': ['Predicted: 0 (Normal)', 'Predicted: 1 (Fraud)'],
-            'Actual: 0 (Normal)': [f'{tn}', f'{fp}'],
-            'Actual: 1 (Fraud)': [f'{fn}', f'{tp}']
-        }
-        
-        cm_df = pd.DataFrame(cm_data)
-        
-        # Print the report
         print(header)
         print(f"\nDataset: {dataset_name}")
         print(f"Total Samples: {len(y_true)}")
         print(f"Fraud Cases: {np.sum(y_true)} ({np.sum(y_true)/len(y_true)*100:.2f}%)")
         print(f"Normal Cases: {len(y_true) - np.sum(y_true)} ({(len(y_true) - np.sum(y_true))/len(y_true)*100:.2f}%)")
         
+        # Create and print metrics table
+        metrics_data = {
+            'Metric': ['Loss', 'Accuracy', 'Precision', 'Recall', 'F1-Score'],
+            'Value': [f"{loss:.4f}", f"{accuracy:.4f}", f"{precision:.4f}", f"{recall:.4f}", f"{f1:.4f}"],
+            'Percentage': ['-', f"{accuracy*100:.2f}%", f"{precision*100:.2f}%", f"{recall*100:.2f}%", f"{f1*100:.2f}%"]
+        }
+        metrics_df = pd.DataFrame(metrics_data)
         print(f"\n📊 PERFORMANCE METRICS:")
         print(metrics_df.to_string(index=False))
         
+        # Create and print confusion matrix
+        cm_data = {
+            '': ['Predicted: 0 (Normal)', 'Predicted: 1 (Fraud)'],
+            'Actual: 0 (Normal)': [f'{tn}', f'{fp}'],
+            'Actual: 1 (Fraud)': [f'{fn}', f'{tp}']
+        }
+        cm_df = pd.DataFrame(cm_data)
         print(f"\n🔍 CONFUSION MATRIX:")
         print(cm_df.to_string(index=False))
         
@@ -300,15 +309,8 @@ class GAStackingClient(fl.client.NumPyClient):
         
         print(f"{'='*60}\n")
         
-        return {
-            'accuracy': accuracy,
-            'precision': precision, 
-            'recall': recall,
-            'f1_score': f1,
-            'loss': loss,
-            'confusion_matrix': {'TP': tp, 'TN': tn, 'FP': fp, 'FN': fn}
-        }
-
+        return metrics_dict
+    
     def fit(self, parameters: Parameters, config: Dict[str, Scalar]) -> Tuple[List[np.ndarray], int, Dict[str, Scalar]]:
         """
         Train the model using GA-Stacking in Round 1 and fine-tune in subsequent rounds.
@@ -341,9 +343,13 @@ class GAStackingClient(fl.client.NumPyClient):
             try:
                 # Initialize the GA pipeline with config parameters
                 self.ga_pipeline = GAStackingPipeline(
-                    pop_size=10,
-                    generations=5,
-                    cv_folds=5,
+                    pop_size=15,
+                    generations=10,
+                    crossover_prob=0.9,
+                    mutation_prob=0.1,
+                    mutation_scale=0.1,  # Use a smaller mutation scale
+                    sigma_share=0.2,  # Fitness sharing for diversity
+                    cv_folds=3,
                     verbose=True
                 )
                 
@@ -624,6 +630,15 @@ class GAStackingClient(fl.client.NumPyClient):
             metrics["ensemble_weights_str"] = json.dumps(self.ensemble_state.get("weights", []).tolist() 
                                                     if isinstance(self.ensemble_state.get("weights", []), np.ndarray) 
                                                     else self.ensemble_state.get("weights", []))
+            
+            # Record final ensemble weights in the table generator
+            final_weights = self.ensemble_state.get('weights', [])
+            base_model_names = self.ensemble_state.get('model_names', [])
+            
+            phase = "Training" if server_round == 1 else "Fine-tuning"
+            self.table_generator.record_ensemble_weights(
+                server_round, f"After {phase}", final_weights, base_model_names
+            )
         else:
             metrics["base_model_names_str"] = json.dumps([])
             metrics["ensemble_weights_str"] = json.dumps([])
@@ -924,576 +939,6 @@ class GAStackingClient(fl.client.NumPyClient):
                 "model_status": "error",
                 "evaluation_method": "local_error"
             }
-        
-    # def fit(self, parameters: Parameters, config: Dict[str, Scalar]) -> Tuple[List[np.ndarray], int, Dict[str, Scalar]]:
-    #     """
-    #     Train the model using GA-Stacking in Round 1 and fine-tune in subsequent rounds.
-    #     """
-    #     # Check if client is authorized (if blockchain is available)
-    #     if self.blockchain and self.wallet_address:
-    #         try:
-    #             is_authorized = self.blockchain.is_client_authorized(self.wallet_address)
-    #             if not is_authorized:
-    #                 logger.warning(f"Client {self.wallet_address} is not authorized to participate")
-    #                 # Return empty parameters with auth failure flag
-    #                 return parameters_to_ndarrays(parameters), 0, {"error": "client_not_authorized"}
-    #         except Exception as e:
-    #             logger.error(f"Failed to check client authorization: {e}")
-    #             # Continue anyway, server will check again
-
-    #     # Get config parameters
-    #     server_round = config.get("server_round", 0)
-    #     is_first_round = server_round == 1
-    #     global_model_ipfs_hash = config.get("global_model_ipfs_hash", None)
-        
-    #     # Prepare data
-    #     X_train, y_train = self.X_train, self.y_train
-    #     X_val, y_val = self.X_val, self.y_val
-    #     initial_weights = None
-    #     # ROUND 1: Train base models + GA-Stacking from scratch
-    #     if is_first_round:
-    #         logger.info("Round 1: Training base models with GA-Stacking")
-    #         try:
-    #             # Initialize the GA pipeline with config parameters
-    #             self.ga_pipeline = GAStackingPipeline(
-    #                 pop_size=10,
-    #                 generations=5,
-    #                 cv_folds=5,
-    #                 verbose=True
-    #             )
-                
-    #             # Generate random initial weights if none provided
-    #             if initial_weights is None:
-    #                 # Get the number of base models
-    #                 num_models = len(self.ga_pipeline.base_models)
-    #                 logger.info(f"Generating equal initial weights for {num_models} base models")
-                    
-    #                 # Set all weights to 1/num_models
-    #                 initial_weights = np.full(num_models, 1 / num_models)
-                    
-    #                 logger.info(f"Generated equal initial weights: {initial_weights}")
-                
-    #             # Train the GA-Stacking pipeline with initial weights
-    #             self.ga_results = self.ga_pipeline.train(
-    #                 X_train, y_train, X_val, y_val, 
-    #                 init_weights=initial_weights
-    #             )
-                
-    #             # Save ensemble state
-    #             self.ensemble_state = self.ga_pipeline.get_ensemble_state()
-                
-    #             model_dir = os.path.join("models", f"client_{self.client_id}")
-    #             # Save base models for future rounds
-    #             self.ga_pipeline.save_base_models(model_dir)
-                
-    #             logger.info(f"Completed GA-Stacking with {len(self.ensemble_state.get('model_names', []))} base models")
-    #         except Exception as e:
-    #             logger.error(f"Error in GA-Stacking: {str(e)}")
-    #             import traceback
-    #             traceback.print_exc()
-        
-    #     # ROUNDS 2+: Fine-tune with aggregated weights
-    #     else:
-    #         logger.info(f"Round {server_round}: Fine-tuning with aggregated weights")
-    #         try:
-    #             if global_model_ipfs_hash:
-    #                 # Log the hash we're trying to retrieve
-    #                 logger.info(f"Retrieving aggregated weights from IPFS hash: {global_model_ipfs_hash}")
-                    
-    #                 # Retrieve aggregated ensemble weights from IPFS
-    #                 try:
-    #                     global_model_data = self.ipfs.get_json(global_model_ipfs_hash)
-    #                     logger.info(f"Retrieved global model data with keys: {list(global_model_data.keys())}")
-                        
-    #                     # Extract ensemble weights from global model data with proper fallbacks
-    #                     aggregated_weights = None
-    #                     base_model_names = None
-                        
-    #                     # Try different possible locations for ensemble weights
-    #                     if "ensemble_weights" in global_model_data:
-    #                         aggregated_weights = global_model_data["ensemble_weights"]
-    #                         logger.info(f"Found ensemble weights in global model data: {aggregated_weights}")
-                        
-    #                     # Try different possible locations for base model names
-    #                     if "base_model_names" in global_model_data:
-    #                         base_model_names = global_model_data["base_model_names"]
-    #                         logger.info(f"Found base model names in global model data: {base_model_names}")
-    #                     elif "info" in global_model_data and "base_model_names" in global_model_data["info"]:
-    #                         base_model_names = global_model_data["info"]["base_model_names"]
-    #                         logger.info(f"Found base model names in global model info: {base_model_names}")
-                        
-    #                     if aggregated_weights and base_model_names:
-    #                         # Load saved base models if not already loaded
-    #                         if not hasattr(self, 'base_models_loaded') or not self.base_models_loaded:
-    #                             models_dir = os.path.join("models", f"client_{self.client_id}")
-    #                             logger.info(f"Loading base models from {models_dir}")
-                                
-    #                             # Load base models using pipeline's method
-    #                             self.ga_pipeline.load_base_models(models_dir)
-    #                             self.base_models_loaded = True
-                                
-    #                             # Check if models were loaded successfully
-    #                             if hasattr(self.ga_pipeline, 'trained_base_models'):
-    #                                 logger.info(f"Loaded {len(self.ga_pipeline.trained_base_models)} trained base models")
-    #                             else:
-    #                                 logger.error("No trained_base_models found after loading")
-    #                                 raise ValueError("Failed to load base models")
-                            
-    #                         # Check if we have trained base models before fine-tuning
-    #                         if not hasattr(self.ga_pipeline, 'trained_base_models') or not self.ga_pipeline.trained_base_models:
-    #                             logger.error("No trained_base_models available for fine-tuning")
-    #                             raise ValueError("No trained base models available")
-                            
-    #                         # Log the models we have
-    #                         logger.info(f"Fine-tuning with base models: {list(self.ga_pipeline.trained_base_models.keys())}")
-                            
-    #                         # Ensure weights are in the correct format
-    #                         if isinstance(aggregated_weights, list):
-    #                             # Convert to numpy array if needed
-    #                             aggregated_weights = np.array(aggregated_weights)
-                            
-    #                         # Now perform the actual fine-tuning - explicitly passing the required parameters
-    #                         logger.info(f"Fine-tuning with aggregated weights: {aggregated_weights}")
-    #                         self.ga_results = self.ga_pipeline.fine_tune(
-    #                             X_train=X_train, 
-    #                             y_train=y_train, 
-    #                             X_val=X_val, 
-    #                             y_val=y_val,
-    #                             base_models=self.ga_pipeline.trained_base_models,  # This is required
-    #                             weights=aggregated_weights  # Pass the weights
-    #                         )
-                            
-    #                         # Update ensemble state after fine-tuning
-    #                         self.ensemble_state = self.ga_pipeline.get_ensemble_state()
-                            
-    #                         logger.info(f"Completed fine-tuning with {len(aggregated_weights)} base models")
-    #                         logger.info(f"Updated ensemble weights: {self.ensemble_state.get('weights', [])}")
-    #                     else:
-    #                         logger.error(f"Missing required data in global model. Found keys: {list(global_model_data.keys())}")
-    #                         if "info" in global_model_data:
-    #                             logger.error(f"Info section contains keys: {list(global_model_data['info'].keys())}")
-    #                 except Exception as e:
-    #                     logger.error(f"Error retrieving global model from IPFS: {str(e)}")
-    #                     import traceback
-    #                     logger.error(traceback.format_exc())
-    #             else:
-    #                 logger.error("No global model IPFS hash provided for fine-tuning")
-    #         except Exception as e:
-    #             logger.error(f"Error in fine-tuning: {str(e)}")
-    #             import traceback
-    #             logger.error(traceback.format_exc())
-          
-    #     # Evaluate on test data
-    #     if hasattr(self, 'ga_pipeline') and self.ga_pipeline is not None and hasattr(self.ga_pipeline, 'predict'):
-    #         y_pred = self.ga_pipeline.predict(self.X_test)
-    #         test_metrics = evaluate_metrics(self.y_test, y_pred)
-            
-    #         accuracy = test_metrics['accuracy'] * 100.0
-            
-    #         y_pred_clipped = np.clip(y_pred, 1e-7, 1 - 1e-7)
-                        
-    #         loss = log_loss(self.y_test, y_pred_clipped)
-            
-    #         ga_stacking_metrics = {
-    #             # Keep the data_points metric (used in our new reward system)
-    #             "data_points": len(self.X_train),  # Use the raw number of training samples
-                
-    #             # Store recall value directly from test metrics
-    #             "recall": float(test_metrics['recall']),  # Recall is critical for fraud detection
-                
-    #             # Keep other metrics for backward compatibility
-    #             "data_size": len(self.X_train),
-    #             "training_rounds": server_round if not hasattr(self, 'rounds_participated') else self.rounds_participated + 1,
-    #             "evaluation_score": float(test_metrics['f1'])
-    #         }
-            
-    #         metrics = {
-    #             "loss": float(loss),
-    #             "accuracy": float(accuracy),
-    #             "precision": float(test_metrics['precision']),
-    #             "recall": float(test_metrics['recall']),
-    #             "f1_score": float(test_metrics['f1']),
-    #         }
-    #     else:
-    #         # Fallback if pipeline isn't trained
-    #         accuracy, loss = 0.0, float('inf')
-    #         metrics = {
-    #             "loss": float(loss),
-    #             "accuracy": 0.0,
-    #             "precision": 0.0,
-    #             "recall": 0.0,
-    #             "f1_score": 0.0
-    #         }
-    #         ga_stacking_metrics = {
-    #             # Keep the data_points metric (used in our new reward system)
-    #             "data_points": len(self.X_train),  # Use the raw number of training samples
-                
-    #             # Store recall value directly from test metrics
-    #             "recall": float(test_metrics['recall']),  # Recall is critical for fraud detection
-                
-    #             # Keep other metrics for backward compatibility
-    #             "data_size": len(self.X_train),
-    #             "training_rounds": server_round if not hasattr(self, 'rounds_participated') else self.rounds_participated + 1,
-    #             "evaluation_score": float(test_metrics['f1'])
-    #         }
-
-    #     # Create and store client data in IPFS
-    #     try:
-    #         # Make sure ensemble weights and base model names are properly formatted
-    #         ensemble_weights = self.ensemble_state.get("weights", [])
-    #         if isinstance(ensemble_weights, np.ndarray):
-    #             ensemble_weights = ensemble_weights.tolist()
-            
-    #         base_model_names = self.ensemble_state.get("model_names", [])
-            
-    #         # Create IPFS data structure that matches server expectations
-    #         client_data = {
-    #             "ensemble_weights": ensemble_weights,  # Store directly in root
-    #             "base_model_names": base_model_names,  # Store directly in root
-    #             "info": {
-    #                 "round": server_round,
-    #                 "timestamp": datetime.now(timezone.utc).isoformat(),
-    #                 "version": "client-" + str(self.client_id),
-    #                 "client_id": self.client_id,
-    #                 "wallet_address": self.wallet_address if self.wallet_address else "unknown",
-    #                 "data_size": len(self.X_train),
-    #                 "base_model_names": base_model_names  # Also store in info for server compatibility
-    #             },
-    #             "metrics": {
-    #                 "loss": float(loss),
-    #                 "recall": float(metrics.get('recall', 0.0)) if 'metrics' in locals() else 0.0,
-    #                 "precision": float(metrics.get('precision', 0.0)) if 'metrics' in locals() else 0.0,
-    #                 "f1_score": float(metrics.get('f1_score', 0.0)) if 'metrics' in locals() else 0.0,
-    #             }
-    #         }
-            
-    #         # Store in IPFS
-    #         client_ipfs_hash = self.ipfs.add_json(client_data)
-    #         logger.info(f"Stored client data in IPFS: {client_ipfs_hash}")
-            
-    #         # Verify data was stored correctly by retrieving it
-    #         verification = self.ipfs.get_json(client_ipfs_hash)
-    #         logger.info(f"Verification - stored data contains keys: {list(verification.keys())}")
-    #         if "ensemble_weights" in verification:
-    #             logger.info(f"Ensemble weights successfully stored, length: {len(verification['ensemble_weights'])}")
-    #         else:
-    #             logger.warning("Ensemble weights missing from stored data!")
-    #     except Exception as e:
-    #         logger.error(f"Failed to save client data to IPFS: {str(e)}")
-    #         client_ipfs_hash = None
-
-    #     # Update metrics history
-    #     self.metrics_history.append({
-    #         "round": server_round,
-    #         "fit_loss": float(loss),
-    #         "accuracy": float(accuracy),
-    #         "ipfs_hash": client_ipfs_hash,
-    #         "wallet_address": self.wallet_address if self.wallet_address else "unknown",
-    #         "timestamp": datetime.now(timezone.utc).isoformat(),
-    #         "ga_stacking_metrics": ga_stacking_metrics
-    #     })
-
-    #     # Track participation for future rounds
-    #     self.rounds_participated = server_round
-
-    #     # Include necessary information in metrics
-    #     metrics["client_ipfs_hash"] = client_ipfs_hash
-    #     metrics["wallet_address"] = self.wallet_address if self.wallet_address else "unknown"
-    #     metrics["ensemble_size"] = len(self.ensemble_state.get("model_names", [])) if (hasattr(self, 'ensemble_state') and self.ensemble_state is not None) else 0
-        
-    #     # Instead of directly sending lists in metrics, convert them to strings
-    #     if hasattr(self, 'ensemble_state') and self.ensemble_state is not None:
-    #         metrics["base_model_names_str"] = json.dumps(self.ensemble_state.get("model_names", []))
-    #         metrics["ensemble_weights_str"] = json.dumps(self.ensemble_state.get("weights", []).tolist() 
-    #                                                 if isinstance(self.ensemble_state.get("weights", []), np.ndarray) 
-    #                                                 else self.ensemble_state.get("weights", []))
-    #     else:
-    #         metrics["base_model_names_str"] = json.dumps([])
-    #         metrics["ensemble_weights_str"] = json.dumps([])
-        
-    #     # Add GA-Stacking specific metrics
-    #     for key, value in ga_stacking_metrics.items():
-    #         metrics[key] = value
-
-    #     # For IPFS-only approach, we only need to send metadata and hash
-    #     # Instead of serializing the full ensemble state
-    #     empty_parameters = [np.array([])]
-
-    #     # Make sure metrics only contains serializable values
-    #     for key in list(metrics.keys()):
-    #         if not isinstance(metrics[key], (int, float, str, bool, list)):
-    #             metrics[key] = str(metrics[key])
-
-    #     # Return empty parameters with all information in metrics
-    #     return empty_parameters, len(self.X_train), metrics
-    
-    # def evaluate(self, parameters: Parameters, config: Dict[str, Scalar]) -> Tuple[float, int, Dict[str, Scalar]]:
-    #     """
-    #     Evaluate the model on the local test dataset using GA-Stacking.
-    #     Uses global model from IPFS when available, with fallback to local model.
-    #     """
-    #     # Check if client is authorized (if blockchain is available)
-    #     if self.blockchain and self.wallet_address:
-    #         try:
-    #             is_authorized = self.blockchain.is_client_authorized(self.wallet_address)
-    #             if not is_authorized:
-    #                 logger.warning(f"Client {self.wallet_address} is not authorized to participate in evaluation")
-    #                 return 0.0, 0, {"error": "client_not_authorized"}
-    #         except Exception as e:
-    #             logger.error(f"Failed to check client authorization: {e}")
-        
-    #     # Get configuration from server
-    #     ipfs_hash = config.get("ipfs_hash", None)
-    #     round_num = config.get("server_round", 0)
-    #     is_evaluation_phase = config.get("evaluation_phase", False)
-        
-    #     logger.info(f"Starting evaluation for round {round_num}")
-    #     if ipfs_hash:
-    #         logger.info(f"Using model from IPFS: {ipfs_hash}")
-        
-    #     # TRY GLOBAL MODEL EVALUATION FIRST (if IPFS hash provided and it's evaluation phase)
-    #     if ipfs_hash and is_evaluation_phase:
-    #         try:
-    #             logger.info("Attempting to evaluate using global ensemble model from IPFS")
-                
-    #             # Retrieve the global model from IPFS
-    #             global_model_data = self.ipfs.get_json(ipfs_hash)
-    #             logger.info(f"Retrieved global model data with keys: {list(global_model_data.keys())}")
-                
-    #             # Check if this is a proper ensemble model
-    #             if "ensemble_weights" in global_model_data and "base_model_names" in global_model_data:
-    #                 ensemble_weights = global_model_data["ensemble_weights"]
-    #                 base_model_names = global_model_data["base_model_names"]
-                    
-    #                 logger.info(f"Evaluating global ensemble with {len(ensemble_weights)} models")
-    #                 logger.info(f"Ensemble weights: {ensemble_weights}")
-                    
-    #                 # Ensure we have our trained base models loaded
-    #                 if not hasattr(self, 'base_models_loaded') or not self.base_models_loaded:
-    #                     models_dir = os.path.join("models", f"client_{self.client_id}")
-    #                     if os.path.exists(models_dir):
-    #                         logger.info(f"Loading base models from {models_dir}")
-    #                         self.ga_pipeline.load_base_models(models_dir)
-    #                         self.base_models_loaded = True
-    #                         logger.info(f"Successfully loaded {len(self.ga_pipeline.trained_base_models)} base models")
-                    
-    #                 # Verify we have the required base models
-    #                 if hasattr(self.ga_pipeline, 'trained_base_models') and self.ga_pipeline.trained_base_models:
-    #                     # Generate meta-features using our trained base models
-    #                     logger.info("Generating meta-features for global model evaluation")
-    #                     meta_X_test = np.column_stack([
-    #                         model.predict_proba(self.X_test)[:, 1]
-    #                         for model in self.ga_pipeline.trained_base_models.values()
-    #                     ])
-                        
-    #                     # Apply global ensemble weights
-    #                     ensemble_predictions = np.dot(meta_X_test, np.array(ensemble_weights))
-    #                     binary_predictions = (ensemble_predictions > 0.5).astype(int)
-                        
-    #                     # Calculate metrics using global ensemble
-    #                     from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, log_loss, confusion_matrix
-                        
-    #                     accuracy = accuracy_score(self.y_test, binary_predictions)
-    #                     precision = precision_score(self.y_test, binary_predictions, pos_label=1, zero_division=0)
-    #                     recall = recall_score(self.y_test, binary_predictions, pos_label=1, zero_division=0)
-    #                     f1 = f1_score(self.y_test, binary_predictions, pos_label=1, zero_division=0)
-                        
-    #                     # Calculate loss
-    #                     clipped_predictions = np.clip(ensemble_predictions, 1e-7, 1 - 1e-7)
-    #                     loss = log_loss(self.y_test, clipped_predictions)
-                        
-    #                     # Calculate confusion matrix
-    #                     cm = confusion_matrix(self.y_test, binary_predictions)
-    #                     tn, fp, fn, tp = cm.ravel() if cm.size == 4 else (0, 0, 0, 0)
-                        
-    #                     # Create metrics dictionary
-    #                     metrics = {
-    #                         "loss": float(loss),
-    #                         "accuracy": float(accuracy * 100.0),  # Convert to percentage
-    #                         "precision": float(precision),
-    #                         "recall": float(recall),
-    #                         "f1_score": float(f1),
-    #                         "wallet_address": self.wallet_address if self.wallet_address else "unknown",
-                            
-    #                         # Confusion matrix components
-    #                         "true_positives": int(tp),
-    #                         "false_positives": int(fp),
-    #                         "true_negatives": int(tn),
-    #                         "false_negatives": int(fn),
-                            
-    #                         # Global model information
-    #                         "ensemble_size": len(ensemble_weights),
-    #                         "evaluation_method": "global_ensemble",
-    #                         "model_status": "global_model_evaluation",
-    #                         "data_points": len(self.X_train),
-    #                         "global_model_ipfs_hash": ipfs_hash
-    #                     }
-                        
-    #                     # Add client contribution info from global model if available
-    #                     if "client_contributions" in global_model_data:
-    #                         contributions = global_model_data["client_contributions"]
-    #                         metrics["global_model_contributors"] = len(contributions)
-                            
-    #                         # Find our contribution
-    #                         for contrib in contributions:
-    #                             if contrib.get("wallet_address") == self.wallet_address:
-    #                                 metrics["our_contribution_score"] = float(contrib.get("score", 0.0))
-    #                                 metrics["our_reward_amount"] = float(contrib.get("rewards", {}).get("eth_amount", 0.0))
-    #                                 metrics["our_rank"] = int(contrib.get("rewards", {}).get("rank", 0))
-    #                                 logger.info(f"Our contribution: Score={metrics['our_contribution_score']:.2f}, "
-    #                                         f"Reward={metrics['our_reward_amount']:.6f} ETH, Rank={metrics['our_rank']}")
-    #                                 break
-                        
-    #                     # Add reward summary if available
-    #                     if "reward_summary" in global_model_data:
-    #                         summary = global_model_data["reward_summary"]
-    #                         metrics["global_rewards_distributed"] = float(summary.get("total_eth_distributed", 0.0))
-    #                         metrics["global_average_score"] = float(summary.get("average_score", 0.0))
-                        
-    #                     # Add to metrics history
-    #                     self.metrics_history.append({
-    #                         "round": round_num,
-    #                         "eval_loss": float(loss),
-    #                         "accuracy": float(accuracy * 100.0),
-    #                         "precision": float(precision),
-    #                         "recall": float(recall),
-    #                         "f1_score": float(f1),
-    #                         "eval_samples": len(self.X_test),
-    #                         "ipfs_hash": ipfs_hash,
-    #                         "evaluation_method": "global_ensemble",
-    #                         "wallet_address": self.wallet_address if self.wallet_address else "unknown",
-    #                         "timestamp": datetime.now(timezone.utc).isoformat()
-    #                     })
-                        
-    #                     logger.info(f"Global model evaluation completed - Loss: {loss:.4f}, "
-    #                             f"Precision: {precision:.4f}, "
-    #                             f"Recall: {recall:.4f}, F1: {f1:.4f}")
-                        
-    #                     return float(loss), len(self.X_test), metrics
-                    
-    #         except Exception as e:
-    #             logger.error(f"Failed to evaluate global model from IPFS: {e}")
-    #             logger.info("Falling back to local model evaluation")
-    #             # Continue to fallback evaluation below
-        
-    #     # FALLBACK: LOCAL MODEL EVALUATION (your existing logic)
-    #     logger.info("Using local model evaluation")
-        
-    #     # Ensure parameters are in the correct format
-    #     if isinstance(parameters, list):
-    #         params = parameters
-    #     else:
-    #         params = parameters_to_ndarrays(parameters)
-        
-    #     # Set parameters if provided
-    #     if len(params) > 0 and len(params[0]) > 0:
-    #         self.set_parameters(params)
-        
-    #     # Check if the pipeline is trained
-    #     pipeline_trained = (hasattr(self, 'ga_pipeline') and 
-    #                     self.ga_pipeline is not None and 
-    #                     hasattr(self.ga_pipeline, 'predict') and
-    #                     hasattr(self, 'ensemble_state') and 
-    #                     self.ensemble_state is not None)
-        
-    #     if not pipeline_trained:
-    #         logger.warning("GA pipeline not trained yet, returning default evaluation metrics")
-    #         return float('inf'), len(self.X_test), {
-    #             "loss": float('inf'),
-    #             "accuracy": 0.0,
-    #             "precision": 0.0,
-    #             "recall": 0.0,
-    #             "f1_score": 0.0,
-    #             "wallet_address": self.wallet_address if self.wallet_address else "unknown",
-    #             "model_status": "not_trained",
-    #             "evaluation_method": "local_not_trained"
-    #         }
-        
-    #     # Local model evaluation (your existing code)
-    #     try:
-    #         y_pred = self.ga_pipeline.predict(self.X_test)
-    #         test_metrics = evaluate_metrics(self.y_test, y_pred)
-            
-    #         accuracy = test_metrics['accuracy'] * 100.0
-    #         clipped_predictions = np.clip(y_pred, 1e-7, 1 - 1e-7)
-    #         loss = log_loss(self.y_test, clipped_predictions)
-            
-    #         # Calculate confusion matrix components
-    #         threshold = 0.5
-    #         y_pred_labels = (y_pred > threshold).astype(int)
-            
-    #         from sklearn.metrics import confusion_matrix
-    #         cm = confusion_matrix(self.y_test, y_pred_labels)
-            
-    #         if cm.shape == (2, 2):
-    #             tn, fp, fn, tp = cm.ravel()
-    #         else:
-    #             fraud_idx = 1
-    #             tp = cm[fraud_idx, fraud_idx]
-    #             fp = cm[:, fraud_idx].sum() - tp
-    #             fn = cm[fraud_idx, :].sum() - tp
-    #             tn = cm.sum() - (tp + fp + fn)
-            
-    #         metrics = {
-    #             "loss": float(loss),
-    #             "accuracy": float(accuracy),
-    #             "precision": float(test_metrics['precision']),
-    #             "recall": float(test_metrics['recall']),
-    #             "f1_score": float(test_metrics['f1']),
-    #             "wallet_address": self.wallet_address if self.wallet_address else "unknown",
-    #             "ensemble_size": len(self.ensemble_state.get("model_names", [])) if hasattr(self, 'ensemble_state') else 0,
-                
-    #             # Confusion matrix components
-    #             "true_positives": int(tp),
-    #             "false_positives": int(fp),
-    #             "true_negatives": int(tn),
-    #             "false_negatives": int(fn),
-                
-    #             # Additional info
-    #             "data_points": len(self.X_train),
-    #             "evaluation_method": "local_model",
-    #             "model_status": "trained"
-    #         }
-            
-    #         # Add GA-Stacking metrics if available
-    #         if hasattr(self, 'ga_results'):
-    #             metrics.update({
-    #                 "ensemble_accuracy": float(self.ga_results["val_metrics"]["accuracy"]),
-    #                 "diversity_score": float(self.ga_results["diversity_score"]),
-    #                 "generalization_score": float(self.ga_results["generalization_score"]),
-    #                 "convergence_rate": float(self.ga_results["convergence_rate"])
-    #             })
-            
-    #         # Add to metrics history
-    #         self.metrics_history.append({
-    #             "round": round_num,
-    #             "eval_loss": float(loss),
-    #             "accuracy": float(accuracy),
-    #             "precision": float(test_metrics['precision']),
-    #             "recall": float(test_metrics['recall']),
-    #             "f1_score": float(test_metrics['f1']),
-    #             "eval_samples": len(self.X_test),
-    #             "ipfs_hash": ipfs_hash,
-    #             "evaluation_method": "local_model",
-    #             "wallet_address": self.wallet_address if self.wallet_address else "unknown",
-    #             "timestamp": datetime.now(timezone.utc).isoformat()
-    #         })
-            
-    #         return float(loss), len(self.X_test), metrics
-            
-    #     except Exception as e:
-    #         logger.error(f"Error during local evaluation: {e}")
-    #         return float('inf'), len(self.X_test), {
-    #             "loss": float('inf'),
-    #             "accuracy": 0.0,
-    #             "precision": 0.0,
-    #             "recall": 0.0,
-    #             "f1_score": 0.0,
-    #             "wallet_address": self.wallet_address if self.wallet_address else "unknown",
-    #             "error": str(e),
-    #             "model_status": "error",
-    #             "evaluation_method": "local_error"
-    #         }
     
     def save_metrics_history(self, filepath: str = "client_metrics.json"):
         """Save metrics history to a file."""
@@ -1501,6 +946,20 @@ class GAStackingClient(fl.client.NumPyClient):
             json.dump(self.metrics_history, f, indent=2)
         logger.info(f"Saved metrics history to {filepath}")
 
+    def finalize_session(self, output_dir: str = "performance_analysis"):
+        """Call this at the end of the federated learning session"""
+        # Mark session end
+        self.table_generator.session_data['client_info']['session_end'] = datetime.now(timezone.utc).isoformat()
+        
+        # Print summary to console
+        self.table_generator.print_session_summary()
+        
+        # Save all data and tables to files
+        saved_dir = self.table_generator.save_session_data(output_dir)
+        
+        print(f"\n💾 All performance data saved to: {saved_dir}")
+        return saved_dir
+    
 
 def load_csv_dataset(csv_file_path: str, target_col: str = "Class") -> pd.DataFrame:
     """
@@ -1551,6 +1010,8 @@ def load_csv_dataset(csv_file_path: str, target_col: str = "Class") -> pd.DataFr
     except Exception as e:
         logger.error(f"Error loading dataset: {e}")
         raise
+
+    
 
 
 def start_client(
@@ -1711,6 +1172,7 @@ def start_client(
     
     # Save metrics after client finishes
     client.save_metrics_history(filepath=f"metrics/{client_id}/metrics_history.json")
+    client.finalize_session(output_dir="performance_analysis")
     
     logger.info(f"Client {client_id} completed federated learning with GA-Stacking")
     

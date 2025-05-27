@@ -1,0 +1,34 @@
+{
+  "client_id": "client-5",
+  "wallet_address": "0x432eeDFD74F3CD992689f1cC2c0cB2758DdAB7fe",
+  "timestamp": "20250527_113924",
+  "session_start": "2025-05-27T11:38:08.493040+00:00",
+  "session_end": "2025-05-27T11:39:24.591856+00:00",
+  "total_rounds": 2,
+  "dataset_info": {
+    "total_samples": 0,
+    "total_features": 0,
+    "training_samples": 0,
+    "validation_samples": 0,
+    "test_samples": 0,
+    "fraud_cases_train": 0,
+    "normal_cases_train": 0,
+    "fraud_cases_val": 0,
+    "normal_cases_val": 0,
+    "fraud_cases_test": 0,
+    "normal_cases_test": 0,
+    "fraud_percentage_train": 0.0,
+    "fraud_percentage_val": 0.0,
+    "fraud_percentage_test": 0.0,
+    "dataset_file": null,
+    "preprocessing_applied": [],
+    "feature_columns": []
+  },
+  "files_generated": [
+    "client-5_20250527_113924_session_data.json",
+    "client-5_20250527_113924_validation.csv",
+    "client-5_20250527_113924_test.csv",
+    "client-5_20250527_113924_global_evaluation.csv",
+    "client-5_20250527_113924_summary_report.txt"
+  ]
+}

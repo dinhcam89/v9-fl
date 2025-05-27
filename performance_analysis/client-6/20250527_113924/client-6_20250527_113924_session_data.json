@@ -1,0 +1,116 @@
+{
+  "validation_performance": [
+    {
+      "round": 1,
+      "phase": "Training",
+      "loss": 0.011233726962187664,
+      "accuracy": 99.45205479452055,
+      "precision": 33.33333333333333,
+      "recall": 100.0,
+      "f1_score": 50.0,
+      "tp": "1",
+      "tn": "362",
+      "fp": "2",
+      "fn": "0"
+    },
+    {
+      "round": 2,
+      "phase": "Fine-tuning",
+      "loss": 0.012240953775109384,
+      "accuracy": 99.45205479452055,
+      "precision": 33.33333333333333,
+      "recall": 100.0,
+      "f1_score": 50.0,
+      "tp": "1",
+      "tn": "362",
+      "fp": "2",
+      "fn": "0"
+    }
+  ],
+  "test_performance": [
+    {
+      "round": 1,
+      "phase": "Training",
+      "loss": 0.00747926062270296,
+      "accuracy": 99.86320109439124,
+      "precision": 100.0,
+      "recall": 50.0,
+      "f1_score": 66.66666666666666,
+      "tp": "1",
+      "tn": "729",
+      "fp": "0",
+      "fn": "1"
+    },
+    {
+      "round": 2,
+      "phase": "Fine-tuning",
+      "loss": 0.006737710506791662,
+      "accuracy": 99.86320109439124,
+      "precision": 100.0,
+      "recall": 50.0,
+      "f1_score": 66.66666666666666,
+      "tp": "1",
+      "tn": "729",
+      "fp": "0",
+      "fn": "1"
+    }
+  ],
+  "global_evaluation_performance": [
+    {
+      "round": 1,
+      "loss": 0.008058860654760885,
+      "accuracy": 99.86320109439124,
+      "precision": 100.0,
+      "recall": 50.0,
+      "f1_score": 66.66666666666666,
+      "tp": "1",
+      "tn": "729",
+      "fp": "0",
+      "fn": "1",
+      "score": 0.0,
+      "rank": 0,
+      "reward": 0.0
+    },
+    {
+      "round": 2,
+      "loss": 0.007371138820949173,
+      "accuracy": 99.86320109439124,
+      "precision": 100.0,
+      "recall": 50.0,
+      "f1_score": 66.66666666666666,
+      "tp": "1",
+      "tn": "729",
+      "fp": "0",
+      "fn": "1",
+      "score": 0.0,
+      "rank": 0,
+      "reward": 0.0
+    }
+  ],
+  "ensemble_weights": [],
+  "client_info": {
+    "client_id": "client-6",
+    "wallet_address": "0x9c4Ec6537bF4d916B71008003Fb1311B7C157C4f",
+    "session_start": "2025-05-27T11:38:08.859354+00:00",
+    "session_end": "2025-05-27T11:39:24.590661+00:00"
+  },
+  "dataset_info": {
+    "total_samples": 0,
+    "total_features": 0,
+    "training_samples": 0,
+    "validation_samples": 0,
+    "test_samples": 0,
+    "fraud_cases_train": 0,
+    "normal_cases_train": 0,
+    "fraud_cases_val": 0,
+    "normal_cases_val": 0,
+    "fraud_cases_test": 0,
+    "normal_cases_test": 0,
+    "fraud_percentage_train": 0.0,
+    "fraud_percentage_val": 0.0,
+    "fraud_percentage_test": 0.0,
+    "dataset_file": null,
+    "preprocessing_applied": [],
+    "feature_columns": []
+  }
+}

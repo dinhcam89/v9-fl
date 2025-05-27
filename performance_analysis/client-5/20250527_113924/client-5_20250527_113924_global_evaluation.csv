@@ -1,0 +1,3 @@
+round,loss,accuracy,precision,recall,f1_score,tp,tn,fp,fn,score,rank,reward
+1,0.0074,99.86%,0.0%,0.0%,0.0%,0,730,0,1,0.0,0,0.0
+2,0.0065,99.86%,0.0%,0.0%,0.0%,0,730,0,1,0.0,0,0.0
